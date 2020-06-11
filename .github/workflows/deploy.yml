@@ -24,7 +24,7 @@ jobs:
     needs: [build]
     steps: 
       - uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
           github_token: ${{secrets.BLOG_GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: docs/.vuepress/dist
