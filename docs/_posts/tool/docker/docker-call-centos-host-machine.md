@@ -52,7 +52,7 @@ service firewalld restart
   <accept/>
 </rule>
 ```
-![image](https://www.jwchan.cn/images/docker/container_connect_host.png)
+![image](/docker/container_connect_host.png)
 
 ## 测试端口
 在容器中测试宿主机端口是否可以连接，可以使用 `wget 内网ip:端口` 命令。
