@@ -1,1 +1,0 @@
-<h2 align="center">🌈 Deno</h2>
