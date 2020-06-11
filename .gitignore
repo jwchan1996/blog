@@ -1,0 +1,6 @@
+docs/.vuepress/dist/
+node_modules/
+.idea/
+.DS_Store
+npm-debug.log
+npm-debug.log.*
