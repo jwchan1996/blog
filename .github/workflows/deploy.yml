@@ -19,12 +19,9 @@ jobs:
           yarn docs:build
           cp CNAME docs/.vuepress/dist/  
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps: 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{secrets.BLOG_GITHUB_TOKEN}}
           publish_branch: gh-pages
+          cname: jwchan.cn
           publish_dir: ./docs/.vuepress/dist
