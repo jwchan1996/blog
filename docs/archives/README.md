@@ -1,3 +1,14 @@
 <h2 align="center">🌈 归档</h2>
 
 - [docker 访问宿主机的 ip 配置问题](/_posts/tool/docker/docker-call-centos-host-machine.html)
+- [JS 模拟实现 call、apply、bind](/_posts/frontend/javascript/js_simulate_call_apply_bind.html)
+- [JavaScript 中的 call()、apply()、bind() 的用法](/_posts/frontend/javascript/js_call_apply_bind.html)
+- [koa-jwt 实现自定义排除动态路由的鉴权](/_posts/backend/node/koa_jwt_unless.html)
+- [Electron 踩坑记录（二）](/_posts/across/electron/electron_note_2.html)
+- [koa 实现 token 有效时间续期的思路](/_posts/backend/node/koa_token.html)
+- [Electron 踩坑记录（一）](/_posts/across/electron/electron_note_1.html)
+- [关于 ref 与 $refs 对 dom 元素的操作](/_posts/frontend/vue/vue_$refs.html)
+- [关于 axios 请求出现 OPTIONS](/_posts/plugin/axios/axios_options.html)
+- [使用 git 向开源项目提交 pr](/_posts/tool/git/git_pull_request.html)
+- [vue 数据与视图更新](/_posts/frontend/vue/vue_data_update.html)
+- [Git 代码托管](/_posts/tool/git/git_command.html)

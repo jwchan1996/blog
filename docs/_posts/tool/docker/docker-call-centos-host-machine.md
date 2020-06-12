@@ -1,5 +1,7 @@
 ---
+title: docker 访问宿主机的 ip 配置问题
 date: 2020-04-28
+categories: "docker" #分类
 tags:  #标签
     - docker
     - mysql
