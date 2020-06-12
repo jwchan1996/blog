@@ -1,6 +1,6 @@
 module.exports = {
   title: '飘香豆腐の博客',
-  description: 'Just playing around',
+  description: '记录技术与生活',
   base: '/',
   themeConfig: {
     logo: '/logo.png',
