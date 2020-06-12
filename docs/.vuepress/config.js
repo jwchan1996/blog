@@ -57,6 +57,7 @@ module.exports = {
           },
         ],
       },
+      { text: '关于', link: '/about/' },
       { text: 'GitHub', link: 'https://github.com/jwchan1996/blog' }
     ],
     sidebarDepth: 2,
