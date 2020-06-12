@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Electron 踩坑记录（二） | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.ae8960ec.css" as="style"><link rel="preload" href="/assets/js/app.2678c34f.js" as="script"><link rel="preload" href="/assets/js/2.46681365.js" as="script"><link rel="preload" href="/assets/js/9.16b21f89.js" as="script"><link rel="prefetch" href="/assets/js/10.4204c3f5.js"><link rel="prefetch" href="/assets/js/11.aab8dca2.js"><link rel="prefetch" href="/assets/js/12.f2688e8b.js"><link rel="prefetch" href="/assets/js/13.aa4f17ec.js"><link rel="prefetch" href="/assets/js/14.77170f83.js"><link rel="prefetch" href="/assets/js/15.09a317b7.js"><link rel="prefetch" href="/assets/js/16.4244ffcb.js"><link rel="prefetch" href="/assets/js/17.4a897940.js"><link rel="prefetch" href="/assets/js/18.2900cd7b.js"><link rel="prefetch" href="/assets/js/19.de545c4d.js"><link rel="prefetch" href="/assets/js/20.79d21527.js"><link rel="prefetch" href="/assets/js/21.fe7ae6af.js"><link rel="prefetch" href="/assets/js/22.f7f358ab.js"><link rel="prefetch" href="/assets/js/23.8f8cfc32.js"><link rel="prefetch" href="/assets/js/24.dbf91278.js"><link rel="prefetch" href="/assets/js/25.8e8ec398.js"><link rel="prefetch" href="/assets/js/26.4007e149.js"><link rel="prefetch" href="/assets/js/27.463888f7.js"><link rel="prefetch" href="/assets/js/28.3851ac2e.js"><link rel="prefetch" href="/assets/js/29.f03f8a18.js"><link rel="prefetch" href="/assets/js/3.bf63d643.js"><link rel="prefetch" href="/assets/js/30.118897dc.js"><link rel="prefetch" href="/assets/js/31.3e5a161c.js"><link rel="prefetch" href="/assets/js/32.6bb8ffc6.js"><link rel="prefetch" href="/assets/js/33.84f592bd.js"><link rel="prefetch" href="/assets/js/34.aac3e22b.js"><link rel="prefetch" href="/assets/js/4.95c1debb.js"><link rel="prefetch" href="/assets/js/5.38be46b3.js"><link rel="prefetch" href="/assets/js/6.717fa447.js"><link rel="prefetch" href="/assets/js/7.e15df2d0.js"><link rel="prefetch" href="/assets/js/8.b4551bf3.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ae8960ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link router-link-active">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link router-link-active">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Electron</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/across/electron/electron_note_1.html" class="sidebar-link">Electron 踩坑记录（一）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_1.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_1.html#问题解决" class="sidebar-link">问题解决</a></li></ul></li><li><a href="/_posts/across/electron/electron_note_2.html" aria-current="page" class="active sidebar-link">Electron 踩坑记录（二）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_2.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_2.html#问题解决" class="sidebar-link">问题解决</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="electron-踩坑记录（二）"><a href="#electron-踩坑记录（二）" class="header-anchor">#</a> Electron 踩坑记录（二）</h1> <h2 id="场景描述"><a href="#场景描述" class="header-anchor">#</a> 场景描述</h2> <p>-- <code>2020-04-28</code> 更新：由于 <code>flash 30</code> 版本以后会出现提示“未能正确加载必要组件”（其实是广告程序），导致失效，<code>flash</code> 版本应该替换为 <code>29</code> 版本。--</p> <p>上一篇 <code>electron</code> 踩坑(一) 说到 <code>electron</code> 加载 <code>flash</code> 的问题<br>
+采用的是加载系统安装好的 <code>flash</code> 插件，需要用户提前安装好 <code>flash</code> 才能正常工作</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>app<span class="token punctuation">.</span>commandLine<span class="token punctuation">.</span><span class="token function">appendSwitch</span><span class="token punctuation">(</span><span class="token string">'ppapi-flash-path'</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token string">'pepperFlashSystemPlugin'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>其中 <code>app.getPath('pepperFlashSystemPlugin')</code> 会自动找寻系统 <code>flash</code> 的所在路径<br>
+但是，如果用户没装 <code>flash</code> 就打开应用，就会提示报错，带来不好的用户体验<br>
+所以，我们需要将 <code>flash</code> 嵌入应用依赖，也就是插件跟着应用打包</p> <p><code>win</code> 下面的软件有 <code>32</code> 位和 <code>64</code> 位的说法，而且安装位置会有不同。那么 <code>flash</code> 也不例外</p> <div class="language-Bash extra-class"><pre class="language-bash"><code>C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System32<span class="token punctuation">\</span>Macromed<span class="token punctuation">\</span>Flash<span class="token punctuation">\</span>pepflashplayer64_32_0_0_238.dll
+C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>SysWOW64<span class="token punctuation">\</span>Macromed<span class="token punctuation">\</span>Flash<span class="token punctuation">\</span>pepflashplayer32_32_0_0_238.dll
+</code></pre></div><p>当然，上面版本号会变化，但是 <code>dll</code> 所在路径基本是如上所示<br>
+找到 <code>flash</code> 所在路径后，我们就可以提取文件放到我们的应用目录下了<br>
+编译后就会成为应用安装包的一部分，这样就不需要用户手动安装 <code>flash</code> 了<br>
+🔥 那么，在 <code>electron</code> 目录下应该如何引入呢？</p> <h2 id="问题解决"><a href="#问题解决" class="header-anchor">#</a> 问题解决</h2> <p>将 <code>flash</code> 插件目录放到根目录的 <code>lib</code> 文件夹下</p> <div class="language-Bash extra-class"><pre class="language-bash"><code>/lib/pepflashplayer64_32_0_0_238.dll
+/lib/pepflashplayer32_32_0_0_238.dll
+</code></pre></div><p>接下来需要在主程序入口文件 <code>/src/main/index.js</code> 下进行引入<br>
+也就是将这一句获取系统 <code>flash</code> 插件路径的代码</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>app<span class="token punctuation">.</span>commandLine<span class="token punctuation">.</span><span class="token function">appendSwitch</span><span class="token punctuation">(</span><span class="token string">'ppapi-flash-path'</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token string">'pepperFlashSystemPlugin'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>换为</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> flashPlugins <span class="token operator">=</span> process<span class="token punctuation">.</span>arch <span class="token operator">==</span> <span class="token string">'x64'</span> 
+  <span class="token operator">?</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../../lib/pepflashplayer64_32_0_0_238.dll'</span><span class="token punctuation">)</span>
+  <span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../../lib/pepflashplayer32_32_0_0_238.dll'</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>commandLine<span class="token punctuation">.</span><span class="token function">appendSwitch</span><span class="token punctuation">(</span><span class="token string">'ppapi-flash-path'</span><span class="token punctuation">,</span> flashPlugins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>如果使用的是 <code>BrowserWindow</code>：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    height<span class="token operator">:</span> <span class="token number">900</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token number">1600</span><span class="token punctuation">,</span>
+    useContentSize<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    frame<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    center<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    fullscreenable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否允许全屏</span>
+    center<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否出现在屏幕居中的位置</span>
+    title<span class="token operator">:</span> <span class="token string">'Electron应用'</span><span class="token punctuation">,</span>
+    backgroundColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span> <span class="token comment">// 背景色，用于transparent和frameless窗口</span>
+    titleBarStyle<span class="token operator">:</span> <span class="token string">'hidden'</span><span class="token punctuation">,</span> <span class="token comment">// 标题栏的样式，有hidden、hiddenInset、customButtonsOnHover等</span>
+    resizable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否允许拉伸大小</span>
+    webPreferences<span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token comment">//配置web参数选项  </span>
+      plugins<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>    <span class="token comment">//开启插件</span>
+      webSecurity<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>   <span class="token comment">//安全</span>
+      defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span>      <span class="token comment">//字体相关</span>
+        standard<span class="token operator">:</span> <span class="token string">&quot;Microsoft YaHei&quot;</span><span class="token punctuation">,</span>
+        defaultEncoding<span class="token operator">:</span> <span class="token string">&quot;utf-8&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>其中，<code>plugins: true</code> 是必须要配置的，这是告诉 <code>electron</code> 需要使用插件<br>
+然后就是打包配置 <code>package.json</code>，在 <code>build</code> 项配置下面内容</p> <div class="language-Json extra-class"><pre class="language-json"><code><span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    ……
+    ……
+    <span class="token property">&quot;win&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;icon&quot;</span><span class="token operator">:</span> <span class="token string">&quot;build/icons/icon.ico&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;extraResources&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./lib/*.dll&quot;</span>    <span class="token comment">//将特定的文件排除，不打包在asar包内</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ……
+    ……
+<span class="token punctuation">}</span>
+</code></pre></div><p>至此，开发模式和生产模式下都是可以成功运行的<br>
+以下是 <code>/src/main/index.js</code> 完整代码</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> app<span class="token punctuation">,</span> BrowserWindow <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'electron'</span>
+<span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'development'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  global<span class="token punctuation">.</span>__static <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'/static'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/\\/g</span><span class="token punctuation">,</span> <span class="token string">'\\\\'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//解决flash本地file不安全问题，express用作本地服务器</span>
+<span class="token keyword">function</span> <span class="token function">localServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> server <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  server<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">9080</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">&quot;production&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">localServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> mainWindow
+<span class="token keyword">const</span> winURL <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'development'</span>
+  <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://localhost:9080</span><span class="token template-punctuation string">`</span></span>
+  <span class="token comment">// : `file://${__dirname}/index.html`</span>
+  <span class="token comment">//解决flash在file下不安全的问题</span>
+  <span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://localhost:9080/index.html</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">let</span> flashPlugins <span class="token operator">=</span> process<span class="token punctuation">.</span>arch <span class="token operator">==</span> <span class="token string">'x64'</span> 
+  <span class="token operator">?</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../../lib/pepflashplayer64_32_0_0_238.dll'</span><span class="token punctuation">)</span>
+  <span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'../../lib/pepflashplayer32_32_0_0_238.dll'</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span>commandLine<span class="token punctuation">.</span><span class="token function">appendSwitch</span><span class="token punctuation">(</span><span class="token string">'ppapi-flash-path'</span><span class="token punctuation">,</span> flashPlugins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span>commandLine<span class="token punctuation">.</span><span class="token function">appendSwitch</span><span class="token punctuation">(</span><span class="token string">'ppapi-flash-version'</span><span class="token punctuation">,</span> <span class="token string">'32.0.0.238'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">createWindow</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+   * Initial window options
+   */</span>
+  mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    height<span class="token operator">:</span> <span class="token number">900</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token number">1600</span><span class="token punctuation">,</span>
+    useContentSize<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    frame<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    center<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    fullscreenable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否允许全屏</span>
+    center<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否出现在屏幕居中的位置</span>
+    title<span class="token operator">:</span> <span class="token string">'Electron应用'</span><span class="token punctuation">,</span>
+    backgroundColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span> <span class="token comment">// 背景色，用于transparent和frameless窗口</span>
+    titleBarStyle<span class="token operator">:</span> <span class="token string">'hidden'</span><span class="token punctuation">,</span> <span class="token comment">// 标题栏的样式，有hidden、hiddenInset、customButtonsOnHover等</span>
+    resizable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否允许拉伸大小</span>
+    webPreferences<span class="token operator">:</span> <span class="token punctuation">{</span>
+      plugins<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      webSecurity<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      defaultFontFamily<span class="token operator">:</span> <span class="token punctuation">{</span>
+        standard<span class="token operator">:</span> <span class="token string">&quot;Microsoft YaHei&quot;</span><span class="token punctuation">,</span>
+        defaultEncoding<span class="token operator">:</span> <span class="token string">&quot;utf-8&quot;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">==</span> <span class="token string">'development'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mainWindow<span class="token punctuation">.</span>webContents<span class="token punctuation">.</span><span class="token function">openDevTools</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  
+  mainWindow<span class="token punctuation">.</span><span class="token function">loadURL</span><span class="token punctuation">(</span>winURL<span class="token punctuation">)</span>
+
+  mainWindow<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    mainWindow <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> createWindow<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    app<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>mainWindow <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><code>End</code></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/12/2020, 2:52:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/across/electron/electron_note_1.html" class="prev">
+        Electron 踩坑记录（一）
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2678c34f.js" defer></script><script src="/assets/js/2.46681365.js" defer></script><script src="/assets/js/9.16b21f89.js" defer></script>
+  </body>
+</html>

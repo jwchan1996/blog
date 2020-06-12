@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Electron 踩坑记录（一） | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.ae8960ec.css" as="style"><link rel="preload" href="/assets/js/app.2678c34f.js" as="script"><link rel="preload" href="/assets/js/2.46681365.js" as="script"><link rel="preload" href="/assets/js/8.b4551bf3.js" as="script"><link rel="prefetch" href="/assets/js/10.4204c3f5.js"><link rel="prefetch" href="/assets/js/11.aab8dca2.js"><link rel="prefetch" href="/assets/js/12.f2688e8b.js"><link rel="prefetch" href="/assets/js/13.aa4f17ec.js"><link rel="prefetch" href="/assets/js/14.77170f83.js"><link rel="prefetch" href="/assets/js/15.09a317b7.js"><link rel="prefetch" href="/assets/js/16.4244ffcb.js"><link rel="prefetch" href="/assets/js/17.4a897940.js"><link rel="prefetch" href="/assets/js/18.2900cd7b.js"><link rel="prefetch" href="/assets/js/19.de545c4d.js"><link rel="prefetch" href="/assets/js/20.79d21527.js"><link rel="prefetch" href="/assets/js/21.fe7ae6af.js"><link rel="prefetch" href="/assets/js/22.f7f358ab.js"><link rel="prefetch" href="/assets/js/23.8f8cfc32.js"><link rel="prefetch" href="/assets/js/24.dbf91278.js"><link rel="prefetch" href="/assets/js/25.8e8ec398.js"><link rel="prefetch" href="/assets/js/26.4007e149.js"><link rel="prefetch" href="/assets/js/27.463888f7.js"><link rel="prefetch" href="/assets/js/28.3851ac2e.js"><link rel="prefetch" href="/assets/js/29.f03f8a18.js"><link rel="prefetch" href="/assets/js/3.bf63d643.js"><link rel="prefetch" href="/assets/js/30.118897dc.js"><link rel="prefetch" href="/assets/js/31.3e5a161c.js"><link rel="prefetch" href="/assets/js/32.6bb8ffc6.js"><link rel="prefetch" href="/assets/js/33.84f592bd.js"><link rel="prefetch" href="/assets/js/34.aac3e22b.js"><link rel="prefetch" href="/assets/js/4.95c1debb.js"><link rel="prefetch" href="/assets/js/5.38be46b3.js"><link rel="prefetch" href="/assets/js/6.717fa447.js"><link rel="prefetch" href="/assets/js/7.e15df2d0.js"><link rel="prefetch" href="/assets/js/9.16b21f89.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ae8960ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link router-link-active">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link router-link-active">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Electron</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/across/electron/electron_note_1.html" aria-current="page" class="active sidebar-link">Electron 踩坑记录（一）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_1.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_1.html#问题解决" class="sidebar-link">问题解决</a></li></ul></li><li><a href="/_posts/across/electron/electron_note_2.html" class="sidebar-link">Electron 踩坑记录（二）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_2.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/across/electron/electron_note_2.html#问题解决" class="sidebar-link">问题解决</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="electron-踩坑记录（一）"><a href="#electron-踩坑记录（一）" class="header-anchor">#</a> Electron 踩坑记录（一）</h1> <h2 id="场景描述"><a href="#场景描述" class="header-anchor">#</a> 场景描述</h2> <p>构建 <code>pc</code> 客户端，采用 <code>electron-vue</code> 脚手架进行快速搭建环境。<br>
+功能点在 <code>web</code> 端全部正常，移植代码到 <code>electron</code> 时出现问题的功能点有：</p> <div class="language- extra-class"><pre class="language-text"><code>1. rtmp 流媒体的播放  
+2. ant-design-vue UI 框架部分组件失效
+</code></pre></div><p>🔥 播放器使用的是 <code>vue-video-player</code>，播放 <code>rtmp</code> 流需要使用 <code>flash</code> 技术。</p> <h2 id="问题解决"><a href="#问题解决" class="header-anchor">#</a> 问题解决</h2> <p>简单记录问题关键</p> <div class="language- extra-class"><pre class="language-text"><code>问题：pc 客户端 ant-design-vue 部分组件不能正常工作 
+原因：electron-vue 将它视为 webpack 的 externals 了，其中 UI 组件含有的 vue 文件没有被 vue-loader 正常编译，才导致功能失效
+解决：找到 .electron-vue/webpack.renderer.config.js 将 ant-design-vue 加入到白名单 whiteListedModules
+</code></pre></div><p>🔥 <a href="https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals" target="_blank" rel="noopener noreferrer">electron 白名单配置<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>问题：pc 客户端引入 flash 之后还是不能正常播放 rtmp 流
+原因：electron 无法读取 vue-video-player 依赖安装的 videojs-flash 插件
+解决：单独安装 videojs-flash 插件为项目的依赖 npm i videojs-flash -S
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>问题：编译成 pc 客户端后出现 vue-video-player 在即将 ready 这一步卡住
+原因：flash 加载的安全问题，不允许在 &quot;file://&quot; 协议下加载
+解决：在主线程里起一个 express 服务，使得页面运行在本地的端口服务即可
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/12/2020, 2:52:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/_posts/across/electron/electron_note_2.html">
+        Electron 踩坑记录（二）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2678c34f.js" defer></script><script src="/assets/js/2.46681365.js" defer></script><script src="/assets/js/8.b4551bf3.js" defer></script>
+  </body>
+</html>

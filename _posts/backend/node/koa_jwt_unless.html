@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>koa-jwt 实现自定义排除动态路由的鉴权 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.ae8960ec.css" as="style"><link rel="preload" href="/assets/js/app.2678c34f.js" as="script"><link rel="preload" href="/assets/js/2.46681365.js" as="script"><link rel="preload" href="/assets/js/14.77170f83.js" as="script"><link rel="prefetch" href="/assets/js/10.4204c3f5.js"><link rel="prefetch" href="/assets/js/11.aab8dca2.js"><link rel="prefetch" href="/assets/js/12.f2688e8b.js"><link rel="prefetch" href="/assets/js/13.aa4f17ec.js"><link rel="prefetch" href="/assets/js/15.09a317b7.js"><link rel="prefetch" href="/assets/js/16.4244ffcb.js"><link rel="prefetch" href="/assets/js/17.4a897940.js"><link rel="prefetch" href="/assets/js/18.2900cd7b.js"><link rel="prefetch" href="/assets/js/19.de545c4d.js"><link rel="prefetch" href="/assets/js/20.79d21527.js"><link rel="prefetch" href="/assets/js/21.fe7ae6af.js"><link rel="prefetch" href="/assets/js/22.f7f358ab.js"><link rel="prefetch" href="/assets/js/23.8f8cfc32.js"><link rel="prefetch" href="/assets/js/24.dbf91278.js"><link rel="prefetch" href="/assets/js/25.8e8ec398.js"><link rel="prefetch" href="/assets/js/26.4007e149.js"><link rel="prefetch" href="/assets/js/27.463888f7.js"><link rel="prefetch" href="/assets/js/28.3851ac2e.js"><link rel="prefetch" href="/assets/js/29.f03f8a18.js"><link rel="prefetch" href="/assets/js/3.bf63d643.js"><link rel="prefetch" href="/assets/js/30.118897dc.js"><link rel="prefetch" href="/assets/js/31.3e5a161c.js"><link rel="prefetch" href="/assets/js/32.6bb8ffc6.js"><link rel="prefetch" href="/assets/js/33.84f592bd.js"><link rel="prefetch" href="/assets/js/34.aac3e22b.js"><link rel="prefetch" href="/assets/js/4.95c1debb.js"><link rel="prefetch" href="/assets/js/5.38be46b3.js"><link rel="prefetch" href="/assets/js/6.717fa447.js"><link rel="prefetch" href="/assets/js/7.e15df2d0.js"><link rel="prefetch" href="/assets/js/8.b4551bf3.js"><link rel="prefetch" href="/assets/js/9.16b21f89.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ae8960ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link router-link-active">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link router-link-active">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Node</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/backend/node/koa_token.html" class="sidebar-link">koa 实现 token 有效时间续期的思路</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_token.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_token.html#分析思路" class="sidebar-link">分析思路</a></li><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_token.html#处理思路" class="sidebar-link">处理思路</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_token.html#代码实现" class="sidebar-link">代码实现</a></li></ul></li></ul></li><li><a href="/_posts/backend/node/koa_jwt_unless.html" aria-current="page" class="active sidebar-link">koa-jwt 实现自定义排除动态路由的鉴权</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_jwt_unless.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/backend/node/koa_jwt_unless.html#解决方法" class="sidebar-link">解决方法</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="koa-jwt-实现自定义排除动态路由的鉴权"><a href="#koa-jwt-实现自定义排除动态路由的鉴权" class="header-anchor">#</a> koa-jwt 实现自定义排除动态路由的鉴权</h1> <h2 id="场景描述"><a href="#场景描述" class="header-anchor">#</a> 场景描述</h2> <p>🍭 之前在编写 <a href="https://github.com/ppap6/PPAP.server" target="_blank" rel="noopener noreferrer"><code>PPAP.server</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 项目，一个基于 <code>koa2</code> 的 <code>nodejs</code> 服务端接口程序。<br>
+由于接口采用的是 <code>RESTful API</code>，所以鉴权令牌由客户端携带发送到接口。<br>
+业务需求的是部分接口是需要用户登陆再进行操作，比如需要记录用户点赞的接口。<br>
+而不需要用户鉴权的接口，如查看帖子等不记录用户数据的接口。</p> <p>对于路由权限控制（鉴权），项目使用的是 <a href="https://github.com/auth0/node-jsonwebtoken" target="_blank" rel="noopener noreferrer"><code>koa-jwt</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，支持对 <code>token</code> 的生成与校验，还能对接口路由进行过滤排除，指定不需要鉴权的接口。</p> <p>如：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token comment">//配置不需要jwt验证的接口</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">jwtKoa</span><span class="token punctuation">(</span><span class="token punctuation">{</span> secret<span class="token operator">:</span> tokenUtil<span class="token punctuation">.</span>secret <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unless</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  path<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'/user/login'</span><span class="token punctuation">,</span>
+    <span class="token string">'/user/register'</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>这样上面两个接口 <code>/user/login</code> 和 <code>/user/register</code> 都是可以跳过鉴权的，不需要携带 <code>token</code>。</p> <p>对于本项目来说，棘手的是项目接口大多使用了动态路由，即比如 <code>/user/:id</code> 这样的接口，需要用正则表达式去进行匹配。<br>
+但是动态路由 <code>/user/:id</code> 的请求方法可能会有 <code>get post put delete</code> 四种，所以不仅仅要排除配置的静态路由，还需要排除配置的特定请求方法的动态路由。<br> 
+在阅读 <code>koa-jwt</code> 源码后，发现 <code>koa-jwt</code> 的 <code>unless</code> 方法调用了 <a href="https://github.com/Foxandxss/koa-unless" target="_blank" rel="noopener noreferrer"><code>koa-unless</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 这个包，于是去阅读了 <code>koa-unless</code> 之后，发现可配置以下参数：</p> <div class="language-Bash extra-class"><pre class="language-bash"><code>- method 它可以是一个字符串或字符串数组。如果请求方法匹配，则中间件将不会运行。
+- path 它可以是字符串，正则表达式或其中任何一个的数组。如果请求路径匹配，则中间件将不会运行。
+- ext 它可以是一个字符串或字符串数组。如果请求路径以这些扩展名之一结尾，则中间件将不会运行。
+- custom 它必须是一个返回 true/ 的函数 false。如果函数针对给定的请求返回 true，则中间件将不会运行。该功能将通过 this 访问 Koa 的上下文
+- useOriginalUrl 应该为 <span class="token boolean">true</span> 或 false，默认为 true。如果为false，path 则匹配 this.url 而不是 this.originalUrl。
+</code></pre></div><p>结合项目的实际情况，解决方法只能是使用 <code>custom</code> 配置自定义函数进行判断。</p> <h2 id="解决方法"><a href="#解决方法" class="header-anchor">#</a> 解决方法</h2> <p>🍭 使用 <code>custom</code> 自定义函数进行过滤，创建文件 <code>jwt_unless.js</code>。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 用于判断客户端当前请求接口是否需要jwt验证
+ */</span>
+
+<span class="token comment">//定义不需要jwt验证的接口数组(get方法)</span>
+<span class="token keyword">const</span> nonTokenApiArr <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'/'</span><span class="token punctuation">,</span>
+  <span class="token string">'/post'</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment">//定义不需要jwt验证的接口正则数组(get方法)</span>
+<span class="token keyword">const</span> nonTokenApiRegArr <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token regex">/^\/user\/\d/</span><span class="token punctuation">,</span>
+  <span class="token regex">/^\/post\/\d/</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment">//判断请求api是否在数组里</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isNonTokenApi</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> nonTokenApiArr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//判断请求api是否在正则数组里</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isNonTokenRegApi</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> nonTokenApiRegArr<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token parameter">p</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> p <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">&amp;&amp;</span> p <span class="token operator">===</span> path<span class="token punctuation">)</span> <span class="token operator">||</span>
+      <span class="token punctuation">(</span>p <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token operator">!</span> p<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//判断当前请求api是否不需要jwt验证</span>
+<span class="token keyword">const</span> <span class="token function-variable function">checkIsNonTokenApi</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">ctx</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">isNonTokenApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isNonTokenRegApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> ctx<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token comment">//特殊post接口，不需要验证jwt</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>path <span class="token operator">==</span> <span class="token string">'/user/login'</span> <span class="token operator">||</span> ctx<span class="token punctuation">.</span>path <span class="token operator">==</span> <span class="token string">'user/register'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  nonTokenApiArr<span class="token punctuation">,</span>
+  nonTokenApiRegArr<span class="token punctuation">,</span>
+  isNonTokenApi<span class="token punctuation">,</span>
+  isNonTokenRegApi<span class="token punctuation">,</span>
+  checkIsNonTokenApi
+<span class="token punctuation">}</span>
+</code></pre></div><p>然后在 <code>app.js</code> 里引入 <code>jwt_unless.js</code>。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> Koa <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> bodyParser <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa-bodyparser'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> jwtKoa <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'koa-jwt'</span><span class="token punctuation">)</span>  <span class="token comment">// 用于路由权限控制</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./config/config'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> tokenUtil <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./util/token'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./router'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> jwtUnless <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./util/jwt_unless'</span><span class="token punctuation">)</span>  <span class="token comment">//用于判断是否需要jwt验证</span>
+
+<span class="token comment">//配置ctx.body解析中间件</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">bodyParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 错误处理</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">//设置CORS跨域</span>
+  ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Allow-Origin&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span>
+  ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Allow-Methods&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;OPTIONS, GET, PUT, POST, DELETE&quot;</span><span class="token punctuation">)</span>
+  ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Allow-Headers&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;x-requested-with, accept, origin, content-type, Authorization&quot;</span><span class="token punctuation">)</span>
+  ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Content-Type&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;application/json;charset=utf-8&quot;</span><span class="token punctuation">)</span>
+  ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Expose-Headers&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;new_token&quot;</span><span class="token punctuation">)</span>
+  <span class="token comment">//获取token，保存全局变量</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>request<span class="token punctuation">.</span>header<span class="token punctuation">.</span>authorization<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    global<span class="token punctuation">.</span>token <span class="token operator">=</span> ctx<span class="token punctuation">.</span>request<span class="token punctuation">.</span>header<span class="token punctuation">.</span>authorization<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token comment">//检测当前token是否到达续期时间段</span>
+    <span class="token keyword">let</span> obj <span class="token operator">=</span> tokenUtil<span class="token punctuation">.</span><span class="token function">parseToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">//解析token携带的信息</span>
+    global<span class="token punctuation">.</span>uid <span class="token operator">=</span> obj<span class="token punctuation">.</span>uid
+    global<span class="token punctuation">.</span>name <span class="token operator">=</span> obj<span class="token punctuation">.</span>name
+    global<span class="token punctuation">.</span>account <span class="token operator">=</span> obj<span class="token punctuation">.</span>account
+    global<span class="token punctuation">.</span>email <span class="token operator">=</span> obj<span class="token punctuation">.</span>email
+    global<span class="token punctuation">.</span>roleId <span class="token operator">=</span> obj<span class="token punctuation">.</span>roleId
+    <span class="token comment">//先解析全局变量再执行next()，保证函数实时获取到变量值</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">//执行完下面中间件后进入</span>
+    <span class="token comment">//判断不需要jwt验证的接口，跳过token续期判断</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>jwtUnless<span class="token punctuation">.</span><span class="token function">checkIsNonTokenApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+    <span class="token comment">//判断token是否应该续期（有效时间）</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>tokenUtil<span class="token punctuation">.</span><span class="token function">getTokenRenewStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token comment">//设置header</span>
+      ctx<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        new_token<span class="token operator">:</span> tokenUtil<span class="token punctuation">.</span><span class="token function">createNewToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">//携带token的Authorization参数错误</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          ctx<span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">200</span>
+          ctx<span class="token punctuation">.</span>body <span class="token operator">=</span> <span class="token punctuation">{</span>
+            status<span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+            message<span class="token operator">:</span> <span class="token string">'未携带token令牌或者token令牌已过期'</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+          <span class="token keyword">throw</span> err
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//配置不需要jwt验证的接口</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">jwtKoa</span><span class="token punctuation">(</span><span class="token punctuation">{</span> secret<span class="token operator">:</span> tokenUtil<span class="token punctuation">.</span>secret <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unless</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">//自定义过滤函数，详细参考koa-unless</span>
+  <span class="token function-variable function">custom</span><span class="token operator">:</span> <span class="token parameter">ctx</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>jwtUnless<span class="token punctuation">.</span><span class="token function">checkIsNonTokenApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token comment">//是不需要验证token的接口</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token comment">//是需要验证token的接口</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//初始化路由中间件</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">.</span><span class="token function">routes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">.</span><span class="token function">allowedMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">//监听启动窗口</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>port<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">PPAP.server is run on </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span>host<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>config<span class="token punctuation">.</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>到此就实现了对静态及动态路由鉴权，以及对 <code>token</code> 有效时间续期的判断。<br>
+以上的示例针对的是 <code>get</code> 方法动态路由的判断，如果限制除了 <code>get</code> 请求外的多个请求方法，则需要在定义正则数组的时候，将请求方法跟正则表达式对应起来，如：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> nonTokenApiRegArr <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> 
+        path<span class="token operator">:</span> <span class="token regex">/^\/user\/\d/</span><span class="token punctuation">,</span>
+        method<span class="token operator">:</span> <span class="token string">&quot;GET&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> 
+        path<span class="token operator">:</span> <span class="token regex">/^\/user\/\d/</span><span class="token punctuation">,</span>
+        method<span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+……
+……
+……
+<span class="token comment">//判断请求api是否在正则数组里</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isNonTokenRegApi</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> method</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> nonTokenApiRegArr<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token parameter">p</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> p<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">.</span>path <span class="token operator">===</span> path <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">.</span>method <span class="token operator">===</span> method<span class="token punctuation">)</span> <span class="token operator">||</span>
+      <span class="token punctuation">(</span>p<span class="token punctuation">.</span>path <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token operator">!</span> p<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">.</span>method <span class="token operator">===</span> method<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//判断当前请求api是否不需要jwt验证</span>
+<span class="token keyword">const</span> <span class="token function-variable function">checkIsNonTokenApi</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">ctx</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isNonTokenApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isNonTokenRegApi</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>path<span class="token punctuation">,</span> ctx<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>更多详细请访问 <a href="https://github.com/ppap6/PPAP.server" target="_blank" rel="noopener noreferrer">https://github.com/ppap6/PPAP.server<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/12/2020, 2:52:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/backend/node/koa_token.html" class="prev">
+        koa 实现 token 有效时间续期的思路
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2678c34f.js" defer></script><script src="/assets/js/2.46681365.js" defer></script><script src="/assets/js/14.77170f83.js" defer></script>
+  </body>
+</html>

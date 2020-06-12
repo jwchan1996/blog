@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript 中的 call()、apply()、bind() 的用法 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.ae8960ec.css" as="style"><link rel="preload" href="/assets/js/app.2678c34f.js" as="script"><link rel="preload" href="/assets/js/2.46681365.js" as="script"><link rel="preload" href="/assets/js/18.2900cd7b.js" as="script"><link rel="prefetch" href="/assets/js/10.4204c3f5.js"><link rel="prefetch" href="/assets/js/11.aab8dca2.js"><link rel="prefetch" href="/assets/js/12.f2688e8b.js"><link rel="prefetch" href="/assets/js/13.aa4f17ec.js"><link rel="prefetch" href="/assets/js/14.77170f83.js"><link rel="prefetch" href="/assets/js/15.09a317b7.js"><link rel="prefetch" href="/assets/js/16.4244ffcb.js"><link rel="prefetch" href="/assets/js/17.4a897940.js"><link rel="prefetch" href="/assets/js/19.de545c4d.js"><link rel="prefetch" href="/assets/js/20.79d21527.js"><link rel="prefetch" href="/assets/js/21.fe7ae6af.js"><link rel="prefetch" href="/assets/js/22.f7f358ab.js"><link rel="prefetch" href="/assets/js/23.8f8cfc32.js"><link rel="prefetch" href="/assets/js/24.dbf91278.js"><link rel="prefetch" href="/assets/js/25.8e8ec398.js"><link rel="prefetch" href="/assets/js/26.4007e149.js"><link rel="prefetch" href="/assets/js/27.463888f7.js"><link rel="prefetch" href="/assets/js/28.3851ac2e.js"><link rel="prefetch" href="/assets/js/29.f03f8a18.js"><link rel="prefetch" href="/assets/js/3.bf63d643.js"><link rel="prefetch" href="/assets/js/30.118897dc.js"><link rel="prefetch" href="/assets/js/31.3e5a161c.js"><link rel="prefetch" href="/assets/js/32.6bb8ffc6.js"><link rel="prefetch" href="/assets/js/33.84f592bd.js"><link rel="prefetch" href="/assets/js/34.aac3e22b.js"><link rel="prefetch" href="/assets/js/4.95c1debb.js"><link rel="prefetch" href="/assets/js/5.38be46b3.js"><link rel="prefetch" href="/assets/js/6.717fa447.js"><link rel="prefetch" href="/assets/js/7.e15df2d0.js"><link rel="prefetch" href="/assets/js/8.b4551bf3.js"><link rel="prefetch" href="/assets/js/9.16b21f89.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ae8960ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/frontend/javascript/js_call_apply_bind.html" aria-current="page" class="active sidebar-link">JavaScript 中的 call()、apply()、bind() 的用法</a></li><li><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html" class="sidebar-link">JS 模拟实现 call、apply、bind</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现call" class="sidebar-link">实现call</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现apply" class="sidebar-link">实现apply</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现bind" class="sidebar-link">实现bind</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="javascript-中的-call-、apply-、bind-的用法"><a href="#javascript-中的-call-、apply-、bind-的用法" class="header-anchor">#</a> JavaScript 中的 call()、apply()、bind() 的用法</h1> <p><strong>例1</strong></p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'小陈'</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">18</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'小猪'</span><span class="token punctuation">,</span>
+  objAge<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">,</span>
+  <span class="token function-variable function">fun</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">'年龄'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+obj<span class="token punctuation">.</span>objAge    <span class="token comment">//18</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">//小猪年龄undefined</span>
+</code></pre></div><p><strong>例2</strong></p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'PDD'</span>
+<span class="token keyword">function</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">//PDD</span>
+</code></pre></div><p>比较一下这两者 <code>this</code> 的差别，第一个打印里面的 <code>this</code> 指向 <code>obj</code>，第二个全局声明的 <code>show()</code> 函数 <code>this</code> 是 <code>window</code>。</p> <blockquote><p><code>call()、apply()、bind()</code> 都是用来重定义 <code>this</code> 这个对象的！</p></blockquote> <p>如：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'小陈'</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">18</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'小猪'</span><span class="token punctuation">,</span>
+  objAge<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">,</span>
+  <span class="token function-variable function">fun</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">'年龄'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> boy <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'朱丽叶'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">16</span>
+<span class="token punctuation">}</span>
+
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>boy<span class="token punctuation">)</span>　　　<span class="token comment">//朱丽叶年龄16</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>boy<span class="token punctuation">)</span>　　　 <span class="token comment">//朱丽叶年龄16</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>boy<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>　　　<span class="token comment">//朱丽叶年龄16</span>
+</code></pre></div><p>以上除了 <code>bind</code> 方法后面多了个 <code>()</code> 外，结果返回都一致！<br>
+由此得出结论，<code>bind</code> 返回的是一个新的函数，你必须调用它才会被执行。</p> <blockquote><p>对比call 、bind 、 apply 传参情况下</p></blockquote> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'小陈'</span>
+<span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">18</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'小猪'</span><span class="token punctuation">,</span>
+  objAge<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">,</span>
+  <span class="token function-variable function">fun</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">' 年龄 '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">,</span> <span class="token string">' 来自 '</span> <span class="token operator">+</span> a <span class="token operator">+</span> <span class="token string">'去往'</span> <span class="token operator">+</span> b<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> boy <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'朱丽叶'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">16</span>
+<span class="token punctuation">}</span>
+
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span><span class="token string">'广州'</span><span class="token punctuation">,</span><span class="token string">'深圳'</span><span class="token punctuation">)</span>　　　　 <span class="token comment">//朱丽叶 年龄 16  来自 广州去往深圳</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'广州'</span><span class="token punctuation">,</span><span class="token string">'深圳'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment">//朱丽叶 年龄 16  来自 广州去往深圳</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span><span class="token string">'广州'</span><span class="token punctuation">,</span><span class="token string">'深圳'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment">//朱丽叶 年龄 16  来自 广州去往深圳</span>
+obj<span class="token punctuation">.</span><span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'广州'</span><span class="token punctuation">,</span><span class="token string">'深圳'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>　　 <span class="token comment">//朱丽叶 年龄 16  来自 广州,深圳去往undefined</span>
+</code></pre></div><p>从上面四个结果不难看出 <code>call、bind、apply</code> 这三个函数的第一个参数都是 <code>this</code> 的指向对象，第二个参数差别就来了：</p> <ul><li><p><code>call</code> 的参数是直接放进去的，第二第三第 <code>n</code> 个参数全都用逗号分隔，直接放到后面  <code>obj.fun.call(db,'成都', ... ,'string')</code></p></li> <li><p><code>apply</code> 的所有参数都必须放在一个数组里面传进去 <code>obj.fun.apply(db,['成都', ..., 'string'])</code></p></li> <li><p><code>bind</code> 除了返回是函数以外，它的参数和 <code>call</code> 一样</p></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/12/2020, 2:52:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html">
+        JS 模拟实现 call、apply、bind
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2678c34f.js" defer></script><script src="/assets/js/2.46681365.js" defer></script><script src="/assets/js/18.2900cd7b.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue 数据与视图更新 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Just playing around">
+    <link rel="preload" href="/assets/css/0.styles.ae8960ec.css" as="style"><link rel="preload" href="/assets/js/app.2678c34f.js" as="script"><link rel="preload" href="/assets/js/2.46681365.js" as="script"><link rel="preload" href="/assets/js/24.dbf91278.js" as="script"><link rel="prefetch" href="/assets/js/10.4204c3f5.js"><link rel="prefetch" href="/assets/js/11.aab8dca2.js"><link rel="prefetch" href="/assets/js/12.f2688e8b.js"><link rel="prefetch" href="/assets/js/13.aa4f17ec.js"><link rel="prefetch" href="/assets/js/14.77170f83.js"><link rel="prefetch" href="/assets/js/15.09a317b7.js"><link rel="prefetch" href="/assets/js/16.4244ffcb.js"><link rel="prefetch" href="/assets/js/17.4a897940.js"><link rel="prefetch" href="/assets/js/18.2900cd7b.js"><link rel="prefetch" href="/assets/js/19.de545c4d.js"><link rel="prefetch" href="/assets/js/20.79d21527.js"><link rel="prefetch" href="/assets/js/21.fe7ae6af.js"><link rel="prefetch" href="/assets/js/22.f7f358ab.js"><link rel="prefetch" href="/assets/js/23.8f8cfc32.js"><link rel="prefetch" href="/assets/js/25.8e8ec398.js"><link rel="prefetch" href="/assets/js/26.4007e149.js"><link rel="prefetch" href="/assets/js/27.463888f7.js"><link rel="prefetch" href="/assets/js/28.3851ac2e.js"><link rel="prefetch" href="/assets/js/29.f03f8a18.js"><link rel="prefetch" href="/assets/js/3.bf63d643.js"><link rel="prefetch" href="/assets/js/30.118897dc.js"><link rel="prefetch" href="/assets/js/31.3e5a161c.js"><link rel="prefetch" href="/assets/js/32.6bb8ffc6.js"><link rel="prefetch" href="/assets/js/33.84f592bd.js"><link rel="prefetch" href="/assets/js/34.aac3e22b.js"><link rel="prefetch" href="/assets/js/4.95c1debb.js"><link rel="prefetch" href="/assets/js/5.38be46b3.js"><link rel="prefetch" href="/assets/js/6.717fa447.js"><link rel="prefetch" href="/assets/js/7.e15df2d0.js"><link rel="prefetch" href="/assets/js/8.b4551bf3.js"><link rel="prefetch" href="/assets/js/9.16b21f89.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ae8960ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link router-link-active">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link router-link-active">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/frontend/vue/vue_data_update.html" aria-current="page" class="active sidebar-link">vue 数据与视图更新</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#场景" class="sidebar-link">场景</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#追踪变化" class="sidebar-link">追踪变化</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#声明响应性属性" class="sidebar-link">声明响应性属性</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#数组更新检测" class="sidebar-link">数组更新检测</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#变异方法替换数组" class="sidebar-link">变异方法替换数组</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#非变异方法替换数组" class="sidebar-link">非变异方法替换数组</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#注意事项" class="sidebar-link">注意事项</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#对象更新检测" class="sidebar-link">对象更新检测</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#数据响应式的几个例子" class="sidebar-link">数据响应式的几个例子</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_data_update.html#异步更新带来的数据响应式误解" class="sidebar-link">异步更新带来的数据响应式误解</a></li></ul></li><li><a href="/_posts/frontend/vue/vue_$refs.html" class="sidebar-link">关于 ref 与 $refs 对 dom 元素的操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_$refs.html#如何获取-v-for-渲染的多个-ref-的-dom" class="sidebar-link">如何获取 v-for 渲染的多个 ref 的 dom</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/vue/vue_$refs.html#发现问题所在" class="sidebar-link">发现问题所在</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-数据与视图更新"><a href="#vue-数据与视图更新" class="header-anchor">#</a> vue 数据与视图更新</h1> <h2 id="场景"><a href="#场景" class="header-anchor">#</a> 场景</h2> <p><code>vue</code> 数据 <code>data</code> 更新了，但是视图没有更新<br>
+其中缘由在于对 <code>vue</code> 的响应式原理的理解偏差</p> <h2 id="追踪变化"><a href="#追踪变化" class="header-anchor">#</a> 追踪变化</h2> <p>把一个普通的 <code>JavaScript</code> 对象传给 <code>Vue</code> 实例的 data 选项，<code>Vue</code> 将遍历此对象所有的属性，并使用 <code>Object.defineProperty</code> 把这些属性全部转为 <code>getter/setter</code>。<br>
+这些 <code>getter/setter</code> 对用户来说是不可见的，但是在内部它们让 <code>Vue</code> 追踪依赖，在属性被访问和修改时通知变化。
+每个组件实例都有相应的 <code>watcher</code> 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 <code>setter</code> 被调用时，会通知 <code>watcher</code> 重新计算，从而致使它关联的组件得以更新。<br> <img src="https://cn.vuejs.org/images/data.png" style="border:0 !important;"></p> <h2 id="声明响应性属性"><a href="#声明响应性属性" class="header-anchor">#</a> 声明响应性属性</h2> <p>在 <code>Vue</code> 中，一般只有在 <code>data</code> 选项中声明的属性（或者是属性的属性）才是具有响应特性的。如果需要在 <code>data</code> 选项之外对已有属性添加具有响应特性的属性，需要用到 <code>Vue</code> 的 <code>set</code> 方法。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token punctuation">{</span>              <span class="token comment">//a就是根级属性，不可动态添加</span>
+      b<span class="token operator">:</span> <span class="token number">0</span>          <span class="token comment">//b就是属性的属性，可以动态添加</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><code>Vue</code> 不允许动态添加根级响应式属性，必须在初始化实例前声明根级响应式属性，哪怕只是一个空值：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 声明 message 为一个空值字符串</span>
+    message<span class="token operator">:</span> <span class="token string">''</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  template<span class="token operator">:</span> <span class="token string">'&lt;div&gt;{{ message }}&lt;/div&gt;'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 之后设置 `message`</span>
+vm<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token string">'Hello!'</span>
+</code></pre></div><p>何为响应特性？就是当我们更改 <code>data</code> 中的值的时候，<code>HTML</code> 与之绑定的部分会随之更新的特性。</p> <h2 id="数组更新检测"><a href="#数组更新检测" class="header-anchor">#</a> 数组更新检测</h2> <h3 id="变异方法替换数组"><a href="#变异方法替换数组" class="header-anchor">#</a> 变异方法替换数组</h3> <p><code>Vue</code> 包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：</p> <ul><li><code>push()</code></li> <li><code>pop()</code></li> <li><code>shift()</code></li> <li><code>unshift()</code></li> <li><code>splice()</code></li> <li><code>sort()</code></li> <li><code>reverse()</code></li></ul> <p>打开控制台，然后用 <code>items</code> 数组调用变异方法：<code>example1.items.push({ message: 'Baz' })</code> 。</p> <h3 id="非变异方法替换数组"><a href="#非变异方法替换数组" class="header-anchor">#</a> 非变异方法替换数组</h3> <p>变异方法 (mutation method)，顾名思义，会改变被这些方法调用的原始数组。相比之下，也有非变异 (non-mutating method) 方法，例如：<code>filter()</code>, <code>concat()</code> 和 <code>slice()</code> 。这些不会改变原始数组，但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>example1<span class="token punctuation">.</span>items <span class="token operator">=</span> example1<span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> item<span class="token punctuation">.</span>message<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/Foo/</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>你可能认为这将导致 <code>Vue</code> 丢弃现有 <code>DOM</code> 并重新渲染整个列表。幸运的是，事实并非如此。<code>Vue</code> 为了使得 <code>DOM</code> 元素得到最大范围的重用而实现了一些智能的、启发式的方法，所以用一个含有相同元素的数组去替换原来的数组是非常高效的操作。</p> <h3 id="注意事项"><a href="#注意事项" class="header-anchor">#</a> 注意事项</h3> <p>由于 <code>JavaScript</code> 的限制，<code>Vue</code> 不能检测以下变动的数组：</p> <ol><li>当你利用索引直接设置一个项时，例如：<code>vm.items[indexOfItem] = newValue</code></li> <li>当你修改数组的长度时，例如：<code>vm.items.length = newLength</code></li></ol> <p>举个栗子：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+vm<span class="token punctuation">.</span>items<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'x'</span> <span class="token comment">// 不是响应性的</span>
+vm<span class="token punctuation">.</span>items<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">2</span> <span class="token comment">// 不是响应性的</span>
+</code></pre></div><p>为了解决第一类问题，以下两种方式都可以实现和 <code>vm.items[indexOfItem] = newValue</code> 相同的效果，同时也将触发状态更新：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token comment">// Vue.set</span>
+Vue<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>items<span class="token punctuation">,</span> indexOfItem<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span>
+</code></pre></div><p>你也可以使用 <code>vm.$set</code> 实例方法，该方法是全局方法 <code>Vue.set</code> 的一个别名：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>vm<span class="token punctuation">.</span>$<span class="token keyword">set</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>items<span class="token punctuation">,</span> indexOfItem<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span>
+</code></pre></div><p>为了解决第二类问题，你可以使用 <code>splice</code>：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>vm<span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>newLength<span class="token punctuation">)</span>
+</code></pre></div><h2 id="对象更新检测"><a href="#对象更新检测" class="header-anchor">#</a> 对象更新检测</h2> <p>还是由于 <code>JavaScript</code> 的限制，<code>Vue</code> 不能检测对象属性的添加或删除：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// `vm.a` 现在是响应式的</span>
+
+vm<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token comment">// `vm.b` 不是响应式的</span>
+</code></pre></div><p>你可以添加一个新的 <code>age</code> 属性到嵌套的 <code>userProfile</code> 对象：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>Vue<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>userProfile<span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">)</span>
+</code></pre></div><p>你还可以使用 <code>vm.$set</code> 实例方法，它只是全局 <code>Vue.set</code> 的别名：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>vm<span class="token punctuation">.</span>$<span class="token keyword">set</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>userProfile<span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">)</span>
+</code></pre></div><p>有时你可能需要为已有对象赋予多个新属性，比如使用 <code>Object.assign()</code> 或 <code>_.extend()</code>。在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>userProfile<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">27</span><span class="token punctuation">,</span>
+  favoriteColor<span class="token operator">:</span> <span class="token string">'Vue Green'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>你应该这样做：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>vm<span class="token punctuation">.</span>userProfile <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> vm<span class="token punctuation">.</span>userProfile<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token number">27</span><span class="token punctuation">,</span>
+  favoriteColor<span class="token operator">:</span> <span class="token string">'Vue Green'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="数据响应式的几个例子"><a href="#数据响应式的几个例子" class="header-anchor">#</a> 数据响应式的几个例子</h2> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span><span class="token punctuation">{</span>
+    a<span class="token operator">:</span><span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// `vm.a` 是响应的</span>
+
+vm<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token comment">// `vm.b` 是非响应的</span>
+</code></pre></div><p><code>a</code> 就是在 <code>data</code> 中声明的具有响应特性的属性，而 <code>b</code> 就不是。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token punctuation">{</span>
+      a1<span class="token operator">:</span><span class="token string">''</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    change：<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>a1 <span class="token operator">=</span> <span class="token string">&quot;text1&quot;</span>    <span class="token comment">//a1就是响应式的</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>a2 <span class="token operator">=</span> <span class="token string">&quot;text2&quot;</span>    <span class="token comment">//a2就不是响应式的</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><code>a2</code> 虽然不是响应式的，但它却是可以在 <code>HTML</code> 部分被渲染更新出来。这里就是一个比较容易掉进去的坑。由于 <code>Vue</code> 是异步执行 <code>DOM</code> 更新，虽然更新的动作是由 <code>this.a.a1 = &quot;text1&quot;</code> 触发，可动作的完成是在 <code>this.a.a2 = &quot;text2&quot;</code> 之后，下面有详细解析。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token punctuation">{</span>
+      a1<span class="token operator">:</span><span class="token string">''</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">change</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>a1 <span class="token operator">=</span> <span class="token string">&quot;text1&quot;</span>    <span class="token comment">//a1就是响应式的</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">.</span>a2 <span class="token operator">=</span> <span class="token string">&quot;text2&quot;</span>    <span class="token comment">//a2就不是响应式的</span>
+      <span class="token keyword">var</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        that<span class="token punctuation">.</span>a<span class="token punctuation">.</span>a3 <span class="token operator">=</span> <span class="token string">'new text'</span><span class="token punctuation">;</span> <span class="token comment">//这里与a2是相同的，区别在于这里的a3并不会被渲染到DOM中</span>
+        that<span class="token punctuation">.</span>$<span class="token keyword">set</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>a<span class="token punctuation">,</span> <span class="token string">'a4'</span><span class="token punctuation">,</span> <span class="token string">'new text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//这是正确的添加属性的方法</span>
+        that<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token punctuation">{</span>                              <span class="token comment">//这种写法与a2不同，a5可以被更新到DOM中</span>
+          a5<span class="token operator">:</span> <span class="token string">'hahaha'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="异步更新带来的数据响应式误解"><a href="#异步更新带来的数据响应式误解" class="header-anchor">#</a> 异步更新带来的数据响应式误解</h2> <p>异步数据的处理基本是一定会遇到的，处理不好就会遇到数据不更新的问题，但有一种情况是在未正确处理的情况下也能正常更新，这就会造成一种误解，详情如下所示：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+    data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        dataObj<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">ready</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/**
+         * 异步请求模拟
+         */</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            self<span class="token punctuation">.</span>dataObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+            self<span class="token punctuation">.</span>dataObj<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'new text'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>上面的代码非常简单，我们都知道 <code>vue</code> 中在 <code>data</code> 里面声明的数据才具有响应式的特性，所以我们一开始在 <code>data</code> 中声明了一个 <code>dataObj</code> 空对象，然后在异步请求中执行了两行代码，如下：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>self<span class="token punctuation">.</span>dataObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+self<span class="token punctuation">.</span>dataObj<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'new text'</span><span class="token punctuation">;</span>
+</code></pre></div><p>首先清空原始数据，然后添加一个 <code>text</code> 属性并赋值。到这里为止一切都如我们所想的，数据和模板都更新了。</p> <p><span style="color:red;">那么问题来了，<code>dataObj.text</code> 具有响应式的特性吗？</span></p> <p>模板更新了，应该具有响应式特性，如果这么想那么你就已经走入了误区，一开始我们并没有在 <code>data</code> 中声明 <code>.text</code> 属性，所以该属性是不具有响应式的特性的。</p> <p>但模板切切实实已经更新了，这又是怎么回事呢？</p> <p>那是因为 <code>vue</code> 的 <code>dom</code> 更新是异步的，即当 <code>setter</code> 操作发生后，指令并不会立马更新，指令的更新操作会有一个延迟，当指令更新真正执行的时候，此时 <code>.text</code> 属性已经赋值，所以指令更新模板时得到的是新值。<br>
+具体流程如下所示：</p> <ul><li><code>self.dataObj = { }</code>; 发生 <code>setter</code> 操作</li> <li><code>vue</code> 监测到 <code>setter</code> 操作，通知相关指令执行更新操作</li> <li><code>self.dataObj['text'] = 'new text'</code>; 赋值语句</li> <li>指令更新开始执行</li></ul> <p>所以真正的触发更新操作是 <code>self.dataObj = { }</code>; 这一句引起的，所以单看上述例子，具有响应式特性的数据只有 <code>dataObj</code> 这一层，它的子属性是不具备的。</p> <p>注：其实 <code>vue</code> 文档中已经有说明，对于新增以及删除的属性，<code>vue</code> 是无法监测到的。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token comment">//新增b属性</span>
+a <span class="token operator">=</span> <span class="token punctuation">{</span>
+    c<span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>              <span class="token comment">//更改a属性的值</span>
+</code></pre></div><p>上述两种赋值方式对 <code>vue</code> 造成的影响是不同的。</p> <p>对比示例：</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+    data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        dataObj<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">ready</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/**
+         * 异步请求模拟
+         */</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            self<span class="token punctuation">.</span>dataObj<span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'new text'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>上述例子的模板是不会更新的。</p> <p>🍭 <span style="font-weight:700;">Vue.$set </span></p> <p>通过 <code>$set</code> 方法可以将添加一个具备响应式特性的属性，并且其子属性也具备响应式特性，但是必须是新属性才可以，如果是本身已有的属性该方法是不起作用的。</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+    data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        dataObj<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">ready</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/**
+         * 异步请求模拟
+         */</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+                name<span class="token operator">:</span> <span class="token string">'xiaofu'</span><span class="token punctuation">,</span>
+                age<span class="token operator">:</span> <span class="token number">18</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> data01 <span class="token operator">=</span> <span class="token punctuation">{</span>
+                name<span class="token operator">:</span> <span class="token string">'yangxiaofu'</span><span class="token punctuation">,</span>
+                age<span class="token operator">:</span> <span class="token number">19</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            self<span class="token punctuation">.</span>dataObj<span class="token punctuation">[</span><span class="token string">'person'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            self<span class="token punctuation">.</span>$<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'dataObj.info'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            self<span class="token punctuation">.</span>$<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'dataObj.person'</span><span class="token punctuation">,</span> data01<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>如上所示，<code>.person</code> 属性是不具备响应式特性的。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/12/2020, 2:52:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/_posts/frontend/vue/vue_$refs.html">
+        关于 ref 与 $refs 对 dom 元素的操作
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2678c34f.js" defer></script><script src="/assets/js/2.46681365.js" defer></script><script src="/assets/js/24.dbf91278.js" defer></script>
+  </body>
+</html>
