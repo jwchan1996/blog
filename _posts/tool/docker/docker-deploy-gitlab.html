@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>centos7 使用 docker 部署 gitlab + gitlab-runner | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="/assets/css/0.styles.1c3a77df.css" as="style"><link rel="preload" href="/assets/js/app.b446d2d5.js" as="script"><link rel="preload" href="/assets/js/2.7069fcb2.js" as="script"><link rel="preload" href="/assets/js/30.2bfc4dca.js" as="script"><link rel="prefetch" href="/assets/js/10.c6768422.js"><link rel="prefetch" href="/assets/js/11.007ef39d.js"><link rel="prefetch" href="/assets/js/12.47591efa.js"><link rel="prefetch" href="/assets/js/13.5979bab9.js"><link rel="prefetch" href="/assets/js/14.4657c456.js"><link rel="prefetch" href="/assets/js/15.9c6aabc0.js"><link rel="prefetch" href="/assets/js/16.d8606324.js"><link rel="prefetch" href="/assets/js/17.53af1abe.js"><link rel="prefetch" href="/assets/js/18.736b1255.js"><link rel="prefetch" href="/assets/js/19.158b7b67.js"><link rel="prefetch" href="/assets/js/20.ec857f98.js"><link rel="prefetch" href="/assets/js/21.dfab24b5.js"><link rel="prefetch" href="/assets/js/22.bb2332f2.js"><link rel="prefetch" href="/assets/js/23.022c5d97.js"><link rel="prefetch" href="/assets/js/24.85ee4294.js"><link rel="prefetch" href="/assets/js/25.d1032259.js"><link rel="prefetch" href="/assets/js/26.334b52ad.js"><link rel="prefetch" href="/assets/js/27.143e931b.js"><link rel="prefetch" href="/assets/js/28.8d629c83.js"><link rel="prefetch" href="/assets/js/29.c47b2fc2.js"><link rel="prefetch" href="/assets/js/3.00d0631d.js"><link rel="prefetch" href="/assets/js/31.4921932b.js"><link rel="prefetch" href="/assets/js/32.ec64dc53.js"><link rel="prefetch" href="/assets/js/33.714c4899.js"><link rel="prefetch" href="/assets/js/34.4854c585.js"><link rel="prefetch" href="/assets/js/35.bab52971.js"><link rel="prefetch" href="/assets/js/4.3ae0012c.js"><link rel="prefetch" href="/assets/js/5.9a32b28a.js"><link rel="prefetch" href="/assets/js/6.eb04f2e7.js"><link rel="prefetch" href="/assets/js/7.f9a4bb41.js"><link rel="prefetch" href="/assets/js/8.b462eb05.js"><link rel="prefetch" href="/assets/js/9.b7b5193a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1c3a77df.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/docker/docker-call-centos-host-machine.html" class="sidebar-link">docker 访问宿主机的 ip 配置问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#原因分析" class="sidebar-link">原因分析</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#解决问题" class="sidebar-link">解决问题</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#测试端口" class="sidebar-link">测试端口</a></li></ul></li><li><a href="/_posts/tool/docker/docker-deploy-gitlab.html" aria-current="page" class="active sidebar-link">centos7 使用 docker 部署 gitlab + gitlab-runner</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#快速配置应用" class="sidebar-link">快速配置应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#docker-compose-yml" class="sidebar-link">docker-compose.yml</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#配置环境" class="sidebar-link">配置环境</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#数据卷挂载" class="sidebar-link">数据卷挂载</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#gitlab-runner" class="sidebar-link">gitlab-runner</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#快速构建应用" class="sidebar-link">快速构建应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#注册runner" class="sidebar-link">注册runner</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#可持续集成-部署" class="sidebar-link">可持续集成/部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#gitlab-ci-yml" class="sidebar-link">.gitlab-ci.yml</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#自动化" class="sidebar-link">自动化</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#身份认证" class="sidebar-link">身份认证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#配置shh密匙" class="sidebar-link">配置SHH密匙</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#github与gitlab共存" class="sidebar-link">github与gitlab共存</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#git基本操作" class="sidebar-link">git基本操作</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="centos7-使用-docker-部署-gitlab-gitlab-runner"><a href="#centos7-使用-docker-部署-gitlab-gitlab-runner" class="header-anchor">#</a> centos7 使用 docker 部署 gitlab + gitlab-runner</h1> <h2 id="快速配置应用"><a href="#快速配置应用" class="header-anchor">#</a> 快速配置应用</h2> <h3 id="docker-compose-yml"><a href="#docker-compose-yml" class="header-anchor">#</a> docker-compose.yml</h3> <p>使用 <code>docker-compose</code> 对 <code>docker</code> 容器集群进行快速编排</p> <p>获取 <code>docker-gitlab</code> 的 <code>docker-compose.yml</code> 配置文件，进行快速构建</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">wget</span> https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+</code></pre></div><p>获取 <code>docker-compose.yml</code> 文件后，进行自定义配置。</p> <h3 id="配置环境"><a href="#配置环境" class="header-anchor">#</a> 配置环境</h3> <p>打开 <code>docker-compose.yml</code> 文件，针对 <code>gitlab</code> 进行环境配置</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.3'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  
+  <span class="token punctuation">...</span>
+  <span class="token comment"># 省略显示其他服务</span>
+  <span class="token punctuation">...</span>
+  
+  <span class="token key atrule">gitlab</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> sameersbn/gitlab<span class="token punctuation">:</span>13.0.6
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> redis
+    <span class="token punctuation">-</span> postgresql
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10080:80&quot;</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10022:22&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> gitlab<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/home/git/data<span class="token punctuation">:</span>Z
+    <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+      <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;CMD&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/usr/local/sbin/healthcheck&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> 5m
+      <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">start_period</span><span class="token punctuation">:</span> 5m
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> DEBUG=false
+
+    <span class="token punctuation">-</span> DB_ADAPTER=postgresql
+    <span class="token punctuation">-</span> DB_HOST=postgresql
+    <span class="token punctuation">-</span> DB_PORT=5432
+    <span class="token punctuation">-</span> DB_USER=gitlab
+    <span class="token punctuation">-</span> DB_PASS=password
+    <span class="token punctuation">-</span> DB_NAME=gitlabhq_production
+
+    <span class="token punctuation">-</span> REDIS_HOST=redis
+    <span class="token punctuation">-</span> REDIS_PORT=6379
+
+    <span class="token punctuation">-</span> TZ=Asia/Kolkata
+    <span class="token punctuation">-</span> GITLAB_TIMEZONE=Kolkata
+
+    <span class="token punctuation">-</span> GITLAB_HTTPS=false
+    <span class="token punctuation">-</span> SSL_SELF_SIGNED=false
+
+    <span class="token punctuation">-</span> GITLAB_HOST=localhost
+    <span class="token punctuation">-</span> GITLAB_PORT=10080
+    <span class="token punctuation">-</span> GITLAB_SSH_PORT=10022
+    <span class="token punctuation">-</span> GITLAB_RELATIVE_URL_ROOT=
+    <span class="token punctuation">-</span> GITLAB_SECRETS_DB_KEY_BASE=long<span class="token punctuation">-</span>and<span class="token punctuation">-</span>random<span class="token punctuation">-</span>alphanumeric<span class="token punctuation">-</span>string
+    <span class="token punctuation">-</span> GITLAB_SECRETS_SECRET_KEY_BASE=long<span class="token punctuation">-</span>and<span class="token punctuation">-</span>random<span class="token punctuation">-</span>alphanumeric<span class="token punctuation">-</span>string
+    <span class="token punctuation">-</span> GITLAB_SECRETS_OTP_KEY_BASE=long<span class="token punctuation">-</span>and<span class="token punctuation">-</span>random<span class="token punctuation">-</span>alphanumeric<span class="token punctuation">-</span>string
+
+    <span class="token punctuation">...</span>
+    <span class="token comment"># 省略其他配置</span>
+    <span class="token punctuation">...</span>
+</code></pre></div><p>参考<a href="https://github.com/sameersbn/docker-gitlab/" target="_blank" rel="noopener noreferrer">配置文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，我们需要将时区设置为东八时区，设置数据混淆密匙，设置服务地址。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">environment</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> TZ=Asia/Shanghai
+<span class="token punctuation">-</span> GITLAB_TIMEZONE=Asia/Shanghai
+
+<span class="token punctuation">-</span> GITLAB_HOST=192.168.2.192
+</code></pre></div><p>设置混淆密匙，一般推荐 <code>64</code> 位随机字符串，可以用 <code>pwgen</code> 生成，可以安装 <code>pwgen</code> 服务，然后运行 <code>pwgen -Bsv1 64</code> 即可生成随机字符串。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">environment</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> GITLAB_SECRETS_DB_KEY_BASE=nvqgzJdgrmr3tqsC4F9gKVNhKvTq3N7cJPjNggR93qthNhJ3MWkc7jNmNTLRXdhX
+<span class="token punctuation">-</span> GITLAB_SECRETS_SECRET_KEY_BASE=pcrf73fX4rM7bKxc7tcq3kwKWdtKKtrmmsHwT3J9rwCLMsK37PxCnXbMgnRpqJbk
+<span class="token punctuation">-</span> GITLAB_SECRETS_OTP_KEY_BASE=3d9tPCzpv7rfmVgnjN9McbztRVbp4rjxWWqFbNLTCbRz9mKkpvqqWgxMq7NM7c9w
+</code></pre></div><p>同理，<code>docker-compose.yml</code> 的其他服务也需要配置东八时区。</p> <h3 id="数据卷挂载"><a href="#数据卷挂载" class="header-anchor">#</a> 数据卷挂载</h3> <p>数据卷挂载可对数据进行持久化保存，不会因为容器的删除而删除，数据挂载的目录数据会自动与容器内的数据同步，数据挂载的目录数据优先于容器内数据，即修改数据卷数据，会自动同步到容器内数据。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.3'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>5.0.9
+    <span class="token key atrule">command</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>loglevel warning
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> redis<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/redis<span class="token punctuation">:</span>Z
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> TZ=Asia/Shanghai
+
+  <span class="token key atrule">postgresql</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> sameersbn/postgresql<span class="token punctuation">:</span>11<span class="token punctuation">-</span><span class="token number">20200524</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> postgresql<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/postgresql<span class="token punctuation">:</span>Z
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> DB_USER=gitlab
+    <span class="token punctuation">-</span> DB_PASS=password
+    <span class="token punctuation">-</span> DB_NAME=gitlabhq_production
+    <span class="token punctuation">-</span> DB_EXTENSION=pg_trgm
+    <span class="token punctuation">-</span> TZ=Asia/Shanghai
+
+  <span class="token key atrule">gitlab</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> sameersbn/gitlab<span class="token punctuation">:</span>13.0.6
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> redis
+    <span class="token punctuation">-</span> postgresql
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10080:80&quot;</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10022:22&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> gitlab<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/home/git/data<span class="token punctuation">:</span>Z
+    <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+      <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;CMD&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/usr/local/sbin/healthcheck&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> 5m
+      <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">start_period</span><span class="token punctuation">:</span> 5m
+</code></pre></div><p>注意：数据卷的挂载，需要在宿主机提前创建好对应的目录。</p> <p>手动创建以下目录：</p> <div class="language- extra-class"><pre class="language-text"><code>/app/volumes/gitlab/gitlab/
+/app/volumes/gitlab/postgresql/
+/app/volumes/gitlab/redis/
+</code></pre></div><p>修改对应数据卷配置：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>5.0.9
+    <span class="token key atrule">command</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>loglevel warning
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /app/volumes/gitlab/redis<span class="token punctuation">:</span>/var/lib/redis<span class="token punctuation">:</span>Z
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">postgresql</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> sameersbn/postgresql<span class="token punctuation">:</span>11<span class="token punctuation">-</span><span class="token number">20200524</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /app/volumes/gitlab/postgresql<span class="token punctuation">:</span>/var/lib/postgresql<span class="token punctuation">:</span>Z
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">gitlab</span><span class="token punctuation">:</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> sameersbn/gitlab<span class="token punctuation">:</span>13.0.6
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> redis
+    <span class="token punctuation">-</span> postgresql
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10080:80&quot;</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;10022:22&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /app/volumes/gitlab/gitlab<span class="token punctuation">:</span>/home/git/data<span class="token punctuation">:</span>Z
+</code></pre></div><h3 id="gitlab-runner"><a href="#gitlab-runner" class="header-anchor">#</a> gitlab-runner</h3> <p>拉下来的 <code>docker-compose.yml</code> 文件默认是没有 <code>gitlab-runner</code> 的，我们需要将 <code>gitlab-runner</code> 写到 <code>docker-compose.yml</code> 配置上来。</p> <p>也要先创建数据卷挂载文件目录：</p> <div class="language- extra-class"><pre class="language-text"><code>/app/volumes/gitlab-runner/config/
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">gitlab-runner</span><span class="token punctuation">:</span> 
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> gitlab/gitlab<span class="token punctuation">-</span>runner
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> gitlab
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /app/volumes/gitlab<span class="token punctuation">-</span>runner/config<span class="token punctuation">:</span>/etc/gitlab<span class="token punctuation">-</span>runner<span class="token punctuation">:</span>Z
+    <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> TZ=Asia/Shanghai
+</code></pre></div><h2 id="快速构建应用"><a href="#快速构建应用" class="header-anchor">#</a> 快速构建应用</h2> <p>将配置好的 <code>docker-compose.yml</code> 文件放到 <code>/app/docker/gitlab/</code> 下，执行以下命令：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token builtin class-name">cd</span> /app/docker/gitlab/
+$ docker-compose up
+</code></pre></div><p><code>docker-compose</code> 会自动管理 <code>docker</code> 容器集群，包括对镜像进行拉取、创建以及启动。</p> <p>稍等片刻，我们即可通过 <code>http://192.168.2.192:10080/</code> 打开 <code>gitlab</code> 页面，第一次打开是直接设置 <code>root</code> 账号的密码，设置密码后即可登录进入 <code>gitlab</code> 内页。</p> <p>英文不好的同学可以进入个人设置那里设置 <code>language</code> 为简体中文。</p> <p><img src="https://files.catbox.moe/7o1urw.png" alt="设置语言"></p> <h3 id="注册runner"><a href="#注册runner" class="header-anchor">#</a> 注册runner</h3> <p>什么是 <code>runner</code>，<code>runner</code> 就是 <code>gitlab</code> 进行可持续集成与可持续交付过程所跑的环境容器服务。</p> <p>为了进行 <code>ci/cd</code> =&gt; 可持续集成/可持续部署，我们需要注册 <code>runner</code>，一般我们注册的是共享 <code>runner</code>，也就是任何仓库的 <code>ci/cd</code> 都可以在上面跑。当然，我们也可以创建多个 <code>runner</code> 服务，为特定仓库指定 <code>runner</code>。</p> <p>下面以注册共享 <code>runner</code> 为例：</p> <p><img src="https://files.catbox.moe/u581dt.png" alt="runner列表"></p> <p>比如</p> <ol><li>进入 <code>runner</code> 容器</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ docker <span class="token builtin class-name">exec</span> -it 容器ID <span class="token function">bash</span>
+</code></pre></div><ol start="2"><li>注册 <code>runner</code></li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ gitlab-runner register
+</code></pre></div><ol start="3"><li>输入 <code>gitlab</code> 示例的 <code>url</code></li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code> $ Please enter the gitlab-ci coordinator URL <span class="token punctuation">(</span>e.g. https://gitlab.com <span class="token punctuation">)</span>:
+ http://192.168.2.192:10080/
+</code></pre></div><ol start="4"><li>输入用来注册 <code>runner</code> 的 <code>token</code></li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ Please enter the gitlab-ci token <span class="token keyword">for</span> this runner:
+yrErncrc8XY_e5-g7bU8
+</code></pre></div><ol start="5"><li>输入 <code>runner</code> 的描述，随后可在 <code>gitlab</code> 界面中修改</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ Please enter the gitlab-ci description <span class="token keyword">for</span> this runner:
+gitlab-ci
+</code></pre></div><ol start="6"><li>输入与 <code>runner</code> 绑定的标签（可修改）</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ Please enter the gitlab-ci tags <span class="token keyword">for</span> this runner <span class="token punctuation">(</span>comma separated<span class="token punctuation">)</span>:
+gitlab-ci
+</code></pre></div><ol start="7"><li>选择 <code>runner</code> 的执行方式（推荐<code>docker</code>）</li></ol> <div class="language- extra-class"><pre class="language-text"><code> $ Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:
+ docker
+
+</code></pre></div><ol start="8"><li>如果选择的执行方式是 <code>docker</code>，会要求填写默认的镜像</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ Please enter the Docker image <span class="token punctuation">(</span>eg. ruby:2.1<span class="token punctuation">)</span>:
+alpine:latest
+</code></pre></div><p>注册成功后会在 <code>runner</code> 容器 <code>~/etc/gitlab-runner/</code> 目录下生成 <code>config.toml</code> 配置文件，这时候就可以在 <code>gitlab</code> 的管理页面中看到激活的 <code>runner</code></p> <p><img src="https://files.catbox.moe/uxrvcl.png" alt="激活的runner"></p> <p>然后，对 <code>runner</code> 进行修改，勾选 <code>runner 可以选择无标签的项目</code>（默认是同样标签的项目才能使用对应标签的 <code>runner</code>）。这样，<code>runner</code> 就可以变为共享 <code>runner</code> 了。</p> <p>当我们需要专门为某个项目跑的 <code>runner</code> 时，那就不需要勾选 <code>runner</code> 可选择无标签选项，在下面配置添加 <code>runner</code> 服务的项目保存即可。</p> <p><img src="https://files.catbox.moe/leis7m.png" alt="配置runner共享"></p> <h2 id="可持续集成-部署"><a href="#可持续集成-部署" class="header-anchor">#</a> 可持续集成/部署</h2> <p>可持续集成与部署需要配置 <code>.gitlab-ci.yml</code> 文件，<code>gitlab</code> 会检查每个仓库根目录是否存在 <code>.gitlab-ci.yml</code> 文件，有的话 <code>runner</code> 则自动跑起来。</p> <p><code>gitlab</code> 默认开启 <code>auto devops</code> 功能，如果没有 <code>.gitlab-ci.yml</code> 文件，则会自动运行 <code>auto devops</code>，如果没有配置 <code>Auto DevOps</code> 功能与 <code>Kubernetes</code> 集成的话，建议关闭默认的 <code>auto devops</code> 功能。</p> <p><img src="https://files.catbox.moe/kq1s50.png" alt="关闭默认"></p> <h3 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="header-anchor">#</a> .gitlab-ci.yml</h3> <p>这是一个自动编译前端代码并发布到 <code>gitlab page</code> 的配置文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">building</span><span class="token punctuation">:</span> 
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> node<span class="token punctuation">:</span>alpine    <span class="token comment"># 指定运行环境</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build          <span class="token comment"># 当前stage阶段为build</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>               <span class="token comment"># build阶段运行的脚本</span>
+    <span class="token punctuation">-</span> yarn <span class="token punctuation">-</span><span class="token punctuation">-</span>registry=https<span class="token punctuation">:</span>//registry.npm.taobao.org
+    <span class="token punctuation">-</span> yarn docs<span class="token punctuation">:</span>build
+  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>            <span class="token comment"># 工件，可以缓存在gitlab的流水线记录中，供直接下载</span>
+    <span class="token key atrule">expire_in</span><span class="token punctuation">:</span> 3 days   <span class="token comment"># 工件缓存的有效时间</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span>              <span class="token comment"># 路径</span>
+      <span class="token punctuation">-</span> docs/.vuepress/dist/            <span class="token comment"># 工件指向的目录，这里指整个dist目录</span>
+
+<span class="token key atrule">cache</span><span class="token punctuation">:</span>                  <span class="token comment"># 缓存</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>                <span class="token comment"># 路径</span>
+    <span class="token punctuation">-</span> node_modules/     <span class="token comment"># 缓存node_mudules将大大提高ci运行的速度</span>
+
+<span class="token key atrule">deploying</span><span class="token punctuation">:</span> 
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy         <span class="token comment"># 当前阶段为deploy</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>               <span class="token comment"># deploy阶段运行的命令</span>
+    <span class="token punctuation">-</span> rm <span class="token punctuation">-</span>rf public/*   <span class="token comment"># linux命令，递归无询问删除public目录下所有文件- mv dist/* public //将dist目录下的所有文件都移动到public目录下</span>
+  <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>            <span class="token comment"># 工件缓存</span>
+    <span class="token key atrule">expire_in</span><span class="token punctuation">:</span> 3 days   <span class="token comment"># 时效为3天</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span>              <span class="token comment"># 路径</span>
+      <span class="token punctuation">-</span> public          <span class="token comment"># 缓存整个public目录的文件</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">-</span> master               <span class="token comment"># ceate pages下的所有操作只在 master 分支上进行</span>
+
+</code></pre></div><h3 id="自动化"><a href="#自动化" class="header-anchor">#</a> 自动化</h3> <p>当我们提交我们的代码后，<code>gitlab</code> 会自动根据 <code>.gitlab-ci.yml</code> 的配置运行 <code>runner</code>。</p> <p><img src="https://files.catbox.moe/uwlpm2.png" alt="提交代码"></p> <p><img src="https://files.catbox.moe/i8uebm.png" alt="运行通过"></p> <p>这样我们就实现自动化集成与部署了，大大的提高了我们的开发效率。</p> <h2 id="身份认证"><a href="#身份认证" class="header-anchor">#</a> 身份认证</h2> <p>我们在 <code>gitlab</code> 上注册了自己的账号后，为了方便身份认证，一般需要用 <code>ssh</code> 生成身份认证密匙，这样就不需要每次访问都要输入账号密码。</p> <h3 id="配置shh密匙"><a href="#配置shh密匙" class="header-anchor">#</a> 配置SHH密匙</h3> <p>在我们的电脑 <code>git bash</code> 输入：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ ssh-keygen -t rsa -C <span class="token string">&quot;我们在gitlab注册的邮箱&quot;</span> -f ~/.ssh/gitlab_id_rsa
+</code></pre></div><p>此时会在我们电脑用户根目录的 <code>/.ssh</code> 下生成私匙跟公匙：</p> <div class="language- extra-class"><pre class="language-text"><code>gitlab_id_rsa
+gitlab_id_rsa.pub
+</code></pre></div><p>打开 <code>pub</code> 后缀的公匙，复制粘贴到 <code>gitlab</code> 用户设置，保存即可。</p> <p><img src="https://files.catbox.moe/o9sp5y.png" alt="身份认证"></p> <h3 id="github与gitlab共存"><a href="#github与gitlab共存" class="header-anchor">#</a> github与gitlab共存</h3> <p>假设我们之前就已经生成了 <code>github</code> 的 <code>ssh</code> 密匙:</p> <div class="language- extra-class"><pre class="language-text"><code>github_id_rsa
+github_id_rsa.pub
+</code></pre></div><p>在我们电脑的用户目录 <code>/.ssh/</code> 下创建 <code>config</code> 文件，配置如下，保存即可:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#github</span>
+Host github.com
+HostName github.com
+IdentityFile C:/Users/jwchan/.ssh/github
+_id_rsa
+
+<span class="token comment">#gitlab</span>
+Host <span class="token number">192.168</span>.2.192
+HostName <span class="token number">192.168</span>.2.192
+IdentityFile C:/Users/jwchan/.ssh/gitlab_id_rsa
+</code></pre></div><p>这样，我们在提交代码的时候，会自动区分目标服务器从而使用对应的 <code>ssh</code> 密匙。</p> <h3 id="git基本操作"><a href="#git基本操作" class="header-anchor">#</a> git基本操作</h3> <ol><li>拉取仓库</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> clone ssh://git@192.168.2.192:10022/jwchan/blog.git
+</code></pre></div><ol start="2"><li>进入仓库贡献代码</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token builtin class-name">cd</span> /blog/
+</code></pre></div><ol start="3"><li>查看仓库代码修改状态</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> status
+</code></pre></div><ol start="4"><li>添加代码缓冲区</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+</code></pre></div><ol start="5"><li>提交代码并注释</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;[fix]: bug&quot;</span>
+</code></pre></div><ol start="6"><li>推送代码到远程仓库</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> push 
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/17/2020, 8:06:50 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/docker/docker-call-centos-host-machine.html" class="prev">
+        docker 访问宿主机的 ip 配置问题
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b446d2d5.js" defer></script><script src="/assets/js/2.7069fcb2.js" defer></script><script src="/assets/js/30.2bfc4dca.js" defer></script>
+  </body>
+</html>
