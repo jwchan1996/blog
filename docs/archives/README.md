@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [centos7 使用 docker 部署 gitlab + gitlab-runner](/_posts/tool/docker/docker-deploy-gitlab.html)
 - [docker 访问宿主机的 ip 配置问题](/_posts/tool/docker/docker-call-centos-host-machine.html)
 - [JS 模拟实现 call、apply、bind](/_posts/frontend/javascript/js_simulate_call_apply_bind.html)
 - [JavaScript 中的 call()、apply()、bind() 的用法](/_posts/frontend/javascript/js_call_apply_bind.html)

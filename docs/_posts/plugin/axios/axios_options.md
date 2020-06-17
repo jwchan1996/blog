@@ -44,7 +44,7 @@ export default request
 ```
 执行功能请求的时候，控制台 `XHR` 请求如下：
 
-![等待options](/imaaxiosges/axios_options/axios_options_01.png)
+![等待options](/axios/axios_options/axios_options_01.png)
 
 一直处于 `pending` 状态，即等待中状态。
 
