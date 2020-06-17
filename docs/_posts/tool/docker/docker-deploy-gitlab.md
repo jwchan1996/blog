@@ -363,6 +363,8 @@ gitlab_id_rsa.pub
 
 ![身份认证](https://files.catbox.moe/o9sp5y.png)
 
+在对 `gitlab` 仓库使用 `git` 命令的时候，如果出现提示没有权限的话，多半是因为 `git` 混淆了 `github` 与 `gitlab` 的 `ssh` 密钥，解决方法看下一步。
+
 ### github与gitlab共存
 
 假设我们之前就已经生成了 `github` 的 `ssh` 密匙:
