@@ -379,8 +379,7 @@ github_id_rsa.pub
 #github
 Host github.com
 HostName github.com
-IdentityFile C:/Users/jwchan/.ssh/github
-_id_rsa
+IdentityFile C:/Users/jwchan/.ssh/github_id_rsa
 
 #gitlab
 Host 192.168.2.192
