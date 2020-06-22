@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>版本库提交信息规范与自动验证 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="/assets/css/0.styles.1c3a77df.css" as="style"><link rel="preload" href="/assets/js/app.65b29fb1.js" as="script"><link rel="preload" href="/assets/js/2.7069fcb2.js" as="script"><link rel="preload" href="/assets/js/33.0663110e.js" as="script"><link rel="prefetch" href="/assets/js/10.eb367c03.js"><link rel="prefetch" href="/assets/js/11.cb0d99ba.js"><link rel="prefetch" href="/assets/js/12.f31026a2.js"><link rel="prefetch" href="/assets/js/13.5979bab9.js"><link rel="prefetch" href="/assets/js/14.4657c456.js"><link rel="prefetch" href="/assets/js/15.9c6aabc0.js"><link rel="prefetch" href="/assets/js/16.d8606324.js"><link rel="prefetch" href="/assets/js/17.53af1abe.js"><link rel="prefetch" href="/assets/js/18.736b1255.js"><link rel="prefetch" href="/assets/js/19.158b7b67.js"><link rel="prefetch" href="/assets/js/20.ec857f98.js"><link rel="prefetch" href="/assets/js/21.dfab24b5.js"><link rel="prefetch" href="/assets/js/22.bb2332f2.js"><link rel="prefetch" href="/assets/js/23.022c5d97.js"><link rel="prefetch" href="/assets/js/24.85ee4294.js"><link rel="prefetch" href="/assets/js/25.d1032259.js"><link rel="prefetch" href="/assets/js/26.334b52ad.js"><link rel="prefetch" href="/assets/js/27.143e931b.js"><link rel="prefetch" href="/assets/js/28.8d629c83.js"><link rel="prefetch" href="/assets/js/29.c47b2fc2.js"><link rel="prefetch" href="/assets/js/3.542db523.js"><link rel="prefetch" href="/assets/js/30.f2193f6e.js"><link rel="prefetch" href="/assets/js/31.5d90a29f.js"><link rel="prefetch" href="/assets/js/32.ec64dc53.js"><link rel="prefetch" href="/assets/js/34.06f8ec91.js"><link rel="prefetch" href="/assets/js/35.b5e5a7cc.js"><link rel="prefetch" href="/assets/js/36.807d317c.js"><link rel="prefetch" href="/assets/js/4.3ae0012c.js"><link rel="prefetch" href="/assets/js/5.a9523388.js"><link rel="prefetch" href="/assets/js/6.eb04f2e7.js"><link rel="prefetch" href="/assets/js/7.f9a4bb41.js"><link rel="prefetch" href="/assets/js/8.b462eb05.js"><link rel="prefetch" href="/assets/js/9.5c1c8100.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1c3a77df.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link router-link-active">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link router-link-active">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Git</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/git/git_command.html" class="sidebar-link">Git 代码托管</a></li><li><a href="/_posts/tool/git/git_pull_request.html" class="sidebar-link">使用 git 向开源项目提交 pr</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#pull-request-是什么" class="sidebar-link">Pull Request 是什么</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#具体流程" class="sidebar-link">具体流程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#fork" class="sidebar-link">fork</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#clone" class="sidebar-link">clone</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#创建分支" class="sidebar-link">创建分支</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#修改代码" class="sidebar-link">修改代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#提交" class="sidebar-link">提交</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#提交-pr" class="sidebar-link">提交 PR</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#关于-check-不通过的问题" class="sidebar-link">关于 check 不通过的问题</a></li></ul></li><li><a href="/_posts/tool/git/git_commit_msg.html" aria-current="page" class="active sidebar-link">版本库提交信息规范与自动验证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#版本库提交信息规范" class="sidebar-link">版本库提交信息规范</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#type" class="sidebar-link">type</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#scope" class="sidebar-link">scope</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#subject" class="sidebar-link">subject</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#自动验证提交信息规范" class="sidebar-link">自动验证提交信息规范</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="版本库提交信息规范与自动验证"><a href="#版本库提交信息规范与自动验证" class="header-anchor">#</a> 版本库提交信息规范与自动验证</h1> <h2 id="版本库提交信息规范"><a href="#版本库提交信息规范" class="header-anchor">#</a> 版本库提交信息规范</h2> <p>本文规范借鉴社区使用最广的 <code>Angular</code> 规范，稍加修改。</p> <p>一般提交命令我们使用如 <code>git commit- m &quot;feat(user): add user login&quot;</code></p> <p>其中当前 <code>commit message</code> 信息包括三部分：<code>type</code>（必需）、<code>scope</code>（可选）、 <code>subject</code>（必需）</p> <h3 id="type"><a href="#type" class="header-anchor">#</a> type</h3> <p><code>type</code> 用于说明 <code>commit</code> 的类别，允许使用下面 <code>8</code> 个标识。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>feat: <span class="token comment"># 新功能（feature）</span>
+
+fix: <span class="token comment"># 修补 bug</span>
+
+docs: <span class="token comment"># 文档（documentation）</span>
+
+style: <span class="token comment"># 格式（不影响代码执行的变动，非css样式专用）</span>
+
+refactor: <span class="token comment"># 重构（既不是新增功能，也不是修改 bug 的代码变动）</span>
+
+test: <span class="token comment"># 增加测试</span>
+
+chore: <span class="token comment"># 构建过程或辅助工具的变动</span>
+
+revert: <span class="token comment"># 对之前修改代码 commit 记录的还原</span>
+</code></pre></div><h3 id="scope"><a href="#scope" class="header-anchor">#</a> scope</h3> <p><code>scope</code> 用于说明 <code>commit</code> 的影响范围，比如数据层、控制层、视图层、功能模块等，视项目的不同而不同。</p> <p>例如：</p> <ul><li>新增用户管理的新增用户功能</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;feat(user): add addUser&quot;</span>
+</code></pre></div><ul><li>修复了用户管理的新增用户功能的<code>bug</code></li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;fix(user): addUser&quot;</span>
+</code></pre></div><ul><li>更新文档说明</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;docs(readme): update readme&quot;</span>
+</code></pre></div><ul><li>调整新增用户代码格式（代码换行或者删除换行）</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;style(user/add): wrap line&quot;</span>
+</code></pre></div><ul><li>增加单元测试代码</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;test: add test&quot;</span>
+</code></pre></div><ul><li>配置或者修改自动化部署文件或者构建工具</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;chore: cicd&quot;</span>
+
+$ <span class="token function">git</span> commit -m <span class="token string">&quot;chore: add vue-router&quot;</span>
+</code></pre></div><p>还有一种是相对来说比较特殊的对之前 <code>commit</code> 代码的回退，比如还原之前修改 <code>bug</code> 的错误提交</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;revert: fix(user): addUser&quot;</span>
+</code></pre></div><h3 id="subject"><a href="#subject" class="header-anchor">#</a> subject</h3> <p><code>subject</code> 是 <code>commit</code> 目的的简短描述，不超过 <code>50</code> 个字符</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit -m <span class="token string">&quot;feat(course): 完成课程管理模块&quot;</span>
+</code></pre></div><h2 id="自动验证提交信息规范"><a href="#自动验证提交信息规范" class="header-anchor">#</a> 自动验证提交信息规范</h2> <p>为了达到提交信息规范的校验效果，我们使用配置本地 <code>git hooks</code> 模板的方法，只需设置一次，之后从<code>github</code> 上 <code>clone</code> 下来的代码都会沿用当前 <code>hooks</code> 配置。</p> <p>下面命令操作环境为 <code>git bash</code>：</p> <ul><li><code>github</code> 克隆仓库到本地</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> clone https://github.com/jwchan1996/commit-msg.git
+$ <span class="token builtin class-name">cd</span> /commit-msg
+</code></pre></div><ul><li>创建 <code>git</code> 钩子模板文件夹</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">mkdir</span> -p ~/.git_template/hooks 
+</code></pre></div><ul><li>复制当前配置好的 <code>commit-msg</code> <code>hooks</code> 文件到模板</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">cp</span> commit-msg ~/.git_template/hooks
+</code></pre></div><ul><li>设置 <code>git</code> 的初始化模板的使用模板</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> config --global init.templatedir ~/.git_template 
+</code></pre></div><p>具体 <code>commit-msg</code> 文件可以点击<a href="https://github.com/jwchan1996/commit-msg.git" target="_blank" rel="noopener noreferrer">查看详情<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/22/2020, 9:11:26 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/git/git_pull_request.html" class="prev">
+        使用 git 向开源项目提交 pr
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.65b29fb1.js" defer></script><script src="/assets/js/2.7069fcb2.js" defer></script><script src="/assets/js/33.0663110e.js" defer></script>
+  </body>
+</html>
