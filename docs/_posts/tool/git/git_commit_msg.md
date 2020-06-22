@@ -91,7 +91,7 @@ $ git commit -m "feat(course): 完成课程管理模块"
 
 ### issue_id and pr_id
 
-`gitlab` 与 `github` 还提供了自动识别 `issue` 与 `pr` 链接的功能。  
+`github` 还提供了自动识别 `issue` 与 `pr` 链接的功能。  
 在提交信息后面加上对应的 `issue_id` 或 `pr_id`，能够自动识别为对应链接，点击可跳转到对应界面。 
 
 ```bash
