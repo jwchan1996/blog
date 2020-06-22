@@ -89,6 +89,17 @@ $ git commit -m "revert: fix(user): addUser"
 $ git commit -m "feat(course): 完成课程管理模块"
 ```
 
+### issue_id and pr_id
+
+`gitlab` 与 `github` 还提供了自动识别 `issue` 与 `pr` 链接的功能。  
+在提交信息后面加上对应的 `issue_id` 或 `pr_id`，能够自动识别为对应链接，点击可跳转到对应界面。 
+
+```bash
+$ git commit -m "fix(user): check user pwd (#1)"
+```
+
+这样的话，会自动识别 `#1` 为链接，跳到对应的 `issue` 或者 `pr` 页面。
+
 ## 自动验证提交信息规范
 
 为了达到提交信息规范的校验效果，我们使用配置本地 `git hooks` 模板的方法，只需设置一次，之后从`github` 上 `clone` 下来的代码都会沿用当前 `hooks` 配置。
