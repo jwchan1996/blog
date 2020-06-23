@@ -10,7 +10,7 @@ tags:  #标签
 
 ## 版本库提交信息规范
 
-本文规范借鉴社区使用最广的 `Angular` 规范，稍加修改。
+以下规范是社区使用最广的 `Angular` 规范。
 
 一般提交命令我们使用如 `git commit- m "feat(user): add user login"`
 
