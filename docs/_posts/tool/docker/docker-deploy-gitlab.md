@@ -296,6 +296,8 @@ alpine:latest
 
 可持续集成与部署需要配置 `.gitlab-ci.yml` 文件，`gitlab` 会检查每个仓库根目录是否存在 `.gitlab-ci.yml` 文件，有的话 `runner` 则自动跑起来。
 
+> runner 会根据 .gitlab-ci.yml 文件配置，在宿主机创建容器，根据配置步骤一步步进行构建任务，构建成功或失败都会自动销毁容器。
+
 `gitlab` 默认开启 `auto devops` 功能，如果没有 `.gitlab-ci.yml` 文件，则会自动运行 `auto devops`，如果没有配置 `Auto DevOps` 功能与 `Kubernetes` 集成的话，建议关闭默认的 `auto devops` 功能。
 
 ![关闭默认](https://files.catbox.moe/kq1s50.png)
