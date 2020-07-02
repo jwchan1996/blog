@@ -14,7 +14,7 @@ tagline: null
   <div class="star">
     <div class="background">
       <canvas id="startrack"></canvas>
-      <div style="height:650px;background:#212121"></div>
+      <div style="height: 700px; background: #212121"></div>
       <div class="cover"></div>
     </div>
     <div class="main">
@@ -173,6 +173,9 @@ export default {
         document.querySelector(".background").setAttribute("class", newClassName)
       }
     }
+
+    //修改背景
+    document.querySelector('.cover').style.background = 'linear-gradient(to top,rgba(32,32,32,1) 30%,rgba(32,32,32,0) 100%)'
   },
   methods: {
     rand(t, a) {
@@ -233,16 +236,6 @@ export default {
 </script>
 
 <style>
-  /* /deep/ html, body {
-    background-color: #212121 !important;
-  }
-
-  /deep/ .home{
-    max-width: 100vw !important;
-    width: 100vw !important;
-    background-color: #212121 !important;
-  } */
-
   .star{
     font-family: "Microsoft YaHei";
     -webkit-font-smoothing: antialiased;
@@ -279,7 +272,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to top,rgba(32,32,32,1) 30%,rgba(32,32,32,0) 100%);
+    background: #212121;
   }
 
   .main{
