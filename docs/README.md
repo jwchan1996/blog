@@ -14,7 +14,7 @@ tagline: null
   <div class="star">
     <div class="background">
       <canvas id="startrack"></canvas>
-      <div style="height:500px;background:#212121"></div>
+      <div style="height:650px;background:#212121"></div>
       <div class="cover"></div>
     </div>
     <div class="main">
@@ -259,6 +259,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100vh;
+    background-color: #212121;
   }
   .fixed{
     position: fixed;
