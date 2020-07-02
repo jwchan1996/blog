@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [docker gitlab 备份还原](/_posts/tool/docker/docker-gitlab-restore.html)
 - [版本库提交信息规范与自动验证](/_posts/tool/git/git_commit_msg.html)
 - [centos7 使用 docker 部署 gitlab + gitlab-runner](/_posts/tool/docker/docker-deploy-gitlab.html)
 - [docker 访问宿主机的 ip 配置问题](/_posts/tool/docker/docker-call-centos-host-machine.html)

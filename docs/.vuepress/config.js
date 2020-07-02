@@ -98,7 +98,8 @@ module.exports = {
           collapsable: true, 
           children: [
             { title: 'docker 访问宿主机的 ip 配置问题', path:'/_posts/tool/docker/docker-call-centos-host-machine'},
-            { title: 'centos7 使用 docker 部署 gitlab + gitlab-runner', path:'/_posts/tool/docker/docker-deploy-gitlab'}
+            { title: 'centos7 使用 docker 部署 gitlab + gitlab-runner', path:'/_posts/tool/docker/docker-deploy-gitlab'},
+            { title: 'docker gitlab 备份还原', path:'/_posts/tool/docker/docker-gitlab-restore'}
           ]
         }
       ],
