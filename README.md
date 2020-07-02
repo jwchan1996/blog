@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [docker gitlab 备份还原](https://github.com/jwchan1996/blog/issues/15)
 - [版本库提交信息规范与自动验证](https://github.com/jwchan1996/blog/issues/14)
 - [centos7 使用 docker 部署 gitlab + gitlab-runner](https://github.com/jwchan1996/blog/issues/13)
 - [docker 访问宿主机的 ip 配置问题](https://github.com/jwchan1996/blog/issues/12)
