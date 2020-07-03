@@ -35,7 +35,7 @@ tagline: null
       </div>
       <div class="intro">
         <div class="container">
-          <div class="hello">
+          <div class="hello reset-bottom">
               <h1 class="slogan">近期目标</h1>
               <h2>
                 <div class="circle">
@@ -330,6 +330,14 @@ export default {
     position: absolute;
     bottom: 20%;
     left: 0;
+  }
+  .reset-bottom{
+    bottom: 60px !important;
+  }
+  @media screen and (max-width: 500px) {
+    .reset-bottom{
+      bottom: 20px !important;
+    }
   }
   .hello .slogan {
     font-size: 42px;
