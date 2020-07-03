@@ -83,7 +83,15 @@ tagline: null
                   <span></span> 
                   <span></span>
                 </div>
-                deno / rust
+                Flutter
+              </h2>
+              <h2>
+                <div class="circle">
+                  <span></span> 
+                  <span></span> 
+                  <span></span>
+                </div>
+                Deno / Rust
               </h2>
               <h2>
                 <div class="circle">
@@ -216,11 +224,14 @@ export default {
       let t = [
         "你看那个人，Ta好像一条狗啊", 
         "那时候时间很慢<br>慢到只能用一生去爱一个人", 
+        "迷失的人迷失了<br>相逢的人会再相逢",
         "给时光以生命<br>给岁月以文明", 
+        "愿你岁月无波澜<br>敬我余生不悲欢",
         "平凡的日常正奇迹的发生着", 
         "暗影猎手<br>准备就绪!!!", 
         "搞事！搞事！搞事！",  
         "喜欢是淡淡的爱<br>爱是深深的喜欢",
+        "不是吧阿sir，这都可以？"
       ]
       let a = this.random(0, t.length - 1)
       document.querySelector(".slogan").innerHTML = t[a]
@@ -229,7 +240,7 @@ export default {
       let e = a - t
       let n = Math.random()
       return t + Math.round(n * e)
-    },
+    }
 
   }
 }
