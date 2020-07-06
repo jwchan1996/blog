@@ -4527,6 +4527,11 @@ levenary@^1.1.1:
   dependencies:
     leven "^3.1.0"
 
+lightimage@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/lightimage/-/lightimage-1.0.0.tgz#3929fcb6678056ccb525a9370453f9343194c424"
+  integrity sha512-m9oecP6koSODZ6V8TYiJJMp3Ye/pdS/HFqZVDJ5hvAKhweO5Cwaje5NSFN1NtBvJ8EAtqiUXYc2vIgxLr5hNCg==
+
 linkify-it@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.2.0.tgz#e3b54697e78bf915c70a38acd78fd09e0058b1cf"

@@ -12,5 +12,8 @@
   },
   "devDependencies": {
     "vuepress": "^1.5.1"
+  },
+  "dependencies": {
+    "lightimage": "^1.0.0"
   }
 }
