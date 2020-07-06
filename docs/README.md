@@ -164,7 +164,10 @@ export default {
 
     this.ctx.translate(this.x, this.y), this.fireAnimate(), window.onload = () => {
       this.getMsg()
-    }, window.onscroll = () => {
+    }
+  
+    window.onscroll = () => {
+      if(this.$route.path != '/') return
       //获取滚动高度
       let osTop = document.documentElement.scrollTop || document.body.scrollTop;
       //可视区域高度
