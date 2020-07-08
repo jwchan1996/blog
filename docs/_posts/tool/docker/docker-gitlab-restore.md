@@ -13,13 +13,13 @@ tags:  #标签
 
 起因是服务器 `root` 文件系统内存较小，只有 `50G`，经常爆仓。  
 于是乎，就把 `gitlab` 整体移动到内存相对较大 `home` 文件系统下。  
-这不，转移了，我人却直接裂开来。  
+这不，转移了，我人直接裂开来。  
 
 ### 噩耗！！！
 
 我打开命令窗口，口嚼香糖，一顿蜻蜓点水，在键盘上滑过 `cp -R /app /home`，刹那间，整整几个 `G` 的文件便搬了家。当然，其中包含着这个星期来所备份的文件。  
 
-然而，此时的我仍然在享受着香糖在口腔带来的愉悦，却不知下一秒，`gitlab` 的明天与意外哪个会先来到。  
+然而，此时的我仍然在享受着香糖在口腔带来的愉悦，却不知下一秒，`gitlab` 的明天与意外哪个会先来。  
 
 我对着 `gitlab` 满心许下祝福，轻轻地敲下：
 ```
@@ -44,7 +44,7 @@ $ docker-compose up
 $ docker rm `docker ps -a | grep Exited | awk '{print $1}'`  
 $ docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`  
 ```
-的执行，似乎变得清净起来。  
+命令的执行，似乎变得清净起来。  
 清除了停止的容器与无用的镜像。干净的环境，总会为 `gitlab` 带来好运吧。然而，到头来还是一场梦。  
 
 依然启动不了 `gitaly` 服务，而带来的后果，就是仓库页面数据读取的失败。 
@@ -81,7 +81,7 @@ $ docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 
 ![空仓库](/docker/docker_gitlab_restore/03.png)
 
-执行 `ls -a`，大家都摊牌，别藏着掖着：
+执行 `ls -a`，大家都摊牌，别藏着掖着了：
 ```bash
 $ ls -a
 +gitaly .gitaly-metadata  @hashed  @pools
@@ -101,7 +101,7 @@ $ ls -a
 
 没错，就是恢复备份。
 
-执行
+执行：
 ```bash
 $ cd /app/docker/gitlab
 $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
@@ -119,9 +119,11 @@ $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
 
 遇到阻碍，那就夺权。  
 
-目标是备份文件 `tar` 包下所有文件的用户组与所有者，都修改为 `root` 用户
+目标是备份文件 `tar` 包下所有文件的用户组与所有者，都修改为 `root` 用户。
 
 把备份文件 `tar` 包拖出来，解压到 `backup` 文件夹，修改权限到 `root` 用户组与 `root` 所有者。
+
+![备份文件解压](/docker/docker_gitlab_restore/06.png)
 
 修改 `backup` 文件夹里面所有文件为用户组 `root`
 ```bash
@@ -133,13 +135,15 @@ chgrp -R root backup
 chown -R root backup
 ```
 
-继续执行
+然后将夺权后的文件再重新打包为 `tar` 包。
+
+继续执行：
 ```bash
 $ cd /app/docker/gitlab
 $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
 ```
 
-![还原过程](/docker/docker_gitlab_restore/06.png)
+![还原过程](/docker/docker_gitlab_restore/07.png)
 
 虽然还有报权限错误，因为 `tar.gz` 包里面没有夺权，但是问题不大。
 
@@ -153,4 +157,4 @@ $ docker-compose up
 
 柳暗花明又一村，我胡汉三又回来了！
 
-![启动成功](/docker/docker_gitlab_restore/07.png)
+![启动成功](/docker/docker_gitlab_restore/08.png)
