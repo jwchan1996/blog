@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker 访问外部 https 的数字证书验证问题 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="/assets/css/0.styles.af6036d3.css" as="style"><link rel="preload" href="/assets/js/app.5b103713.js" as="script"><link rel="preload" href="/assets/js/2.47c2d47e.js" as="script"><link rel="preload" href="/assets/js/30.6f89b611.js" as="script"><link rel="prefetch" href="/assets/js/10.d72891d5.js"><link rel="prefetch" href="/assets/js/11.826bb341.js"><link rel="prefetch" href="/assets/js/12.c5749f49.js"><link rel="prefetch" href="/assets/js/13.e21f1db0.js"><link rel="prefetch" href="/assets/js/14.65f59250.js"><link rel="prefetch" href="/assets/js/15.d8fa1b46.js"><link rel="prefetch" href="/assets/js/16.427ad2c2.js"><link rel="prefetch" href="/assets/js/17.9856f664.js"><link rel="prefetch" href="/assets/js/18.121aee89.js"><link rel="prefetch" href="/assets/js/19.b3b6c18a.js"><link rel="prefetch" href="/assets/js/20.c74fb0bf.js"><link rel="prefetch" href="/assets/js/21.b61a3d72.js"><link rel="prefetch" href="/assets/js/22.ec0c285a.js"><link rel="prefetch" href="/assets/js/23.f284f684.js"><link rel="prefetch" href="/assets/js/24.e71033f3.js"><link rel="prefetch" href="/assets/js/25.df92df33.js"><link rel="prefetch" href="/assets/js/26.a280ea37.js"><link rel="prefetch" href="/assets/js/27.009ac86d.js"><link rel="prefetch" href="/assets/js/28.605d2a8d.js"><link rel="prefetch" href="/assets/js/29.8d7fdf03.js"><link rel="prefetch" href="/assets/js/3.fe72f3d1.js"><link rel="prefetch" href="/assets/js/31.41972b80.js"><link rel="prefetch" href="/assets/js/32.3e41f461.js"><link rel="prefetch" href="/assets/js/33.6d912ea6.js"><link rel="prefetch" href="/assets/js/34.004dd32a.js"><link rel="prefetch" href="/assets/js/35.234c455d.js"><link rel="prefetch" href="/assets/js/36.a87d9345.js"><link rel="prefetch" href="/assets/js/37.28f5d19f.js"><link rel="prefetch" href="/assets/js/38.49a821f5.js"><link rel="prefetch" href="/assets/js/4.fddb0e3a.js"><link rel="prefetch" href="/assets/js/5.6dd3d38d.js"><link rel="prefetch" href="/assets/js/6.e71197d0.js"><link rel="prefetch" href="/assets/js/7.0763be4b.js"><link rel="prefetch" href="/assets/js/8.8820d011.js"><link rel="prefetch" href="/assets/js/9.5c1c8100.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.af6036d3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/docker/docker-call-centos-host-machine.html" class="sidebar-link">docker 访问宿主机的 ip 配置问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#原因分析" class="sidebar-link">原因分析</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#解决问题" class="sidebar-link">解决问题</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-call-centos-host-machine.html#测试端口" class="sidebar-link">测试端口</a></li></ul></li><li><a href="/_posts/tool/docker/docker-deploy-gitlab.html" class="sidebar-link">centos7 使用 docker 部署 gitlab + gitlab-runner</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#快速配置应用" class="sidebar-link">快速配置应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#docker-compose-yml" class="sidebar-link">docker-compose.yml</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#配置环境" class="sidebar-link">配置环境</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#数据卷挂载" class="sidebar-link">数据卷挂载</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#gitlab-runner" class="sidebar-link">gitlab-runner</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#快速构建应用" class="sidebar-link">快速构建应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#注册runner" class="sidebar-link">注册runner</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#可持续集成-部署" class="sidebar-link">可持续集成/部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#gitlab-ci-yml" class="sidebar-link">.gitlab-ci.yml</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#自动化" class="sidebar-link">自动化</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#身份认证" class="sidebar-link">身份认证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#配置shh密匙" class="sidebar-link">配置SHH密匙</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#github与gitlab共存" class="sidebar-link">github与gitlab共存</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-deploy-gitlab.html#git基本操作" class="sidebar-link">git基本操作</a></li></ul></li></ul></li><li><a href="/_posts/tool/docker/docker-gitlab-restore.html" class="sidebar-link">docker gitlab 备份还原</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#灾难起源" class="sidebar-link">灾难起源</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#噩耗！！！" class="sidebar-link">噩耗！！！</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#失格！！！" class="sidebar-link">失格！！！</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#返璞！！！" class="sidebar-link">返璞！！！</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#归真！！！" class="sidebar-link">归真！！！</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#人祸湮灭" class="sidebar-link">人祸湮灭</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#时间旅行" class="sidebar-link">时间旅行</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#精准夺权" class="sidebar-link">精准夺权</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/docker/docker-gitlab-restore.html#柳暗花明" class="sidebar-link">柳暗花明</a></li></ul></li></ul></li><li><a href="/_posts/tool/docker/docker-call-https.html" aria-current="page" class="active sidebar-link">docker 访问外部 https 的数字证书验证问题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker-访问外部-https-的数字证书验证问题"><a href="#docker-访问外部-https-的数字证书验证问题" class="header-anchor">#</a> docker 访问外部 https 的数字证书验证问题</h1> <p>我们在构建 <code>docker</code> 镜像时一般使用的是 <code>alpine linux</code> 系统，默认是不带 <code>ca-certificates</code> 根证书的，导致无法识别外部 https 携带的数字证书。</p> <p>那么，在访问的时候就会抛出 <code>x509: certificate signed by unknown authority</code> 的错误，导致 <code>docker</code> 容器的接口服务返回 <code>500</code>。</p> <p>为了解决证书验证的问题，我们要在构建 <code>docker</code> 镜像的时候把 <code>ca-certificates</code> 根证书给装上，这样就能识别来自外部 <code>https</code> 的数字证书了。</p> <p>在编辑 <code>Dockerfile</code> 的时候加入以下命令即可：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>RUN apk --no-cache <span class="token function">add</span> ca-certificates <span class="token punctuation">\</span>
+  <span class="token operator">&amp;&amp;</span> update-ca-certificates
+</code></pre></div><p>如果不想重新构建镜像的话，可以直接进入容器：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ docker <span class="token builtin class-name">exec</span> -it <span class="token string">'容器ID或容器名称'</span> <span class="token function">bash</span>
+</code></pre></div><p>然后执行安装根证书命令：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ apk --no-cache <span class="token function">add</span> ca-certificates <span class="token operator">&amp;&amp;</span> update-ca-certificates
+</code></pre></div><p>出现以下警告，可以忽略：</p> <div class="language- extra-class"><pre class="language-text"><code>WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
+</code></pre></div><p>然后重启容器即可：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ docker restart <span class="token string">'容器ID或容器名称'</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">7/15/2020, 3:13:09 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/docker/docker-gitlab-restore.html" class="prev">
+        docker gitlab 备份还原
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.5b103713.js" defer></script><script src="/assets/js/2.47c2d47e.js" defer></script><script src="/assets/js/30.6f89b611.js" defer></script>
+  </body>
+</html>
