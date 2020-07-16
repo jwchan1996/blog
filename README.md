@@ -7,7 +7,7 @@
 - [【2020-06-17】centos7 使用 docker 部署 gitlab + gitlab-runner](https://github.com/jwchan1996/blog/issues/13)
 - [【2020-04-28】docker 访问宿主机的 ip 配置问题](https://github.com/jwchan1996/blog/issues/12)
 - [【2019-11-09】JS 模拟实现 call、apply、bind](https://github.com/jwchan1996/blog/issues/11)
-- [2019-10-21】JavaScript 中的 call()、apply()、bind() 的用法](https://github.com/jwchan1996/blog/issues/10)
+- [【2019-10-21】JavaScript 中的 call()、apply()、bind() 的用法](https://github.com/jwchan1996/blog/issues/10)
 - [【2019-10-18】koa-jwt 实现自定义排除动态路由的鉴权](https://github.com/jwchan1996/blog/issues/9)
 - [【2019-09-12】Electron 踩坑记录（二）](https://github.com/jwchan1996/blog/issues/8)
 - [【2019-09-06】koa 实现 token 有效时间续期的思路](https://github.com/jwchan1996/blog/issues/7)
