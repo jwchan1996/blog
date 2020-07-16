@@ -16,7 +16,7 @@ jobs:
           node-version: '12.x'
       - run: |
           yarn --registry=https://registry.npm.taobao.org
-          yarn docs:build
+          yarn build
 
       - uses: peaceiris/actions-gh-pages@v3
         with:

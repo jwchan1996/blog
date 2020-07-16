@@ -8,7 +8,8 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "start": "nodemon --ext md,vue,js --watch ./docs --watch ./docs/.vuepress --exec vuepress dev docs"
+    "start": "nodemon --ext md,vue,js --watch ./docs --watch ./docs/.vuepress --exec vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "devDependencies": {
     "vuepress": "^1.5.1"
