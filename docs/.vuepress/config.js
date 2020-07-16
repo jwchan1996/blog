@@ -151,7 +151,7 @@ module.exports = {
     if(NODE_ENV === 'production'){
       return {
         output: {
-          publicPath: 'https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages'
+          publicPath: 'https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/'
         }
       }
     }else{
