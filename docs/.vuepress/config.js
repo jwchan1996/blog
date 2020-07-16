@@ -139,10 +139,31 @@ module.exports = {
     lastUpdated: '上次更新', // string | boolean
     smoothScroll: true,
   },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        'public': './public' 
+  // configureWebpack: {
+  //   resolve: {
+  //     alias: {
+  //       'public': './public' 
+  //     }
+  //   }
+  // },
+  configureWebpack: () => {
+    const NODE_ENV = process.env.NODE_ENV
+    console.log('..........................')
+    console.log(NODE_ENV)
+    console.log('..........................')
+    if(NODE_ENV === 'deploy'){
+      return {
+        output: {
+          publicPath: 'https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages'
+        }
+      }
+    }else{
+      return {
+        resolve: {
+          alias: {
+            'public': './public' 
+          }
+        }
       }
     }
   }
