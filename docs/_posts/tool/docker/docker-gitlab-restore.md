@@ -28,7 +28,7 @@ $ docker-compose up
 ```
 而此刻，等待我的却是，无尽的无尽。
 
-![gitaly cant up](/docker/docker_gitlab_restore/01.png)
+![gitaly cant up](~public/docker/docker_gitlab_restore/01.png)
 
 有个 `gitaly` 服务启动失败！
 
@@ -49,7 +49,7 @@ $ docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 
 依然启动不了 `gitaly` 服务，而带来的后果，就是仓库页面数据读取的失败。 
 
-![gitlab 503](/docker/docker_gitlab_restore/02.png)
+![gitlab 503](~public/docker/docker_gitlab_restore/02.png)
 
 其他页面功能正常，仓库页面访问返回 `503`。
 
@@ -79,7 +79,7 @@ $ docker rmi -f `docker images | grep '<none>' | awk '{print $3}'`
 
 仓库页面已经可以打开了，除了代码仓库显示为空仓库，其他数据也可以读取了。
 
-![空仓库](/docker/docker_gitlab_restore/03.png)
+![空仓库](~public/docker/docker_gitlab_restore/03.png)
 
 执行 `ls -a`，大家都摊牌，别藏着掖着了：
 ```bash
@@ -112,8 +112,8 @@ $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
 
 但是，很不幸，出现权限问题。
 
-![还原出现权限问题](/docker/docker_gitlab_restore/04.png)
-![还原失败](/docker/docker_gitlab_restore/05.png)
+![还原出现权限问题](~public/docker/docker_gitlab_restore/04.png)
+![还原失败](~public/docker/docker_gitlab_restore/05.png)
 
 ### 精准夺权
 
@@ -123,7 +123,7 @@ $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
 
 把备份文件 `tar` 包拖出来，解压到 `backup` 文件夹，修改权限到 `root` 用户组与 `root` 所有者。
 
-![备份文件解压](/docker/docker_gitlab_restore/06.png)
+![备份文件解压](~public/docker/docker_gitlab_restore/06.png)
 
 修改 `backup` 文件夹里面所有文件为用户组 `root`
 ```bash
@@ -143,7 +143,7 @@ $ cd /app/docker/gitlab
 $ docker-compose run --rm gitlab app:rake gitlab:backup:restore
 ```
 
-![还原过程](/docker/docker_gitlab_restore/07.png)
+![还原过程](~public/docker/docker_gitlab_restore/07.png)
 
 虽然还有报权限错误，因为 `tar.gz` 包里面没有夺权，但是问题不大。
 
@@ -157,4 +157,4 @@ $ docker-compose up
 
 柳暗花明又一村，我胡汉三又回来了！
 
-![启动成功](/docker/docker_gitlab_restore/08.png)
+![启动成功](~public/docker/docker_gitlab_restore/08.png)

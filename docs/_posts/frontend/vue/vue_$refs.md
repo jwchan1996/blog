@@ -12,7 +12,7 @@ tags:  #标签
 
 功能界面如图所示：
 
-![界面](/vue/vue_$refs/vue_$refs_01.png)
+![界面](~public/vue/vue_$refs/vue_$refs_01.png)
 
 需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。  
 代码如下：
@@ -117,7 +117,7 @@ methods: {
 ```
 然后点击关闭按钮时，可以看到控制台报错：
 
-![报错](/vue/vue_$refs/vue_$refs_02.png)
+![报错](~public/vue/vue_$refs/vue_$refs_02.png)
 
 提示不能获取未定义的属性，则表明该 `dom` 元素节点获取不对。
 
@@ -125,7 +125,7 @@ methods: {
 
 后面经过一番折腾，发现以上代码 `this.$refs[videoStr]` 获取的是一个 `ref` 等于 `videoStr` （此处为变量）的 `dom` 节点数组，不是单个 `dom` 节点元素！
 
-![数组节点](/vue/vue_$refs/vue_$refs_03.png)
+![数组节点](~public/vue/vue_$refs/vue_$refs_03.png)
 
 至此，踩坑这个之后，就明白了为什么获取不到对应的 `dom` 元素了。
 
@@ -188,7 +188,7 @@ methods: {
 ```
 官网概念：
 
-![官网概念](/vue/vue_$refs/vue_$refs_04.png)
+![官网概念](~public/vue/vue_$refs/vue_$refs_04.png)
 
 总结：
 

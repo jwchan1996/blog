@@ -18,7 +18,7 @@ tags:  #标签
 ### fork
 将项目 `fork` 到自己的仓库中，以 `vue-clicli` 为例
 
-![](/git/git_pull_request/fork.png)
+![](~public/git/git_pull_request/fork.png)
 
 进入到 `vue-clicli` 的 `Github` 项目中，点击右上角的 `fork`，稍等片刻，此项目便会出现在自己的仓库中
 
@@ -34,7 +34,7 @@ $ git clone https://github.com/acgzone/vue-clicli.git
 
 用 `git remote -v` 命令，可以看到此时只与自己的远程仓库建立了连接
 
-![](/git/git_pull_request/git_remote_-v_1.png)
+![](~public/git/git_pull_request/git_remote_-v_1.png)
 
 还需要与上游建立连接，这里上游指的是一开始 `fork` 的那个项目源，以 `vue-clicli` 为例，执行如下命令：
 ```bash
@@ -42,7 +42,7 @@ $ git remote add upstream https://github.com/acgzone/vue-clicli.git
 ```
 再用 `git remote -v` 可以看到
 
-![](/git/git_pull_request/git_remote_-v_2.png)
+![](~public/git/git_pull_request/git_remote_-v_2.png)
 
 接下来就能创建分支了
 ### 创建分支
@@ -57,7 +57,7 @@ $ git checkout -b dev
 ### 提交
 可以先使用 `git status` 来查看有哪些文件被修改了
 
-![](/git/git_pull_request/git_status.png)
+![](~public/git/git_pull_request/git_status.png)
 
 然后再 `git add .` 将要提交的文件都加上  
 
@@ -69,7 +69,7 @@ $ git checkout -b dev
 ## 提交 PR
 找到 `New pull request`，需要注意的是 `compare` 处选择刚才提交上来的分支 ( 当前示例的是代码提交在主分支 `master` 的情况 )
 
-![](/git/git_pull_request/compare.png)
+![](~public/git/git_pull_request/compare.png)
 
 然后点 `Create pull request`  
 
@@ -85,19 +85,19 @@ $ git checkout -b dev
 
 先 `git fetch upstream`
 
-![](/git/git_pull_request/git_fetch_upstream.png)
+![](~public/git/git_pull_request/git_fetch_upstream.png)
 
 再 `git rebase upstream/master`
 
-![](/git/git_pull_request/git_rebase_upstream+master.png)
+![](~public/git/git_pull_request/git_rebase_upstream+master.png)
 
 再 `git push origin master`  
 
-![](/git/git_pull_request/git_push_origin_master.png)
+![](~public/git/git_pull_request/git_push_origin_master.png)
 
 `push` 完后，远程仓库便可看到你的 `branch` 版本和 `master` 分支一致了，否则会显示与 `master` 相差了多少次 `commit`  
 
-![](/git/git_pull_request/branch_commit.png)![](/git/git_pull_request/branch_commit_even.png)
+![](~public/git/git_pull_request/branch_commit.png)![](~public/git/git_pull_request/branch_commit_even.png)
 
 🍭 注：此处 `branch` 指的是你自己的远程仓库，`master` 指的是 `fork` 的项目的仓库  
 

@@ -44,17 +44,17 @@ export default request
 ```
 执行功能请求的时候，控制台 `XHR` 请求如下：
 
-![等待options](/axios/axios_options/axios_options_01.png)
+![等待options](~public/axios/axios_options/axios_options_01.png)
 
 一直处于 `pending` 状态，即等待中状态。
 
-![等待options](/axios/axios_options/axios_options_02.png)
+![等待options](~public/axios/axios_options/axios_options_02.png)
 
 `thinkjs` 控制台显示请求时间如下：
 
-![options请求处理时间](/axios/axios_options/axios_options_03.png)
+![options请求处理时间](~public/axios/axios_options/axios_options_03.png)
 
-![post请求处理时间](/axios/axios_options/axios_options_04.png)
+![post请求处理时间](~public/axios/axios_options/axios_options_04.png)
 
 👎 可以看到，`OPTIONS` 请求占用了差不多两分钟的时间之后，才进行 `POST` 请求，简直不能忍！！！
 
@@ -121,10 +121,10 @@ HTTP 的头信息不超出以下几种字段：
 
 简单粗暴~
 
-![修改header](/axios/axios_options/axios_options_05.png)
+![修改header](~public/axios/axios_options/axios_options_05.png)
 
 再次请求接口，发现 `OPTIONS` 请求已经没有了，直接 `POST` 请求响应速度杠杠的！
 
-![post请求成功](/axios/axios_options/axios_options_06.png)
+![post请求成功](~public/axios/axios_options/axios_options_06.png)
 
 `END`
