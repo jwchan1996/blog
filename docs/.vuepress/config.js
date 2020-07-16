@@ -148,10 +148,7 @@ module.exports = {
   // },
   configureWebpack: () => {
     const NODE_ENV = process.env.NODE_ENV
-    console.log('..........................')
-    console.log(NODE_ENV)
-    console.log('..........................')
-    if(NODE_ENV === 'deploy'){
+    if(NODE_ENV === 'production'){
       return {
         output: {
           publicPath: 'https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages'
