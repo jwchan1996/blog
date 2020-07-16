@@ -229,7 +229,7 @@ $ docker-compose up
 
 英文不好的同学可以进入个人设置那里设置 `language` 为简体中文。
 
-![设置语言](/docker/docker_deploy_github/01.png)
+![设置语言](/docker/docker_deploy_gitlab/01.png)
 
 ### 注册runner
 
@@ -239,7 +239,7 @@ $ docker-compose up
 
 下面以注册共享 `runner` 为例：
 
-![runner列表](/docker/docker_deploy_github/02.png)
+![runner列表](/docker/docker_deploy_gitlab/02.png)
 
 比如
 1. 进入 `runner` 容器
@@ -284,13 +284,13 @@ alpine:latest
 
 注册成功后会在 `runner` 容器 `~/etc/gitlab-runner/` 目录下生成 `config.toml` 配置文件，这时候就可以在 `gitlab` 的管理页面中看到激活的 `runner`
 
-![激活的runner](/docker/docker_deploy_github/03.png)
+![激活的runner](/docker/docker_deploy_gitlab/03.png)
 
 然后，对 `runner` 进行修改，勾选 `runner 可以选择无标签的项目`（默认是同样标签的项目才能使用对应标签的 `runner`）。这样，`runner` 就可以变为共享 `runner` 了。
 
 当我们需要专门为某个项目跑的 `runner` 时，那就不需要勾选 `runner` 可选择无标签选项，在下面配置添加 `runner` 服务的项目保存即可。
 
-![配置runner共享](/docker/docker_deploy_github/04.png)
+![配置runner共享](/docker/docker_deploy_gitlab/04.png)
 
 ## 可持续集成/部署
 
@@ -300,7 +300,7 @@ alpine:latest
 
 `gitlab` 默认开启 `auto devops` 功能，如果没有 `.gitlab-ci.yml` 文件，则会自动运行 `auto devops`，如果没有配置 `Auto DevOps` 功能与 `Kubernetes` 集成的话，建议关闭默认的 `auto devops` 功能。
 
-![关闭默认](/docker/docker_deploy_github/05.png)
+![关闭默认](/docker/docker_deploy_gitlab/05.png)
 
 ### .gitlab-ci.yml
 
@@ -339,9 +339,9 @@ deploying:
 
 当我们提交我们的代码后，`gitlab` 会自动根据 `.gitlab-ci.yml` 的配置运行 `runner`。
 
-![提交代码](/docker/docker_deploy_github/06.png)
+![提交代码](/docker/docker_deploy_gitlab/06.png)
 
-![运行通过](/docker/docker_deploy_github/07.png)
+![运行通过](/docker/docker_deploy_gitlab/07.png)
 
 这样我们就实现自动化集成与部署了，大大的提高了我们的开发效率。
 
@@ -363,7 +363,7 @@ gitlab_id_rsa.pub
 
 打开 `pub` 后缀的公匙，复制粘贴到 `gitlab` 用户设置，保存即可。
 
-![身份认证](/docker/docker_deploy_github/08.png)
+![身份认证](/docker/docker_deploy_gitlab/08.png)
 
 在对 `gitlab` 仓库使用 `git` 命令的时候，如果出现提示没有权限的话，多半是因为 `git` 混淆了 `github` 与 `gitlab` 的 `ssh` 密钥，解决方法看下一步。
 
