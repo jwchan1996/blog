@@ -136,6 +136,15 @@ module.exports = {
           ]
         }
       ],
+      '/_posts/other/': [
+        {
+          title: 'Other',
+          collapsable: true, 
+          children: [
+            { title: 'Vuepress 使用 CDN 优化 gh-pages 加载速度', path:'/_posts/other/vuepress_gh-pages_cdn'}
+          ]
+        }
+      ],
     },
     displayAllHeaders: true, // 默认值：false
     lastUpdated: '上次更新', // string | boolean
