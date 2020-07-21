@@ -54,8 +54,8 @@ tags:  #标签
 
 <svg width="300" height="100">
   <circle cx="30"  cy="50" r="25" />
-  <circle cx="90"  cy="50" r="25" class="red" />
-  <circle cx="150" cy="50" r="25" class="fancy" />
+  <circle cx="90"  cy="50" r="25" style="fill: red;" class="red" />
+  <circle cx="150" cy="50" r="25" style="fill: none; stroke: black; stroke-width: 3pt;" class="fancy" />
 </svg>
 
 <p>上面的代码定义了三个圆。circle 标签的 cx、cy、r 属性分别为横坐标、纵坐标和半径，单位为像素。坐标都是相对于 svg 画布的左上角原点。</p>
