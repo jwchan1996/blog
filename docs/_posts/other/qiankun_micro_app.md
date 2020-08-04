@@ -463,7 +463,7 @@ module: {
       options: {
         limit: 10000,
         name: utils.assetsPath("fonts/[name].[hash:7].[ext]"),
-        publicPath: process.env.NODE_ENV === 'production' ? '//192.168.2.192:7101' : ''
+        publicPath: process.env.NODE_ENV === 'production' ? '//192.168.2.192:7100' : ''
       }
     }
   ]
