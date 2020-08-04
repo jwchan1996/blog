@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [【2020-08-04】qiankun 微前端应用实践与部署](/_posts/other/qiankun_micro_app.html)
 - [【2020-07-20】SVG 基础](/_posts/other/svg.html)
 - [【2020-07-16】Vuepress 使用 CDN 优化 gh-pages 加载速度](/_posts/other/vuepress_gh-pages_cdn.html)
 - [【2020-07-15】docker 访问外部 https 的数字证书验证问题](/_posts/tool/docker/docker-call-https.html)
