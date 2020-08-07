@@ -143,7 +143,8 @@ module.exports = {
           children: [
             { title: 'Vuepress 使用 CDN 优化 gh-pages 加载速度', path:'/_posts/other/vuepress_gh-pages_cdn'},
             { title: 'SVG 基础', path:'/_posts/other/svg'},
-            { title: 'qiankun 微前端应用实践与部署', path:'/_posts/other/qiankun_micro_app'}
+            { title: 'qiankun 微前端应用实践与部署', path:'/_posts/other/qiankun_micro_app'},
+            { title: 'qiankun 微前端应用实践与部署（二）', path:'/_posts/other/qiankun_micro_app2'},
           ]
         }
       ],
