@@ -59,6 +59,14 @@ this.$router.push({
 }
 ```
 
+路由切换代码修改为：
+
+```javascript
+this.$router.push({
+  path: '/micro/live'
+})
+```
+
 这样的话，主应用路由切换后的 `url` 就能命中子应用的 `activeRule` 了。
 
 同时，子应用也需要将路由模式设置为 `hash` 模式，否则，会出现在子应用切换自身路由时，改变主应用 `hash` 路由的情况。比如子应用切换自身路由 `/about`，此时 `url` 会变成 `http://localhost:8889/about/#/micro/live`，导致路由命中失败。我们期望的 `url` 是 `http://localhost:8889/#/micro/live/about`。
