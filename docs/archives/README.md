@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [【2020-08-14】qiankun 微前端应用实践与部署（三）](/_posts/other/qiankun_micro_app3.html)
 - [【2020-08-07】qiankun 微前端应用实践与部署（二）](/_posts/other/qiankun_micro_app2.html)
 - [【2020-08-04】qiankun 微前端应用实践与部署](/_posts/other/qiankun_micro_app.html)
 - [【2020-07-20】SVG 基础](/_posts/other/svg.html)
