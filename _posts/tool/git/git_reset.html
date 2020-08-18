@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git 撤销操作 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.14875557.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.a8959d89.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.d42a5eb6.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.d049d47b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.3645958d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.baed41df.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.ca687cd7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.17655dae.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.13b536c6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.411d4e8f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.5a4bb4d7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.8ec6c381.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.fdfa2625.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.db819ab6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.4f406425.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.b5e0b364.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.6082d22a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.82b2dea7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.c7f70afd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.ba88a519.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.77c9a01c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.4795e776.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.6e84e80a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.08a04831.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.67121ab4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.a24b076f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.0631f869.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.01abc2ac.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.23b7fa7b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.39181676.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.a957bb7b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.16c7c118.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.28bb7fd3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.ff4958d1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.a6be958a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.dd7e38b5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.d569ec1b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.b789c805.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.b281eb60.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.3b51817c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.f67d118d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.4991b8c3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.45a7db8f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.1b84cb8a.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link router-link-active">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link router-link-active">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Git</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/git/git_command.html" class="sidebar-link">Git 代码托管</a></li><li><a href="/_posts/tool/git/git_pull_request.html" class="sidebar-link">使用 git 向开源项目提交 pr</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#pull-request-是什么" class="sidebar-link">Pull Request 是什么</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#具体流程" class="sidebar-link">具体流程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#fork" class="sidebar-link">fork</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#clone" class="sidebar-link">clone</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#创建分支" class="sidebar-link">创建分支</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#修改代码" class="sidebar-link">修改代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#提交" class="sidebar-link">提交</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#提交-pr" class="sidebar-link">提交 PR</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_pull_request.html#关于-check-不通过的问题" class="sidebar-link">关于 check 不通过的问题</a></li></ul></li><li><a href="/_posts/tool/git/git_commit_msg.html" class="sidebar-link">版本库提交信息规范与自动验证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#版本库提交信息规范" class="sidebar-link">版本库提交信息规范</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#type" class="sidebar-link">type</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#scope" class="sidebar-link">scope</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#subject" class="sidebar-link">subject</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#issue-id-and-pr-id" class="sidebar-link">issueid and prid</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_commit_msg.html#自动验证提交信息规范" class="sidebar-link">自动验证提交信息规范</a></li></ul></li><li><a href="/_posts/tool/git/git_reset.html" aria-current="page" class="active sidebar-link">Git 撤销操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_reset.html#git-文件恢复" class="sidebar-link">git 文件恢复</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_reset.html#git-add-撤销" class="sidebar-link">git add 撤销</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_reset.html#git-commit-撤销" class="sidebar-link">git commit 撤销</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_reset.html#git-commit-信息修改" class="sidebar-link">git commit 信息修改</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/git/git_reset.html#git-push-撤销" class="sidebar-link">git push 撤销</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git-撤销操作"><a href="#git-撤销操作" class="header-anchor">#</a> Git 撤销操作</h1> <p>我们在使用 <code>git</code> 管理代码的时候，在步骤内经常会出现一些不符合规范或错误的提交，比如在 <code>git add</code>，<code>git commit</code>，<code>git push</code> 操作的时候，这时候就需要做撤销相关操作的处理，再进行合乎规范以及正确的代码提交。</p> <h2 id="git-文件恢复"><a href="#git-文件恢复" class="header-anchor">#</a> git 文件恢复</h2> <p>当我们对某个文件进行了代码修改之后，还没有进行 <code>git add</code> 操作，但是我们意识到不应该修改这个文件的时候，可以使用命令 <code>git checkout -- &lt;file&gt;</code> 使文件恢复到到上一次提交时的样子。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> checkout -- src/render/VueRender.js
+</code></pre></div><h2 id="git-add-撤销"><a href="#git-add-撤销" class="header-anchor">#</a> git add 撤销</h2> <p>当已经进行了 <code>git add</code> 操作，想要撤销 <code>git add</code> 操作。</p> <p><code>HEAD</code> 代表当前版本，<code>HEAD^</code> 代表前一个版本，<code>HEAD^^</code> 代表前两个版本，以此类推。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 全部撤销</span>
+$ <span class="token function">git</span> reset HEAD
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_reset_HEAD.12d1ae2e.png" alt="git_reset_HEAD.png"></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 指定文件撤销 git reset HEAD &lt;file&gt;，文件名可通过 git status 获取。</span>
+$ <span class="token function">git</span> reset HEAD src/render/VueRender.js
+</code></pre></div><h2 id="git-commit-撤销"><a href="#git-commit-撤销" class="header-anchor">#</a> git commit 撤销</h2> <p>当已经进行了 <code>git add</code>，并且 <code>git commit</code>，但是还没有 <code>git push</code>。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 回退到 git add 操作</span>
+$ <span class="token function">git</span> reset --soft HEAD^
+
+<span class="token comment"># 如果进行了 2 次 commit，想都撤回，可以使用以下命令，以此类推</span>
+$ <span class="token function">git</span> reset --soft HEAD^^
+
+<span class="token comment"># 或者使用 HEAD~1，HEAD~2 也可以，以此类推</span>
+$ <span class="token function">git</span> reset --soft HEAD~1
+$ <span class="token function">git</span> reset --soft HEAD~2
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_reset_--soft_HEAD_.3fc4d753.png" alt="git_reset_--soft_HEAD^.png"></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 不保留 `git add` 操作，则需要再进行 git add 回退，共两条命令</span>
+$ <span class="token function">git</span> reset --soft HEAD^
+$ <span class="token function">git</span> reset HEAD
+</code></pre></div><h2 id="git-commit-信息修改"><a href="#git-commit-信息修改" class="header-anchor">#</a> git commit 信息修改</h2> <p>不进行代码变动，<code>git commit</code> 操作之后，<code>git push</code> 操作之前，只修改 <code>git commit</code> 提交的信息内容。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> commit --amend
+</code></pre></div><p>输入命令后，会进入 <code>vim</code> 编辑，修改保存即可。</p> <p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_commit_--amend.7875f728.png" alt="git_commit_--amend.png"></p> <h2 id="git-push-撤销"><a href="#git-push-撤销" class="header-anchor">#</a> git push 撤销</h2> <p>当我们进行了 <code>git add</code>，<code>git commit</code>，<code>git push</code> 等操作后，我们的本地的代码已经同步到远端了。</p> <p>首先我们需要在本地回退版本：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 回退上一个版本</span>
+$ <span class="token function">git</span> reset --hard HEAD^
+</code></pre></div><p>或者查看 <code>commit</code> 的代码版本号，使用指定的版本号进行回退：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> log
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_log.b71beaa2.png" alt="git_log.png"></p> <p>回退到版本号为 <code>840d8a</code> 的版本：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> reser --hard 840d8a
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_reset_--hard_sha1.fd6adf78.png" alt="git_reset_--hard_sha1.png"></p> <p>如果不小心回退错了版本，没关系！<br>
+只要命令窗口没关，向上滑查看版本号，依然可以回到任意版本号。</p> <p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/git_reset_--hard_sha1_2.720f9bca.png" alt="git_reset_--hard_sha1_2.png"></p> <p>当我们回退到我们需要的版本后，剩下的就是同步远端的代码库：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> push -f
+</code></pre></div><p>使用 <code>-f</code> 参数强制推送，即可覆盖远端版本库，使之与本地版本库一致。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">8/18/2020, 11:30:44 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/git/git_commit_msg.html" class="prev">
+        版本库提交信息规范与自动验证
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.14875557.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.a8959d89.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.d42a5eb6.js" defer></script>
+  </body>
+</html>
