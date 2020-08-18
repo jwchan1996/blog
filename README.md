@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [【2020-08-18】Git 撤销操作](https://github.com/jwchan1996/blog/issues/25)
 - [【2020-08-14】qiankun 微前端应用实践与部署（三）](https://github.com/jwchan1996/blog/issues/24)
 - [【2020-08-07】qiankun 微前端应用实践与部署（二）](https://github.com/jwchan1996/blog/issues/22)
 - [【2020-08-04】qiankun 微前端应用实践与部署](https://github.com/jwchan1996/blog/issues/21)

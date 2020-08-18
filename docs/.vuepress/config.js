@@ -113,7 +113,8 @@ module.exports = {
           children: [
             { title: 'Git 代码托管', path:'/_posts/tool/git/git_command'},
             { title: '使用 git 向开源项目提交 pr', path:'/_posts/tool/git/git_pull_request'},
-            { title: '版本库提交信息规范与自动验证', path:'/_posts/tool/git/git_commit_msg'}
+            { title: '版本库提交信息规范与自动验证', path:'/_posts/tool/git/git_commit_msg'},
+            { title: 'Git 撤销操作', path:'/_posts/tool/git/git_reset'}
           ]
         }
       ],
