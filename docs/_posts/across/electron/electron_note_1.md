@@ -21,6 +21,9 @@ tags:  #标签
 2. ant-design-vue UI 框架部分组件失效
 ```
 🔥 播放器使用的是 `vue-video-player`，播放 `rtmp` 流需要使用 `flash` 技术。  
+
+[electron 引用 flash 插件打包示例](https://github.com/jwchan1996/electron-rtmp)
+
 ## 问题解决
 简单记录问题关键
 ```
@@ -39,3 +42,5 @@ tags:  #标签
 原因：flash 加载的安全问题，不允许在 "file://" 协议下加载
 解决：在主线程里起一个 express 服务，使得页面运行在本地的端口服务即可
 ```
+
+[electron 引用 flash 插件打包示例](https://github.com/jwchan1996/electron-rtmp)
