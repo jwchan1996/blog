@@ -39,8 +39,6 @@ tags:  #标签
 ```
 ```
 问题：编译成 pc 客户端后出现 vue-video-player 在即将 ready 这一步卡住
-原因：flash 加载的安全问题，不允许在 "file://" 协议下加载
-解决：在主线程里起一个 express 服务，使得页面运行在本地的端口服务即可
+原因：Chromium 环境下 flash 加载的安全问题，不允许在 "file://" 协议下加载，而打包后的文件默认以 "file://" 协议加载
+解决：在主线程里起一个 express 服务，使得打包后页面文件运行在本地的 http 端口服务即可
 ```
-
-[electron 引用 flash 插件打包示例](https://github.com/jwchan1996/electron-rtmp)

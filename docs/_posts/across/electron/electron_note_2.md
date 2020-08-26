@@ -110,7 +110,9 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-//解决flash本地file不安全问题，express用作本地服务器
+//打包后的文件默认是以 "file://" 协议加载的
+//因为 flash 不允许在 "file://" 协议下加载，为了解决 flash 加载的安全问题
+//使用 express 用作本地服务器，使得页面运行在本地 http 端口服务
 function localServer() {
   let server = express();
   server.use(express.static(__dirname));
@@ -123,9 +125,10 @@ if (process.env.NODE_ENV === "production") {
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
+  // webpack 配置的 dev 服务端口
   ? `http://localhost:9080`
   // : `file://${__dirname}/index.html`
-  //解决flash在file下不安全的问题
+  // 解决 flash 不允许在 "file://" 协议下加载的问题
   : `http://localhost:9080/index.html`
 
 let flashPlugins = process.arch == 'x64' 
