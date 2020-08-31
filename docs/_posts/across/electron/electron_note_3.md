@@ -10,7 +10,9 @@ tags:  #标签
 
 # Electron 踩坑记录（三）
 
-由于理论上默认写死的 `9080` 端口可能出现被占用的情况，所以应用 `http` 服务应该采用自我判断的方式来使得端口保证可用。
+本文内容只适用于使用 `electron-vue` 模板生成的 `electron` 工程，相关配置也是围绕其进行。当然，使用 `vuecli3` 生成的 `electron` 工程也可参考。
+
+对于 `electron-vue` 工程，由于理论上默认写死的 `9080` 端口可能出现被占用的情况，所以应用 `http` 服务应该采用自我判断的方式来使得端口保证可用。
 
 [electron 引用 flash 插件打包示例](https://github.com/jwchan1996/electron-rtmp)
 
