@@ -124,7 +124,8 @@ module.exports = {
           collapsable: true, 
           children: [
             { title: 'Electron 踩坑记录（一）', path:'/_posts/across/electron/electron_note_1'},
-            { title: 'Electron 踩坑记录（二）', path:'/_posts/across/electron/electron_note_2'}
+            { title: 'Electron 踩坑记录（二）', path:'/_posts/across/electron/electron_note_2'},
+            { title: 'Electron 踩坑记录（三）', path:'/_posts/across/electron/electron_note_3'}
           ]
         }
       ],
