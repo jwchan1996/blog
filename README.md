@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [【2020-09-11】Flutter 读取应用资源并显示](https://github.com/jwchan1996/blog/issues/27)
 - [【2020-08-28】Electron 踩坑记录（三）](https://github.com/jwchan1996/blog/issues/26)
 - [【2020-08-18】Git 撤销操作](https://github.com/jwchan1996/blog/issues/25)
 - [【2020-08-14】qiankun 微前端应用实践与部署（三）](https://github.com/jwchan1996/blog/issues/24)

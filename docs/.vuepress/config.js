@@ -118,6 +118,15 @@ module.exports = {
           ]
         }
       ],
+      '/_posts/across/flutter/': [
+        {
+          title: 'Flutter',
+          collapsable: true, 
+          children: [
+            { title: 'Flutter 读取应用资源并显示', path:'/_posts/across/flutter/flutter_load_asset'},
+          ]
+        }
+      ],
       '/_posts/across/electron/': [
         {
           title: 'Electron',
