@@ -13,7 +13,7 @@ tags:  #标签
 
 这样的话，指定的每个 `Asset` （资源）都会被打包在 `APP` 中，并且在 `APP` 运行时可以访问到这些资源。
 
-最常见的 `Asset` 类型就是图片，指定图片资源后既可以在 `APP` 页面使用图片组件加载资源了。
+最常见的 `Asset` 类型就是图片，指定图片资源后即可以在 `APP` 页面使用图片控件加载资源了。
 
 ```yaml
 # pubspec.yaml
@@ -49,7 +49,7 @@ rootBundle.loadString('assets/txt/test.txt').then((data){
 // 测试文字
 ```
 
-因为 `loadString()` 返回的是 `Future<String>`，所以需要用 `then()` 接受返回的 `String` 类型的数据，`Future` 类似于 `ES6` 中的 `Promise`，当异步任务执行完成后会把结果返回给 `then()`。 
+因为 `loadString()` 返回的是 `Future<String>`，所以需要用 `then()` 接受返回的 `String` 类型的数据。`Future` 类似于 `ES6` 中的 `Promise`，当异步任务执行完成后会把结果返回给 `then()`。 
 
 ## 使用 FutureBuilder 控件配合加载资源
 
@@ -57,13 +57,13 @@ rootBundle.loadString('assets/txt/test.txt').then((data){
 
 `FutureBuilder` 有三个子属性，分别是：
 
-- `future` 获取用户异步处理获得数据的代码
+- `future` 异步任务获得数据的代码
 - `initialData` 初始化数据加载
 - `builder` 回调函数，处理异步处理中的快照，即异步处理的每一步状态变化都会触发回调函数
 
 具体回调参数对象的属性可以自行网上查询。
 
-下面是一段配合 `FutureBuilder` 控件实现的加载 `markdown` 文件并使用 `markdown_widget` 包进行解析显示到页面。
+下面是一段配合 `FutureBuilder` 控件实现的加载 `markdown` 文件并使用 `markdown_widget` 包进行解析显示到页面的代码。
 
 同样是需要在 `pubspec.yaml` 进行资源指定，可以使用指定文件夹的形式，当前文件夹的资源都会被放进 `AssetBundle`。
 
