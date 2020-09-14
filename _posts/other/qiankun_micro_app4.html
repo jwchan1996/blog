@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>qiankun 微前端应用实践与部署（四） | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.f4d42a9d.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.471bf99a.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.0d4a5a3b.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.7c8e28d3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.91fb1475.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.17a9b148.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.1b880cc3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.8b1f3123.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.731e8927.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.a9dde55a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.ed75b23f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.1854d7e2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.43904e30.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.31b882b8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.567bc98e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.43d70894.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.544c55cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.3bfc014e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.9ccbd4b8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.f5fd08a7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.cb95cbae.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.043ebbab.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.2c4b705c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.2f14d883.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.f5a1ce95.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.05b7fe03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.4e321ceb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.bce985bd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.b88e169b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.47c02698.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.a5de288a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.14f99e32.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.cc6b250f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.9b6a36fd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.01f0b3f4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.a121cfe2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.e1ae70fc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.aedbbd90.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.fa743cd5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/45.b8f2e6fe.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/46.6d45c3c4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/47.d0df98d8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.ecb65900.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.844e7eb7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.e3c518f6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.c4588b66.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.4a0c9770.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link router-link-active">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link router-link-active">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Other</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/other/vuepress_gh-pages_cdn.html" class="sidebar-link">Vuepress 使用 CDN 优化 gh-pages 加载速度</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/vuepress_gh-pages_cdn.html#优化方案" class="sidebar-link">优化方案</a></li><li class="sidebar-sub-header"><a href="/_posts/other/vuepress_gh-pages_cdn.html#使用-cdn-加速" class="sidebar-link">使用 CDN 加速</a></li><li class="sidebar-sub-header"><a href="/_posts/other/vuepress_gh-pages_cdn.html#配置-vuepress" class="sidebar-link">配置 Vuepress</a></li></ul></li><li><a href="/_posts/other/svg.html" class="sidebar-link">SVG 基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#svg-语法" class="sidebar-link">svg 语法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#svg-标签" class="sidebar-link">svg 标签</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#line-直线" class="sidebar-link">line 直线</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#polyline-折线" class="sidebar-link">polyline 折线</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#rect-矩形" class="sidebar-link">rect 矩形</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#ellipse-椭圆" class="sidebar-link">ellipse 椭圆</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#polygon-多边形" class="sidebar-link">polygon 多边形</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#path-路径" class="sidebar-link">path 路径</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#text-文本" class="sidebar-link">text 文本</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#use-复制一个形状" class="sidebar-link">use 复制一个形状</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#g-分组" class="sidebar-link">g 分组</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#defs-自定义形状" class="sidebar-link">defs 自定义形状</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#pattern-自定义形状" class="sidebar-link">pattern 自定义形状</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#image-插入图片" class="sidebar-link">image 插入图片</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#animate-动画" class="sidebar-link">animate 动画</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#animatetransform-变形" class="sidebar-link">animateTransform 变形</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#javascript-操作" class="sidebar-link">JavaScript 操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#dom-操作" class="sidebar-link">DOM 操作</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#获取-svg-dom" class="sidebar-link">获取 SVG DOM</a></li><li class="sidebar-sub-header"><a href="/_posts/other/svg.html#读取-svg-源码" class="sidebar-link">读取 SVG 源码</a></li></ul></li></ul></li><li><a href="/_posts/other/qiankun_micro_app.html" class="sidebar-link">qiankun 微前端应用实践与部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#主应用" class="sidebar-link">主应用</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#docker-nginx-配置" class="sidebar-link">docker nginx 配置</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#子应用适配框架" class="sidebar-link">子应用适配框架</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#入口文件-main-js" class="sidebar-link">入口文件 main.js</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#router-配置" class="sidebar-link">router 配置</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#子应用打包" class="sidebar-link">子应用打包</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#打包-umd-格式" class="sidebar-link">打包 umd 格式</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app.html#字体图标与-css-背景图片路径问题" class="sidebar-link">字体图标与 css 背景图片路径问题</a></li></ul></li></ul></li><li><a href="/_posts/other/qiankun_micro_app2.html" class="sidebar-link">qiankun 微前端应用实践与部署（二）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#传统部署" class="sidebar-link">传统部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#方式" class="sidebar-link">方式</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#特点" class="sidebar-link">特点</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#docker-部署" class="sidebar-link">docker 部署</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#方式-2" class="sidebar-link">方式</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app2.html#特点-2" class="sidebar-link">特点</a></li></ul></li></ul></li><li><a href="/_posts/other/qiankun_micro_app3.html" class="sidebar-link">qiankun 微前端应用实践与部署（三）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app3.html#关于路由" class="sidebar-link">关于路由</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app3.html#配置子应用路由" class="sidebar-link">配置子应用路由</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app3.html#配置主应用路由" class="sidebar-link">配置主应用路由</a></li></ul></li><li><a href="/_posts/other/qiankun_micro_app4.html" aria-current="page" class="active sidebar-link">qiankun 微前端应用实践与部署（四）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app4.html#解决打包后的-css-背景图片与字体图标路径问题" class="sidebar-link">解决打包后的 css 背景图片与字体图标路径问题</a></li><li class="sidebar-sub-header"><a href="/_posts/other/qiankun_micro_app4.html#结合-nginx-配置资源引用路径代理转发" class="sidebar-link">结合 nginx 配置资源引用路径代理转发</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="qiankun-微前端应用实践与部署（四）"><a href="#qiankun-微前端应用实践与部署（四）" class="header-anchor">#</a> qiankun 微前端应用实践与部署（四）</h1> <p>一般情况下，我们对应用进行配置打包，要对图片字体等资源进行下面配置，使得资源路径正常加载。但是，在微前端模式下，子应用打包部署后，往往会出现子应用 <code>css</code> 文件里面引入资源路径加载失败的问题，下面就让我们来探究一下。</p> <p>👉 独立应用下的 <code>url-loader</code> 配置：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vue-cli 2 写法</span>
+
+module<span class="token operator">:</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.(png|jpe?g|gif|svg)(\?.*)?$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+        <span class="token comment">// 此处的 utils.assetsPath 是函数，返回根据配置项拼接好的路径，如 static/fonts/[name].[hash:7].[ext] </span>
+        name<span class="token operator">:</span> utils<span class="token punctuation">.</span><span class="token function">assetsPath</span><span class="token punctuation">(</span><span class="token string">&quot;img/[name].[hash:7].[ext]&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+        <span class="token comment">// 此处的 utils.assetsPath 是函数，返回根据配置项拼接好的路径，如 static/fonts/[name].[hash:7].[ext] </span>
+        name<span class="token operator">:</span> utils<span class="token punctuation">.</span><span class="token function">assetsPath</span><span class="token punctuation">(</span><span class="token string">&quot;fonts/[name].[hash:7].[ext]&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>因为 <code>url-loader</code> 的 <code>options</code> 项的属性 <code>publicPath</code> 属性默认是 <code>''</code>，表示相对路径，即打包出来的资源引用 <code>url</code> 都会加上相对路径寻找 <code>static</code> 静态资源入口，比如：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* static/css/app.e99e9aae.css */</span>
+
+<span class="token selector">background-header</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>../../static/img/bg_header.790a94f4.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>所有应用编译打包部署后，当主应用加载子应用，子应用加载自身的 <code>css</code> 文件样式时，由于 其对应的 css 文件里面的图片 <code>url</code> 引用是相对路径，会出现子应用的资源相对路径拼接主应用 <code>domain</code> 的情况，即子应用的 <code>../../static/img/bg_header.790a94f4.png</code> 会在主应用的 <code>domain</code> 下进行资源的寻找，导致加载失败 <code>404</code> 的情况。</p> <h2 id="解决打包后的-css-背景图片与字体图标路径问题"><a href="#解决打包后的-css-背景图片与字体图标路径问题" class="header-anchor">#</a> 解决打包后的 css 背景图片与字体图标路径问题</h2> <p>如果项目有用到第三方库，比如 <code>element-ui</code>，那么就更有必要进行处理了。因为 <code>element-ui</code> 的字体图标是在 <code>css</code> 里面引入的，还有相关背景图片的引入也是在 <code>css</code> 里，所以需要配置 <code>webpack</code> 的 <code>url-loader</code>，生产模式情况下直接指定资源前缀，使之成为绝对路径。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token operator">:</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.(png|jpe?g|gif|svg)(\?.*)?$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> utils<span class="token punctuation">.</span><span class="token function">assetsPath</span><span class="token punctuation">(</span><span class="token string">&quot;img/[name].[hash:7].[ext]&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment">//这里 192.168.2.192：7100 是子应用部署地址</span>
+        publicPath<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'//192.168.2.192:7100'</span> <span class="token operator">:</span> <span class="token string">''</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> <span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> utils<span class="token punctuation">.</span><span class="token function">assetsPath</span><span class="token punctuation">(</span><span class="token string">&quot;fonts/[name].[hash:7].[ext]&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        publicPath<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'//192.168.2.192:7100'</span> <span class="token operator">:</span> <span class="token string">''</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样配置后，打包出来的 css 样式文件会变成：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* static/css/app.e99e9aae.css */</span>
+
+<span class="token selector">background-header</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>//192.168.2.192:7100/static/img/bg_header.790a94f4.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>资源是绝对路径，就不会出现上面子应用资源加载失败的情况。</p> <p>但是，这种前端配置文件写死路径的做法灵活性并不好，比如不能做到编译一次，任意部署，因为路径写死，所以如果需要部署到其他服务器的话，就需要重新编译了。</p> <p>接下来，讲的是实现灵活部署的方案。</p> <h2 id="结合-nginx-配置资源引用路径代理转发"><a href="#结合-nginx-配置资源引用路径代理转发" class="header-anchor">#</a> 结合 nginx 配置资源引用路径代理转发</h2> <p>我们在只编译打包一次前端应用的前提下，为了实现灵活部署，需要借助 <code>nginx</code> 来实现。</p> <p>下面以 <code>vue-cli 3</code> 的配置为例，与 <code>vue-cli 2</code> 只是写法上的区别，其他都一样。</p> <blockquote><p>不过 vue-cli 3 对 webpack 配置进行了抽象，要理解配置中包含的东西会比较困难，尤其是当我们需要重写或者调整配置的时候，可以参考 <a href="https://cli.vuejs.org/zh/guide/webpack.html#%E5%AE%A1%E6%9F%A5%E9%A1%B9%E7%9B%AE%E7%9A%84-webpack-%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener noreferrer">审查项目的 webpack 配置<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">chainWebpack</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> 
+
+    config<span class="token punctuation">.</span>module
+      <span class="token punctuation">.</span><span class="token function">rule</span><span class="token punctuation">(</span><span class="token string">&quot;fonts&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token regex">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">loader</span><span class="token punctuation">(</span><span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">options</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">4096</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> <span class="token string">'static/fonts/[name].[hash:8].[ext]'</span><span class="token punctuation">,</span>
+        publicPath<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'/live'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    config<span class="token punctuation">.</span>module
+      <span class="token punctuation">.</span><span class="token function">rule</span><span class="token punctuation">(</span><span class="token string">&quot;images&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token regex">/\.(png|jpe?g|gif|webp)(\?.*)?$/</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">loader</span><span class="token punctuation">(</span><span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">options</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        limit<span class="token operator">:</span> <span class="token number">4096</span><span class="token punctuation">,</span>
+        <span class="token comment">// name 代表 url-loader 会将资源写到 static/fonts/ 下</span>
+        name<span class="token operator">:</span> <span class="token string">'static/img/[name].[hash:8].[ext]'</span><span class="token punctuation">,</span>
+        <span class="token comment">// publicPath 代表资源引入 url 会生成 /live 的前缀，比如 /live/static/img/bg_header.790a94f4.png</span>
+        publicPath<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'/live'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>假设主应用部署地址是 <code>192.168.2.192</code>，子应用的部署地址是 <code>192.168.2.192:7102</code>。</p> <p>打包编译部署后，子应用的 css 文件里面的图片资源引用 <code>url</code> 如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* static/css/app.e99e9aae.css */</span>
+
+<span class="token selector">background-header</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/live/static/img/bg_header.790a94f4.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>主应用加载子应用的时候，子应用的资源拼接主应用 <code>domian</code> 后，子应用的 <code>css</code> 文件里面的图片资源加载路径 <code>url</code> 就会变成：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token number">192.168</span>.2.192/live/static/img/bg_header.790a94f4.png
+</code></pre></div><p>此时的关键就是要访问到子应用的资源，而不是去主应用资源目录去找。</p> <p>所以我们采用 <code>nginx</code> 路径代理转发端口的方案，当应用访问 <code>192.168.2.192/live</code> 这个路径时，经过 <code>nginx</code> 进行路径代理转发配置，转发到子应用端口。</p> <p>配置 <code>nginx</code> 代理规则：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># nginx.conf</span>
+
+http <span class="token punctuation">{</span>
+  server <span class="token punctuation">{</span>
+    listen	<span class="token number">80</span><span class="token punctuation">;</span>
+    server_name <span class="token number">192.168</span>.2.192<span class="token punctuation">;</span>
+  
+    location /live <span class="token punctuation">{</span>
+      proxy_pass  <span class="token number">127.0</span>.0.1:7102
+
+      try_files <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.html<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>此时真正访问的资源路径（子应用资源路径）是：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token number">192.168</span>.2.192:7102/static/img/bg_header.790a94f4.png
+</code></pre></div><p>👋 至此，通过修改配置 <code>url-loader</code> 的 <code>publicPath</code> 以及配置 <code>nginx</code> 的路径代理转发，就可以实现编译打包一次，到处部署的目的。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/14/2020, 9:57:23 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/other/qiankun_micro_app3.html" class="prev">
+        qiankun 微前端应用实践与部署（三）
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.f4d42a9d.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.471bf99a.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.0d4a5a3b.js" defer></script>
+  </body>
+</html>
