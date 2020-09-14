@@ -1,5 +1,6 @@
 <h2 align="center">🌈 Other</h2>
 
+- [qiankun 微前端应用实践与部署（四）](/_posts/other/qiankun_micro_app4.html)
 - [qiankun 微前端应用实践与部署（三）](/_posts/other/qiankun_micro_app3.html)
 - [qiankun 微前端应用实践与部署（二）](/_posts/other/qiankun_micro_app2.html)
 - [qiankun 微前端应用实践与部署](/_posts/other/qiankun_micro_app.html)
