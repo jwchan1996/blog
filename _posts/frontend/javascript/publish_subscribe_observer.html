@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>发布订阅模式和观察者模式 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.d50d2845.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.471bf99a.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.3d03b710.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.bdebfceb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.6fdc82c4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.13d86353.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.1b880cc3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.795e4364.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.4c90c2ad.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.a4e60824.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.ed75b23f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.1854d7e2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.43904e30.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.31b882b8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.567bc98e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.43d70894.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.544c55cc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.3bfc014e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.9ccbd4b8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.f5fd08a7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.cb95cbae.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.043ebbab.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.da2cd034.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.42d5c04b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.f5a1ce95.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.05b7fe03.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.10146665.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.6560cda7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.0912ff13.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.eda49fcb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.90908854.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.f1ba8569.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.6640e3cd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.e0c35cdc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.6bc08d83.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.f76d9644.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.8d3e278b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.ad26bc74.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.9d2df65b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/45.48c2cb67.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/46.631c58a7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/47.b24402af.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/48.95803815.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.8957b1e6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.64e8f3f6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.41382b89.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.c4588b66.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.46ad2272.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/frontend/javascript/js_call_apply_bind.html" class="sidebar-link">JavaScript 中的 call()、apply()、bind() 的用法</a></li><li><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html" class="sidebar-link">JS 模拟实现 call、apply、bind</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现call" class="sidebar-link">实现call</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现apply" class="sidebar-link">实现apply</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html#实现bind" class="sidebar-link">实现bind</a></li></ul></li><li><a href="/_posts/frontend/javascript/publish_subscribe_observer.html" aria-current="page" class="active sidebar-link">发布订阅模式和观察者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/publish_subscribe_observer.html#发布-订阅模式" class="sidebar-link">发布/订阅模式</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/publish_subscribe_observer.html#观察者模式" class="sidebar-link">观察者模式</a></li><li class="sidebar-sub-header"><a href="/_posts/frontend/javascript/publish_subscribe_observer.html#总结" class="sidebar-link">总结</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="发布订阅模式和观察者模式"><a href="#发布订阅模式和观察者模式" class="header-anchor">#</a> 发布订阅模式和观察者模式</h1> <h2 id="发布-订阅模式"><a href="#发布-订阅模式" class="header-anchor">#</a> 发布/订阅模式</h2> <ul><li><strong>订阅者</strong></li> <li><strong>发布者</strong></li> <li><strong>事件中心</strong></li></ul> <blockquote><p>我们假定，存在一个“事件中心”，某个任务执行完成，就向事件中心“发布”（publish）一个事件，其他任务可以向事件中心“订阅”（subscribe）这个事件，从而知道什么时候自己可以执行。这就叫做“发布/订阅模式”（publish-subscribe pattern）</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// vue 实现的中央事件总线</span>
+
+<span class="token keyword">let</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// { 'dataChange': [fn1, fn2], 'handleData: [fn]' }</span>
+<span class="token comment">// 注册事件（订阅消息）</span>
+vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'dataChange'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'dataChange1'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'dataChange'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'dataChange2'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 触发事件（发布消息）</span>
+vm<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'dataChange'</span><span class="token punctuation">)</span>
+</code></pre></div><p>下面实现一个发布订阅：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 手写实现发布订阅</span>
+
+<span class="token comment">// 事件触发器</span>
+<span class="token keyword">class</span> <span class="token class-name">EventEmitter</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token comment">// { 'click': [fn1, fn2], 'change: [fn]' }</span>
+        <span class="token comment">// 用一个对象来储存事件订阅信息，同一个事件可被订阅多次，故事件的回调函数用数组储存</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>subs <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 注册事件</span>
+    <span class="token function">$on</span> <span class="token punctuation">(</span><span class="token parameter">eventType<span class="token punctuation">,</span> handler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 需要找到储存事件订阅信息对象里是否有当前事件，有则获取已有数组，否则赋值为空数组</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">[</span>eventType<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">[</span>eventType<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>   
+        <span class="token comment">// 新注册事件处理函数</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">[</span>eventType<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>handler<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 触发事件</span>
+    <span class="token function">$emit</span> <span class="token punctuation">(</span><span class="token parameter">enventType</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 先判断是否有当前事件，有则执行，没有则不作处理</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">[</span>eventType<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">// 遍历数组调用事件函数</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">[</span>eventType<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">handler</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> em <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+em<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click1'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+em<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click2'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+em<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="观察者模式"><a href="#观察者模式" class="header-anchor">#</a> 观察者模式</h2> <ul><li><strong>观察者（订阅者）</strong>-- Watcher
+<ul><li>update()： 当事件发生时，具体要做的事情</li></ul></li> <li><strong>目标（发布者）</strong>-- Dep
+<ul><li>subs 数组： 储存所有观察者</li> <li>addSub()： 添加观察者</li> <li>notify()： 当事件发生时，调用所有观察者的 update() 方法</li></ul></li> <li><strong>没有事件中心</strong></li></ul> <blockquote><p>关于为什么目标（发布者）用 Dep 表示，是因为 Dep 是 dependence（依赖）的缩写。因为 Watcher 观察者（订阅者）需要依赖 Dep 才能了解数据的变化，没有 Dep，Watcher 根本不可能知道数据发生了变化，当有数据变化发生时，Dep 会通知 Watcher。</p></blockquote> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 发布者-目标</span>
+<span class="token keyword">class</span> <span class="token class-name">Dep</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 记录所有的订阅者</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>subs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 添加订阅者</span>
+    <span class="token function">addSub</span> <span class="token punctuation">(</span><span class="token parameter">sub</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 在添加之前，要确保订阅者存在且具有update方法</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sub <span class="token operator">&amp;&amp;</span> sub<span class="token punctuation">.</span>update<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>sub<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 发布通知</span>
+    <span class="token function">notify</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 找到所有的订阅者并调用它们的update方法</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>subs<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">sub</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            sub<span class="token punctuation">.</span><span class="token function">updatre</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 订阅者-观察者</span>
+<span class="token keyword">class</span> <span class="token class-name">Watcher</span> <span class="token punctuation">{</span>
+    <span class="token function">update</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'update'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> dep <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dep</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> watcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+dep<span class="token punctuation">.</span><span class="token function">addSub</span><span class="token punctuation">(</span>watcher<span class="token punctuation">)</span>
+
+dep<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <ul><li><strong>观察者模式</strong> 是由具体目标调度，比如当事件触发，Dep 就会去调用观察者的方法，所以观察者模式的订阅者和发布者之间是存在依赖的</li> <li><strong>发布/订阅模式</strong> 由统一调度中心（事件中心）调用，因此发布者和订阅者不需要知道对方的存在</li></ul> <blockquote><p>事件中心隔离了发布者和订阅者，去除它们之间的相互依赖。观察者模式中，目标与观察者是相互依赖的，而发布订阅模式中，多了个事件中心。事件中心是隔离发布者和订阅者的，减少发布者和订阅者的依赖关系，会变得更加灵活。</p></blockquote> <p><img src="https://i.loli.net/2020/10/20/iTyUXPoObhHunaZ.png" alt="image.png"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">10/23/2020, 7:02:49 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/frontend/javascript/js_simulate_call_apply_bind.html" class="prev">
+        JS 模拟实现 call、apply、bind
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.d50d2845.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.471bf99a.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.3d03b710.js" defer></script>
+  </body>
+</html>
