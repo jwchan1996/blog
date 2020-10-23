@@ -139,4 +139,4 @@ dep.notify()
 
 > 事件中心隔离了发布者和订阅者，去除它们之间的相互依赖。观察者模式中，目标与观察者是相互依赖的，而发布订阅模式中，多了个事件中心。事件中心是隔离发布者和订阅者的，减少发布者和订阅者的依赖关系，会变得更加灵活。
 
-![image.png](https://i.loli.net/2020/10/20/iTyUXPoObhHunaZ.png)
+![图示](~public/javascript/publish_subscribe_observer/example.png)
