@@ -1,5 +1,6 @@
 <h2 align="center">🌈 归档</h2>
 
+- [【2020-10-23】发布订阅模式和观察者模式](/_posts/frontend/javascript/publish_subscribe_observer.html)
 - [【2020-09-14】qiankun 微前端应用实践与部署（四）](/_posts/other/qiankun_micro_app4.html)
 - [【2020-09-11】Flutter 读取应用资源并显示](/_posts/across/flutter/flutter_load_asset.html)
 - [【2020-08-28】Electron 踩坑记录（三）](/_posts/across/electron/electron_note_3.html)
