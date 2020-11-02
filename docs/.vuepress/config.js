@@ -81,7 +81,8 @@ module.exports = {
           children: [
             { title: 'JavaScript 中的 call()、apply()、bind() 的用法', path:'/_posts/frontend/javascript/js_call_apply_bind'},
             { title: 'JS 模拟实现 call、apply、bind', path:'/_posts/frontend/javascript/js_simulate_call_apply_bind'},
-            { title: '发布订阅模式和观察者模式', path:'/_posts/frontend/javascript/publish_subscribe_observer'}
+            { title: '发布订阅模式和观察者模式', path:'/_posts/frontend/javascript/publish_subscribe_observer'},
+            { title: '手写实现一个 Promise', path:'/_posts/frontend/javascript/write_promise'}
           ]
         }
       ],
