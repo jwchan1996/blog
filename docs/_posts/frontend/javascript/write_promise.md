@@ -13,7 +13,7 @@ tags:  #标签
 - Promise 就是一个类，在执行这个类的时候，需要传递一个执行器（executor）进去，执行器会立即执行。
 - Promise 中有三种状态，分别为成功（fulfilled）、失败（rejected）和等待（pending）。其中 pending 状态会变为 fulfilled 或者 rejected，且一旦状态确定就不可以更改。
 - resolve 和 reject 函数是用来改变状态的： `resolve -> fulfilled`、`reject -> rejected`。
-- then 方法内部做的事情就是判断状态。如果状态是成功，调用成功的回调函数。如果状态是失败，调用失败的回调函数。每一个 Promise 对象都能个调用 then 方法，then 方法是被定义在原型对象中的。
+- then 方法内部做的事情就是判断状态。如果状态是成功，调用成功的回调函数。如果状态是失败，调用失败的回调函数。每一个 Promise 对象都能够调用 then 方法，then 方法是被定义在原型对象中的。
 - then 的成功回调函数有一个参数，表示成功之后的值。then 的 失败回调函数也有一个参数，表示失败后的原因。
 
 ```javascript

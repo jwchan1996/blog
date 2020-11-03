@@ -100,7 +100,7 @@ portIsOccupied(9080).then(port => {
 
 ```bash
 $ npm install babel-cli -D
-$ npm babel-preset-es2015 -D
+$ npm install babel-preset-es2015 -D
 ```
 
 配置 `.babelrc`：
