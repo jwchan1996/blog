@@ -94,47 +94,6 @@ portIsOccupied(9080).then(port => {
 })
 ```
 
-因为纯 `node` 环境下不支持 `es6` 的 `import/export` 语法，所以我们需要借助 `babel` 来使得支持 `import/export`。
-
-安装依赖：
-
-```bash
-$ npm install babel-cli -D
-$ npm install babel-preset-es2015 -D
-```
-
-配置 `.babelrc`：
-
-```json
-{
-    "presets": [
-        "es2015"
-    ]
-}
-```
-
-修改 package.js 脚本运行命令：
-
-`before` :
-
-```json
-{
-    "scripts": [
-        "dev": "node .electron-vue/dev-runner.js"
-    ]
-}
-```
-
-`after` :
-
-```json
-{
-    "scripts": [
-        "dev": "babel-node .electron-vue/dev-runner.js"
-    ]
-}
-```
-
 ## 配置生产模式下的端口
 
 在主线程文件 `/src/main/index.js` 下引入判断函数，判断是生产模式则使用 `express` 作为本地打包文件的 `http` 静态服务器，使得 `flash` 能正常加载。
