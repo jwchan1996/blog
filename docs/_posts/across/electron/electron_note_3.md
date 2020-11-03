@@ -53,7 +53,7 @@ function portIsOccupied(port) {
 
 }
 
-export default portIsOccupied
+module.exports = portIsOccupied
 ```
 
 ## 配置开发模式下的端口
