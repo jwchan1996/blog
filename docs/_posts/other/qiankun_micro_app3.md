@@ -77,7 +77,7 @@ this.$router.push({
 
 ## 配置子应用路由
 
-子应用是常规 `vue` 项目，需要做调整的的是路由配置文件 `/router.index.js` 以及入口文件 `main.js`。
+子应用是常规 `vue` 项目，需要做调整的的是路由配置文件 `/router/index.js` 以及入口文件 `main.js`。
 
 ```javascript
 // router/index.js
