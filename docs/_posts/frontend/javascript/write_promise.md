@@ -10,11 +10,15 @@ tags:  #标签
 
 ## 关于 Promsie
 
-- Promise 是一个类，在执行这个类的时候，需要传递一个执行器（executor）进去，执行器会立即执行。
-- Promise 中有三种状态，分别为成功（fulfilled）、失败（rejected）和等待（pending）。其中 pending 状态会变为 fulfilled 或者 rejected，且一旦状态确定就不可以更改。
-- resolve 和 reject 函数是用来改变状态的： `resolve -> fulfilled`、`reject -> rejected`。
-- then 方法内部做的事情就是判断状态。如果状态是成功，调用成功的回调函数。如果状态是失败，调用失败的回调函数。每一个 Promise 对象都能够调用 then 方法，then 方法是被定义在原型对象中的。
-- then 的成功回调函数有一个参数，表示成功之后的值。then 的 失败回调函数也有一个参数，表示失败后的原因。
+下面是实现一个 `Promise` 的一些关键点：
+
+- `Promise` 是一个类，在执行这个类的时候，需要传递一个执行器（`executor`）进去，执行器会立即执行。
+- `Promise` 中有三种状态，分别为成功（`fulfilled`）、失败（`rejected`）和等待（`pending`）。其中 `pending` 状态会变为 `fulfilled` 或者 `rejected`，且一旦状态确定就不可以更改。
+- `resolve` 和 `reject` 函数是用来改变状态的： `resolve -> fulfilled`、`reject -> rejected`。
+- `then` 方法内部做的事情就是判断状态。如果状态是成功，调用成功的回调函数。如果状态是失败，调用失败的回调函数。每一个 `Promise` 对象都能够调用 `then` 方法，`then` 方法是被定义在原型对象中的。
+- `then` 的成功回调函数有一个参数，表示成功之后的值。`then` 的 失败回调函数也有一个参数，表示失败后的原因。
+
+`Promise` 的基本用法：
 
 ```javascript
 let promise = new Promise((resolve, reject) => {
@@ -85,7 +89,7 @@ class MyPromise {
 
 ## Promise 类中处理异步逻辑
 
-假设在我们在 MyPromise 类实例对象的执行器中执行异步任务 setTimeout。
+假设在我们在 `MyPromise` 类实例对象的执行器中执行异步任务 `setTimeout`。
 
 ```javascript
 let promise = new Promise((resolve, reject) => {
@@ -102,12 +106,12 @@ promise.then(value => {
 })
 ```
 
-代码的执行顺序是从上到下依次执行的，在创建 MyPromsie 类实例对象后，执行器会立即执行。在执行器代码执行过程中，发现 setTimeout 是异步任务，那么代码执行主线程会在开启这个异步任务后会立即往下执行，不会等待异步任务的完成，所以会立即往下执行 then 方法。
+代码的执行顺序是从上到下依次执行的，在创建 `MyPromsie` 类实例对象后，执行器会立即执行。在执行器代码执行过程中，发现 `setTimeout` 是异步任务，那么代码执行主线程会在开启这个异步任务后会立即往下执行，不会等待异步任务的完成，所以会立即往下执行 `then` 方法。
 
-但是，由于此时还没有发生状态改变，MyPromise 实例对象的状态还是处于 pending 状态，因此我们要在 then 方法内对 pending 这种状态进行处理（因为 then 方法 只执行一次，等异步任务结束后 Promise 状态改变已经不会再执行这一次的 then 方法了）。
+但是，由于此时还没有发生状态改变，`MyPromise` 实例对象的状态还是处于 `pending` 状态，因此我们要在 `then` 方法内对 `pending` 这种状态进行处理（因为 `then` 方法 只执行一次，等异步任务结束后 `Promise` 状态改变已经不会再执行这一次的 `then` 方法了）。
 
-异步耗时任务结束后会调用 resolve 或者 reject 方法，因此我们还需要在 MyPromise 类的 resolve 属性方法和 reject 属性方法内调用定义在 then 方法内的成功回调函数和失败回调函数。
-那么就要在 then 方法中判断当前状态是否处于 pending，在 MyPromise 类中添加两个新属性 successCallback 和 failCallback 来接收 then 方法的成功回调函数和失败回调函数，以便于在异步任务结束后能在 resolve 或 reject 属性方法内进行调用，使 then 方法在 Promise 执行器有异步任务的情况下能正常工作。
+异步耗时任务结束后会调用 `resolve` 或者 `reject` 方法，因此我们还需要在 `MyPromise` 类的 `resolve` 属性方法和 `reject` 属性方法内调用定义在 `then` 方法内的成功回调函数和失败回调函数。
+那么就要在 `then` 方法中判断当前状态是否处于 `pending`，在 `MyPromise` 类中添加两个新属性 `successCallback` 和 `failCallback` 来接收 `then` 方法的成功回调函数和失败回调函数，以便于在异步任务结束后能在 `resolve` 或 `reject` 属性方法内进行调用，使 `then` 方法在 `Promise` 执行器有异步任务的情况下能正常工作。
 
 ```javascript
 const PENDING = 'pending'   // 等待
@@ -184,9 +188,9 @@ class MyPromise {
 
 ## 实现 then 方法多次调用
 
-同一个 Promise 实例对象的 then 方法是可以被多次调用的，当 Promise 状态变为成功或失败时，then 方法里面的成功或失败回调函数是要被依次调用的。其中，Promise 实例对象传入的执行器里面的代码有可能是同步执行也有可能是异步执行。
+同一个 `Promise` 实例对象的 `then` 方法是可以被多次调用的，当 `Promise` 状态变为成功或失败时，`then` 方法里面的成功或失败回调函数是要被依次调用的。其中，`Promise` 实例对象传入的执行器里面的代码有可能是同步执行也有可能是异步执行。
 
-如果是同步执行，执行 then 方法的时候 Promise 状态已经改变，那么执行 then 方法内相对应的回调函数即可。如果是异步执行，那么我们需要将多次调用 then 方法所触发的回调函数用数组储存起来，等待 Promise 执行器的异步代码执行完毕后，根据返回状态成功或失败，在 resolve 或 reject 属性方法内循环数组，依次调用（队列先进先出）回调函数即可。
+如果是同步执行，执行 `then` 方法的时候 `Promise` 状态已经改变，那么执行 `then` 方法内相对应的回调函数即可。如果是异步执行，那么我们需要将多次调用 `then` 方法所触发的回调函数用数组储存起来，等待 `Promise` 执行器的异步代码执行完毕后，根据返回状态成功或失败，在 `resolve` 或 `reject` 属性方法内循环数组，依次调用（队列先进先出）回调函数即可。
 
 ```javascript
 let promise = new MyPromise((resolve, reject) => {
@@ -291,9 +295,9 @@ class MyPromise {
 
 ## 实现 then 方法的链式调用
 
-Promise 实例对象的 then 方法是可以被链式调用的。要实现 then 方法的链式调用，then 方法必须返回一个 Promise 对象。所以我们要在 then 方法里创建一个新的 Promise 对象并返回， 还要实现将上一个 then 方法的回调函数返回值传递给下一个 then 方法。
+`Promise` 实例对象的 `then` 方法是可以被链式调用的。要实现 `then` 方法的链式调用，`then` 方法必须返回一个 `Promise` 对象。所以我们要在 `then` 方法里创建一个新的 `Promise` 对象并返回， 还要实现将上一个 then 方法的回调函数返回值传递给下一个 `then` 方法。
 
-具体实现是在上一个 then 方法里返回的新 Promise 对象的执行器里执行 resolve 方法，resolve 方法会把上一个 then 方法的回调函数返回的值传递给新 Promise 对象的 then 方法，这样就实现了 then 方法的链式调用。
+具体实现是在上一个 `then` 方法里返回的新 `Promise` 对象的执行器里执行 `resolve` 方法，`resolve` 方法会把上一个 `then` 方法的回调函数返回的值传递给新 `Promise` 对象的 `then` 方法，这样就实现了 `then` 方法的链式调用。
 
 ```javascript
 let promise = new MyPromise((resolve, reject) => {
@@ -410,11 +414,11 @@ class MyPromise {
 }
 ```
 
-在链式调用 then 方法时，可以在回调函数返回一个普通值，也可以返回一个 Promise 对象。 
+在链式调用 `then` 方法时，可以在回调函数返回一个普通值，也可以返回一个 `Promise` 对象。 
 
-如果 then 方法的成功回调函数返回的是普通值，可以直接在 then 方法返回的新 Promise 对象的执行器中直接调用 resolve 方法，就可以把值传递给新 Promise 对象接下来要调用的 then 方法的回调函数。
+如果 `then` 方法的成功回调函数返回的是普通值，可以直接在 `then` 方法返回的新 `Promise` 对象的执行器中直接调用 `resolve` 方法，就可以把值传递给新 `Promise` 对象接下来要调用的 `then` 方法的回调函数。
 
-如果 then 方法的成功回调函数返回的是 Promise 对象，则需要查看 Promise 对象返回的结果，再根据结果决定调用 resolve 方法还是 reject 方法。
+如果 `then` 方法的成功回调函数返回的是 `Promise` 对象，则需要查看 `Promise` 对象返回的结果，再根据结果决定调用 `resolve` 方法还是 `reject` 方法。
 
 ```javascript
 let promise = new MyPromise((resolve, reject) => {
@@ -553,7 +557,7 @@ function resolvePromise (x, resolve, reject) {
 
 ## then 方法链式调用识别 Promise 对象自返回
 
-then 方法回调函数可以返回 Promise 对象，但是有一种情况是例外，那就是在 then 方法回调函数里，不能返回当前 then 方法的 Promise 对象，否则程序会抛出循环调用的错误。如：
+`then` 方法回调函数可以返回 `Promise` 对象，但是有一种情况是例外，那就是在 `then` 方法回调函数里，不能返回当前 `then` 方法的 `Promise` 对象，否则程序会抛出循环调用的错误。如：
 
 ```javascript
 var promise = new Promise(function (resolve, reject) {
@@ -571,9 +575,9 @@ p1.then(function () {}, function (reason) {
 })
 ```
 
-那么，下面在我们自己实现的 MyPromise 类实现对这个错误进行捕获并提示。
+那么，下面在我们自己实现的 `MyPromise` 类实现对这个错误进行捕获并提示。
 
-首先我们需要判断 then 方法所返回的 Promise 对象是否是当前 then 方法的 Promise 对象，我们需要将 newPromise 实例对象传到 resolvePromise 函数去。
+首先我们需要判断 `then` 方法所返回的 `Promise` 对象是否是当前 `then` 方法的 `Promise` 对象，我们需要将 `newPromise` 实例对象传到 `resolvePromise` 函数去。
 
 ```javascript
 class Mypromise {
@@ -639,9 +643,9 @@ function resolvePromise (newPromise, x, resolve, reject) {
 }
 ```
 
-但是，当前代码尚未可以正常运行，因为上面调用 `resolvePromise(newPromise, x, resolve, reject)` 的时候，newPromise 还没有被赋值，此时还是 undefined，我们需要在调用 `resolvePromise(newPromise, x, resolve, reject)` 函数时 newPromise 是被赋值完成的。
+但是，当前代码尚未可以正常运行，因为上面调用 `resolvePromise(newPromise, x, resolve, reject)` 的时候，`newPromise` 还没有被赋值，此时还是 `undefined`，我们需要在调用 `resolvePromise(newPromise, x, resolve, reject)` 函数时 `newPromise` 是被赋值完成的。
 
-方法就是将 newPromise 对象执行器所执行的 resolvePromise 方法变成异步任务即可，这样就可以获取到 newPromise 被赋值后的值。因为**异步任务的回调函数会在所有同步任务完成后才会被执行**，使用 setTimeout 改造一下即可。
+方法就是将 `newPromise` 对象执行器所执行的 `resolvePromise` 方法变成异步任务即可，这样就可以获取到 `newPromise` 被赋值后的值。因为**异步任务的回调函数会在所有同步任务完成后才会被执行**，使用 `setTimeout` 改造一下即可。
 
 ```javascript
 // 判断状态
@@ -658,7 +662,7 @@ if (this.status === FULFILLED) {
 }
 ```
 
-下面是增加 then 方法链式调用识别 Promise 对象自返回处理的 MyPromise 类完整代码。
+下面是增加 `then` 方法链式调用识别 `Promise` 对象自返回处理的 `MyPromise` 类完整代码。
 
 ```javascript
 const PENDING = 'pending'   // 等待
@@ -788,14 +792,14 @@ function resolvePromise (newPromise, x, resolve, reject) {
 
 ## 捕获错误
 
-使用 try catch 捕获错误，并使用 reject 方法将原因传递给下一个 then 方法的失败回调函数。
+使用 `try catch` 捕获错误，并使用 `reject` 方法将原因传递给下一个 `then` 方法的失败回调函数。
 
-- 捕获 MyPromise 对象执行器抛出的错误
-- 捕获 then 方法成功回调抛出的错误
+- 捕获 `MyPromise` 对象执行器抛出的错误
+- 捕获 `then` 方法成功回调抛出的错误
 
 ## 将 then 方法的参数变成可选参数
 
-Promise 对象的 then 方法可以不传递参数，此时 Promise 对象的状态可以依次往后传递，直到传递给有回调函数的 then 方法。
+`Promise` 对象的 `then` 方法可以不传递参数，此时 `Promise` 对象的状态可以依次往后传递，直到传递给有回调函数的 `then` 方法。
 
 ```javascript
 var promise = new Promise(function (resolve, reject) {
@@ -811,7 +815,7 @@ promise.then().then().then(value => console.log(value))     // 100
 promise.then(value => value).then(value => value).then(value => console.log(value))     // 100
 ```
 
-我们可以在 MyPromise 类里面实现：
+我们可以在 `MyPromise` 类里面实现：
 
 ```javascript
 class MyPromise {
@@ -859,7 +863,7 @@ let promise = new MyPromise((resolve, reject) => {
 promise.then().then().then(value => console.log(value), reason => console.log(reason))     // 失败
 ```
 
-【注意】ES6 中的 Promise 对象的 then 方法期待的参数是一个回调函数，**如果该参数不是函数，则会在内部被替换为 `(x) => x`，即原样返回 ==promise 最终结果==的函数（此现象又被称为值穿透）**。
+【注意】`ES6` 中的 `Promise` 对象的 `then` 方法期待的参数是一个回调函数，**如果该参数不是函数，则会在内部被替换为 `(x) => x`，即原样返回 ==promise 最终结果==的函数（此现象又被称为值穿透）**。
 
 ```javascript
 Promise.resolve(1).then(2).then(Promise.resolve(3)).then(console.log)   // 1
@@ -871,11 +875,11 @@ Promise.resolve(1).then(x => x).then(x => x).then(console.log(x))   // 1
 
 ## Promise.all 方法的实现
 
-Promise.all 允许按照异步代码调用的顺序执行代码。Promise.all 接收一个数组作为参数，数组里面可以填入任何值，包括普通值和 Promise 对象，这个数组中值的顺序一定是得到结果的顺序。
+`Promise.all` 允许按照异步代码调用的顺序执行代码。`Promise.all` 接收一个数组作为参数，数组里面可以填入任何值，包括普通值和 `Promise` 对象，这个数组中值的顺序一定是得到结果的顺序。
 
-Promise.all 的返回值也是一个 Promise 对象，所以也可以链式调用 then 方法。
+`Promise.all` 的返回值也是一个 `Promise` 对象，所以也可以链式调用 `then` 方法。
 
-Promise.all 有一个特点，在 all 方法中所有 Promise 对象，如果状态都是成功的，那么最后 all 方法也是成功的。如果有一个失败了，那么最后 all 方法就是失败的。
+`Promise.all` 有一个特点，在 `all` 方法中所有 `Promise` 对象，如果状态都是成功的，那么最后 `all` 方法也是成功的。如果有一个失败了，那么最后 `all` 方法就是失败的。
 
 ```javascript
 Promise.all(['a', 'b', p1(), p2(), 'c']).then(result => {
@@ -883,9 +887,9 @@ Promise.all(['a', 'b', p1(), p2(), 'c']).then(result => {
 })
 ```
 
-从调用方式来看，all 是一个静态方法。在 ES6 的 class 中，使用 static 定义的方法为静态方法，该方法不能被实例对象调用，只能通过类（即构造函数）来调用，且静态方法可以与动态方法重名。静态方法中的 this 指向的是类，不是实例对象。
+从调用方式来看，`all` 是一个静态方法。在 `ES6` 的 `class` 中，使用 `static` 定义的方法为静态方法，该方法不能被实例对象调用，只能通过类（即构造函数）来调用，且静态方法可以与动态方法重名。静态方法中的 `this` 指向的是类，不是实例对象。
 
-下面实现 Promise.all 功能：
+下面实现 `Promise.all` 功能：
 
 ```javascript
 class MyPromise {
@@ -928,11 +932,11 @@ class MyPromise {
 
 ## Promise.race 方法的实现
 
-Promise.race 同样接收一个数组作为参数，数组里面可以填入任何值，包括普通值和 Promise 对象。Promise.race 的返回值也是一个 Promise 对象，所以也可以链式调用 then 方法。
+`Promise.race` 同样接收一个数组作为参数，数组里面可以填入任何值，包括普通值和 `Promise` 对象。`Promise.race` 的返回值也是一个 `Promise` 对象，所以也可以链式调用 `then` 方法。
 
-Promise.race 方法的参数与 Promise.all 方法一样，如果参数的项不是 Promise 实例，会将参数转为 Promise 实例，再进一步处理。
+`Promise.race` 方法的参数与 `Promise.all` 方法一样，如果参数的项不是 `Promise` 实例，会将参数转为 `Promise` 实例，再进一步处理。
 
-Promise.race 的特点是，race 方法中的所有 Promise 对象，只要有一个率先改变状态，无论是成功还是失败，那就是 Promise.race 方法返回的 Promise 对象的最终结果。
+`Promise.race `的特点是，`race` 方法中的所有 `Promise` 对象，只要有一个率先改变状态，无论是成功还是失败，那就是 `Promise.race` 方法返回的 `Promise` 对象的最终结果。
 
 下面实现 Promise.race 功能：
 
@@ -963,7 +967,7 @@ class MyPromise {
 
 ## Promise.resolve 方法的实现
 
-在 resolve 方法内部，首先判断给定的参数是不是 Promise 对象。如果是 Promise 对象，则原封不动直接返回。如果不是 Promise 对象，则创建一个新的 Promise 对象，把给定的值包裹在 Promise 对象当中，然后返回这个 Promise 对象即可。
+在 `resolve` 方法内部，首先判断给定的参数是不是 `Promise` 对象。如果是 `Promise` 对象，则原封不动直接返回。如果不是 `Promise` 对象，则创建一个新的 `Promise` 对象，把给定的值包裹在 `Promise` 对象当中，然后返回这个 `Promise` 对象即可。
 
 代码实现如下：
 
@@ -983,8 +987,8 @@ class MyPromise {
 
 ## finally 方法的实现
 
-- 无论当前 Promise 对象的最终状态是成功或失败，finally 方法的回调函数都会被执行
-- 在 finally 方法后面，可以链式调用 then 方法来拿到当前这个 Promise 对象返回的最终结果
+- 无论当前 `Promise` 对象的最终状态是成功或失败，`finally` 方法的回调函数都会被执行
+- 在 `finally` 方法后面，可以链式调用 `then` 方法来拿到当前这个 `Promise` 对象返回的最终结果
 
 ```javascript
 class MyPromise {
@@ -1009,7 +1013,7 @@ class MyPromise {
 
 ## catch 方法的实现
 
-catch 方法是用来处理当前这个 Promise 对象最终的状态为失败的情况的，这样 then 方法里面可以不传入失败回调函的数，这个失败会被 catch 方法捕获，从而执行 catch 方法内的回调函数。
+`catch` 方法是用来处理当前这个 `Promise` 对象最终的状态为失败的情况的，这样 `then` 方法里面可以不传入失败回调函的数，这个失败会被 `catch` 方法捕获，从而执行 `catch` 方法内的回调函数。
 
 ```javascript
 class MyPromise {
