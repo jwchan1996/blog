@@ -36,11 +36,11 @@ tags:  #标签
 
 `VueRouter` 有三个属性，分别是 `options`、`data` 和 `routeMap`。
 
-`options` 属性的作用是记录构造函数中传入 的对象，传入的对象包含了 `routes` 属性，也就是路由规则。
+- `options` 属性的作用是记录构造函数中传入 的对象，传入的对象包含了 `routes` 属性，也就是路由规则。
 
-`routeMap` 是一个对象，它是用来记录路由地址与组件的对应关系的，将来会把路由地址解析到 `routeMap` 中来。
+- `routeMap` 是一个对象，它是用来记录路由地址与组件的对应关系的，将来会把路由地址解析到 `routeMap` 中来。
 
-`data` 是一个对象，它有一个属性 `current`，这个属性是用来记录当前路由地址的。此处设置有一个 `data` 对象的目的是我们需要一个响应式的对象。
+- `data` 是一个对象，它有一个属性 `current`，这个属性是用来记录当前路由地址的。此处设置有一个 `data` 对象的目的是我们需要一个响应式的对象。
 路由地址发生变化之后组件要自动更新，需要调用 `Vue.observable()` 方法。
 
 `VueRouter` 类图方法中 `+` 号是对外公开的方法，`-` 号是静态方法。其中 `install` 就是静态方法，用来实现 `Vue` 的插件机制。`init` 方法是用来调用后面的三个方法的。`initEvent` 方法用来监听 `popstate` 事件，用来监听浏览器历史变化。`createRouteMap` 方法是用来初始化 `routeMap` 属性的，能够把构造函数中传入的路由规则转化为键值对的形式存储到 `routeMap` 里面。`routeMap` 是一个对象，其中键就是路由地址，值是地址对应的组件，在 `<router-view />` 这个组件中会使用到 `routeMap`。`initComponents` 方法是用来创建 `<router-link />` 和 `<router-view />` 这两个组件的。
