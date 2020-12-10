@@ -70,7 +70,8 @@ module.exports = {
           collapsable: true, 
           children: [
             { title: 'vue 数据与视图更新', path:'/_posts/frontend/vue/vue_data_update'},
-            { title: '关于 ref 与 $refs 对 dom 元素的操作', path:'/_posts/frontend/vue/vue_$refs'}
+            { title: '关于 ref 与 $refs 对 dom 元素的操作', path:'/_posts/frontend/vue/vue_$refs'},
+            { title: '手写实现一个 VueRouter', path:'/_posts/frontend/vue/write_vue_router'}
           ]
         }
       ],
