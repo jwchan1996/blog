@@ -64,7 +64,7 @@ let _Vue = null
 export default class VueRouter {
     // install 静态方法参数是 Vue 的构造函数
     static install (Vue) {
-        // 1. 判断当前产插件是否已经被安装
+        // 1. 判断当前插件是否已经被安装
         if (VueRouter.install.installed) {
             return
         }
@@ -152,7 +152,7 @@ let _Vue = null
 export default class VueRouter {
     // install 静态方法参数是 Vue 的构造函数
     static install (Vue) {
-        // 1. 判断当前产插件是否已经被安装
+        // 1. 判断当前插件是否已经被安装
         if (VueRouter.install.installed) {
             return
         }
@@ -453,7 +453,7 @@ let _Vue = null
 export default class VueRouter {
   // install 静态方法参数是 Vue 的构造函数
   static install(Vue) {
-    // 1. 判断当前产插件是否已经被安装
+    // 1. 判断当前插件是否已经被安装
     if (VueRouter.install.installed) {
       return
     }
