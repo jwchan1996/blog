@@ -43,31 +43,7 @@ tagline: null
                   <span></span> 
                   <span></span>
                 </div>
-                完成 PPAP.admin
-              </h2>
-              <h2>
-                <div class="circle">
-                  <span></span> 
-                  <span></span> 
-                  <span></span>
-                </div>
                 react hooks
-              </h2>
-              <h2>
-                <div class="circle">
-                  <span></span> 
-                  <span></span> 
-                  <span></span>
-                </div>
-                TypeScript 重构 PPAP.admin
-              </h2>
-              <h2>
-                <div class="circle">
-                  <span></span> 
-                  <span></span> 
-                  <span></span>
-                </div>
-                整理总结 webpack
               </h2>
               <h2>
                 <div class="circle">
@@ -83,7 +59,23 @@ tagline: null
                   <span></span> 
                   <span></span>
                 </div>
-                Flutter
+                阅读 React 源码
+              </h2>
+              <h2>
+                <div class="circle">
+                  <span></span> 
+                  <span></span> 
+                  <span></span>
+                </div>
+                深入学习 Node
+              </h2>
+              <h2>
+                <div class="circle">
+                  <span></span> 
+                  <span></span> 
+                  <span></span>
+                </div>
+                Flutter 常用组件演示 App
               </h2>
               <h2>
                 <div class="circle">
@@ -230,11 +222,9 @@ export default {
         "迷失的人迷失了<br>相逢的人会再相逢",
         "给时光以生命<br>给岁月以文明", 
         "愿你岁月无波澜<br>敬我余生不悲欢",
-        "平凡的日常正奇迹的发生着", 
-        "暗影猎手<br>准备就绪!!!", 
-        "搞事！搞事！搞事！",  
+        "平凡的日常正奇迹的发生着",   
         "喜欢是淡淡的爱<br>爱是深深的喜欢",
-        "不是吧阿sir，这都可以？"
+        "一寸光阴一寸金"
       ]
       let a = this.random(0, t.length - 1)
       document.querySelector(".slogan").innerHTML = t[a]
