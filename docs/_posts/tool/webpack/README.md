@@ -11,3 +11,4 @@
 - [09-HMR 模块热更新](/_posts/tool/webpack/09-webpack-hmr.html)
 - [10-使用 Source Map](/_posts/tool/webpack/10-webpack-source-map.html)
 - [11-为不同环境抽离配置](/_posts/tool/webpack/11-merge-webpack-config.html)
+- [12-提取单个 CSS 文件并压缩](/_posts/tool/webpack/12-mini-cee-extract-plugin.html)
