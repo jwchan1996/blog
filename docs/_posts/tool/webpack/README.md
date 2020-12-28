@@ -15,3 +15,4 @@
 - [13-webpack 优化配置之 DefinePlugin](/_posts/tool/webpack/13-define-plugin.html)
 - [14-webpack 优化配置之 Tree-shaking](/_posts/tool/webpack/14-tree-shaking.html)
 - [15-webpack 优化配置之 sideEffects](/_posts/tool/webpack/15-side-effects.html)
+- [16-webpack 优化配置之 Code Splitting 多入口打包](/_posts/tool/webpack/16-multiple-entry.html)
