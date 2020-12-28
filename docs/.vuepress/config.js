@@ -133,6 +133,7 @@ module.exports = {
             { title: '05-Loader 加载器机制', path:'/_posts/tool/webpack/05-loader-theory'},
             { title: '06-webpack 常用插件', path:'/_posts/tool/webpack/06-generally-used-plugins'},
             { title: '07-Plugin 插件机制', path:'/_posts/tool/webpack/07-plugin-theory'},
+            { title: '08-webpack-dev-server', path:'/_posts/tool/webpack/08-webpack-dev-server'},
           ]
         }
       ],
