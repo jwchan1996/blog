@@ -127,6 +127,7 @@ module.exports = {
           collapsable: true, 
           children: [
             { title: '01-快速上手', path:'/_posts/tool/webpack/01-quickly-start'},
+            { title: '02-配置文件', path:'/_posts/tool/webpack/02-configuration'},
           ]
         }
       ],
