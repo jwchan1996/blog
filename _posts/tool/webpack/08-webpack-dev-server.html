@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack-dev-server | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.a2b11edc.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.3e1203e0.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.ea7dddb3.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.08328051.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.2187c2fa.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.02ff8765.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.983e447e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.2552ef31.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.9ab78f33.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.16adad3d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.9e0677f3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.22354dd7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.38f13230.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.ac56d19f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.b2f9c2dd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.f26c30d1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.b345d0e7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.8e6dfb99.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.3aa045b2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.31505bca.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.ac619ab2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.ecf9c0d1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.52c42595.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.24a70950.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.11ce2d9b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.bdc6b83e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.ee611952.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.cf0216bb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.6e199d3f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.06ef538e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.3d19b52c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.cd64e4ef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.f2f8298e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.a54cdea8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.647d1c21.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.c7620fec.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.f5756c88.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.bcf906eb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.a90e48fe.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/45.f60e321d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/46.8a43f1f4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/47.fade4b21.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/48.5a36c9ea.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/49.ea7af842.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.4aea7fcc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/50.c9393f26.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/51.2153d27b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/52.84ed7dd4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/53.ba53c8f4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/54.d53c7c72.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/55.8345abc7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/56.8373f999.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/57.3f9f0cba.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/58.14123f59.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.b6192dd0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.86b3026f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.1510717d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.79019973.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/webpack/01-quickly-start.html" class="sidebar-link">01-快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#初始化项目" class="sidebar-link">初始化项目</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#安装依赖" class="sidebar-link">安装依赖</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#编写代码" class="sidebar-link">编写代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#打包编译" class="sidebar-link">打包编译</a></li></ul></li><li><a href="/_posts/tool/webpack/02-configuration.html" class="sidebar-link">02-配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#指定入口文件与输出文件" class="sidebar-link">指定入口文件与输出文件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#工作模式" class="sidebar-link">工作模式</a></li></ul></li><li><a href="/_posts/tool/webpack/03-asset-load.html" class="sidebar-link">03-资源模块加载</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块处理" class="sidebar-link">模块处理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#文件资源加载器" class="sidebar-link">文件资源加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#url-加载器" class="sidebar-link">URL 加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块加载方式" class="sidebar-link">模块加载方式</a></li></ul></li><li><a href="/_posts/tool/webpack/04-babel-loader.html" class="sidebar-link">04-处理 ES6 代码</a></li><li><a href="/_posts/tool/webpack/05-loader-theory.html" class="sidebar-link">05-Loader 加载器机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#webpack-核心原理" class="sidebar-link">webpack 核心原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#loader-的工作原理" class="sidebar-link">Loader 的工作原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#独立工作的-loader" class="sidebar-link">独立工作的 Loader</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#配合其他-loader-工作的-loader" class="sidebar-link">配合其他 Loader 工作的 Loader</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/06-generally-used-plugins.html" class="sidebar-link">06-webpack 常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#插件机制" class="sidebar-link">插件机制</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#常用插件" class="sidebar-link">常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动清除输出目录插件" class="sidebar-link">自动清除输出目录插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动生成-html-插件" class="sidebar-link">自动生成 HTML 插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#静态文件拷贝插件" class="sidebar-link">静态文件拷贝插件</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/07-plugin-theory.html" class="sidebar-link">07-Plugin 插件机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#工作原理" class="sidebar-link">工作原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#实现一个插件" class="sidebar-link">实现一个插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/_posts/tool/webpack/08-webpack-dev-server.html" aria-current="page" class="active sidebar-link">08-webpack-dev-server</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#实现自动编译" class="sidebar-link">实现自动编译</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#自动刷新页面" class="sidebar-link">自动刷新页面</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-2" class="sidebar-link">Webpack Dev Server</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-静态资源访问" class="sidebar-link">Webpack Dev Server 静态资源访问</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack-dev-server"><a href="#webpack-dev-server" class="header-anchor">#</a> webpack-dev-server</h1> <blockquote><p>注意：关于 webpack-cli 4.0 及以上版本和 webpack-dev-server 之间的依赖报错问题，在 webpack 官网上面可以看到安装和配置的方式没有变动，启动的命令变了，直接使用 webpack serve 命令启动。</p></blockquote> <p><img src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/img/01.03a53cd5.png" alt="01"></p> <p>一般理想的开发环境如下：</p> <ul><li>以 <code>HTTP Server</code> 运行。项目以 <code>http</code> 服务的方式去运行，而不是以文件的形式预览。一是更接近生产环境，二是 <code>ajax</code> 不支持在文件 <code>file</code> 协议中使用。</li> <li>自动编译、自动更新。修改源代码后，<code>webpack</code> 能够自动进行构建，浏览器及时显示最新的结果，这样能大大地减少开发中的重复操作。</li> <li>提供 <code>Source Map</code> 支持。代码出现错误，能够快速定位错误代码位置。</li></ul> <h2 id="实现自动编译"><a href="#实现自动编译" class="header-anchor">#</a> 实现自动编译</h2> <p>代替人工手动输入打包命令的方式，可以使用 <code>webpack-cli</code> 的 <code>watch</code> 工作模式。<code>watch</code> 模式下，<code>webpack-cli</code> 会监听文件变化，一旦文件变换会自动重新打包。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> webpack --watch
+</code></pre></div><h2 id="自动刷新页面"><a href="#自动刷新页面" class="header-anchor">#</a> 自动刷新页面</h2> <p>下面要实现文件编译过后自动刷新浏览器，可以使用 <code>browser-sync</code> 实现。</p> <p>监听构建打包后的 <code>dist</code> 文件夹下所有文件的变化：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>browser-sync dist --files <span class="token string">&quot;**/*&quot;</span>
+</code></pre></div><p><strong>注意</strong>：以上使用 <code>webpack-cli</code>、<code>watch</code> 实现自动构建以及使用 <code>browser-sync</code> 实现自动刷新的方式也有弊端。一是操作上麻烦，需要同时使用两个工具；二是开发效率降低，<code>webpack</code> 会不断的将文件写入磁盘，然后 <code>browser-sync</code> 从磁盘读出来，一次过程需要两次磁盘读写操作。</p> <p>还需要更高效的方案，如使用 <code>webpack-dev-server</code> 工具。</p> <h2 id="webpack-dev-server-2"><a href="#webpack-dev-server-2" class="header-anchor">#</a> Webpack Dev Server</h2> <p><code>webpack-dev-server</code> 是 <code>webpack</code> 官方提供的开发工具，提供了开发的 <code>HTTP Server</code>，集成了 【自动编译】和【自动刷新浏览器】等功能。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> webpack-dev-server --dev
+</code></pre></div><p><a href="https://github.com/jwchan1996/webpack-play/blob/main/08-webpack-dev-server" target="_blank" rel="noopener noreferrer">示例代码仓库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>运行了 <code>webpack-dev-server</code> 命令后，它的内部会自动将项目进行打包并启动一个开发服务器，监听文件变化并同步浏览器页面，其中项目打包后的文件是放在内存当中的，而不是进行磁盘的读写，大大提高了开发的效率。</p> <blockquote><p>注意：在 webpack 5 与 webpack-cli 4 版本以上的环境下，这里运行 webpack-dev-server 命令不再是 yarn webpack-dev-server，而是 yarn webpack serve</p></blockquote> <blockquote><p>运行命令时增加 --open 参数，会自动打开浏览器页面，打开项目的预览地址了。当然，也可以通过配置文件实现。</p></blockquote> <p>下面是配置 <code>webpack-dev-server</code> 的一些选项，更详细的配置可自行前往官网查看。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    hot<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token comment">// 开启模块热更新</span>
+    open<span class="token operator">:</span> <span class="token boolean">true</span>  <span class="token comment">// 自动打开服务浏览器运行地址</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>其中，实际开发中会发现，修改 <code>css</code> 样式文件能实现无刷新更新页面，而修改 <code>js</code> 文件则会触发页面刷新，这是因为 <code>webpack</code> 中的热更新不能开箱即用的，需要手动处理热更新逻辑。其中样式文件是通过 <code>style-loader</code> 处理了热更新逻辑，因为修改后的样式只要覆盖之前页面的样式即可实现热更新。而 <code>js</code> 文件的修改，<code>js</code> 的执行方式都是没有规律的，<code>webpack</code> 无法提供一个通用的实现热更新逻辑的 <code>Loader</code>。</p> <p>关于 <code>webpack</code> 热更新的相关会在往后的文章说到。</p> <h2 id="webpack-dev-server-静态资源访问"><a href="#webpack-dev-server-静态资源访问" class="header-anchor">#</a> Webpack Dev Server 静态资源访问</h2> <p><code>webpack-dev-server</code> 默认会将构建结果输出的文件全部作为开发服务器的资源文件，只要是通过 <code>webpack</code> 打包生成的文件，都可以直接访问的到。</p> <p>如果有些静态资源文件也需要被开发服务器访问的话，就要另外地告诉 <code>webpack-dev-server</code>，配置额外的静态资源目录。增加 <code>devServer</code> 配置，给 <code>contentBase</code> 属性指定可以读取静态资源的目录。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    contentBase<span class="token operator">:</span> <span class="token string">'./public'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>所以为了加快打包构建速度，一般开发阶段不使用 <code>copy-webpack-plugin</code> 静态资源拷贝插件，因为 <code>devServer</code> 的 <code>contentBase</code> 选项能够代替相关功能。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/28/2020, 3:49:41 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/webpack/07-plugin-theory.html" class="prev">
+        07-Plugin 插件机制
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.a2b11edc.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.3e1203e0.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.ea7dddb3.js" defer></script>
+  </body>
+</html>

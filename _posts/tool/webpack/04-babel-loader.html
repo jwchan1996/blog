@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 babel-loader 处理 ES6 代码 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.a2b11edc.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.3e1203e0.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/55.8345abc7.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.08328051.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.2187c2fa.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.02ff8765.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.983e447e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.2552ef31.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.9ab78f33.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.16adad3d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.9e0677f3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.22354dd7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.38f13230.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.ac56d19f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.b2f9c2dd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.ea7dddb3.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.f26c30d1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.b345d0e7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.8e6dfb99.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.3aa045b2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.31505bca.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.ac619ab2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.ecf9c0d1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.52c42595.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.24a70950.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.11ce2d9b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.bdc6b83e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.ee611952.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.cf0216bb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.6e199d3f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.06ef538e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.3d19b52c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.cd64e4ef.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.f2f8298e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.a54cdea8.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.647d1c21.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.c7620fec.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.f5756c88.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.bcf906eb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.a90e48fe.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/45.f60e321d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/46.8a43f1f4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/47.fade4b21.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/48.5a36c9ea.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/49.ea7af842.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.4aea7fcc.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/50.c9393f26.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/51.2153d27b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/52.84ed7dd4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/53.ba53c8f4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/54.d53c7c72.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/56.8373f999.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/57.3f9f0cba.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/58.14123f59.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.b6192dd0.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.86b3026f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.1510717d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.79019973.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/webpack/01-quickly-start.html" class="sidebar-link">01-快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#初始化项目" class="sidebar-link">初始化项目</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#安装依赖" class="sidebar-link">安装依赖</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#编写代码" class="sidebar-link">编写代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#打包编译" class="sidebar-link">打包编译</a></li></ul></li><li><a href="/_posts/tool/webpack/02-configuration.html" class="sidebar-link">02-配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#指定入口文件与输出文件" class="sidebar-link">指定入口文件与输出文件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#工作模式" class="sidebar-link">工作模式</a></li></ul></li><li><a href="/_posts/tool/webpack/03-asset-load.html" class="sidebar-link">03-资源模块加载</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块处理" class="sidebar-link">模块处理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#文件资源加载器" class="sidebar-link">文件资源加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#url-加载器" class="sidebar-link">URL 加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块加载方式" class="sidebar-link">模块加载方式</a></li></ul></li><li><a href="/_posts/tool/webpack/04-babel-loader.html" aria-current="page" class="active sidebar-link">04-处理 ES6 代码</a></li><li><a href="/_posts/tool/webpack/05-loader-theory.html" class="sidebar-link">05-Loader 加载器机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#webpack-核心原理" class="sidebar-link">webpack 核心原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#loader-的工作原理" class="sidebar-link">Loader 的工作原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#独立工作的-loader" class="sidebar-link">独立工作的 Loader</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#配合其他-loader-工作的-loader" class="sidebar-link">配合其他 Loader 工作的 Loader</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/06-generally-used-plugins.html" class="sidebar-link">06-webpack 常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#插件机制" class="sidebar-link">插件机制</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#常用插件" class="sidebar-link">常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动清除输出目录插件" class="sidebar-link">自动清除输出目录插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动生成-html-插件" class="sidebar-link">自动生成 HTML 插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#静态文件拷贝插件" class="sidebar-link">静态文件拷贝插件</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/07-plugin-theory.html" class="sidebar-link">07-Plugin 插件机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#工作原理" class="sidebar-link">工作原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#实现一个插件" class="sidebar-link">实现一个插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/_posts/tool/webpack/08-webpack-dev-server.html" class="sidebar-link">08-webpack-dev-server</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#实现自动编译" class="sidebar-link">实现自动编译</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#自动刷新页面" class="sidebar-link">自动刷新页面</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-2" class="sidebar-link">Webpack Dev Server</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-静态资源访问" class="sidebar-link">Webpack Dev Server 静态资源访问</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用-babel-loader-处理-es6-代码"><a href="#使用-babel-loader-处理-es6-代码" class="header-anchor">#</a> 使用 babel-loader 处理 ES6 代码</h1> <p><code>webpack</code> 默认的 <code>js</code> 加载器只是将 <code>js</code> 代码模块化，并不包含代码特性的转换，所以对于新的 <code>ES</code> 特性，需要使用 <code>babel-loader</code> 加载器进行代码转换。因为 <code>babel-loader</code> 依赖 <code>babel</code> 代码转换的核心模块，所以需要安装 <code>@babel/core</code> 以及用于完成 <code>ES</code> 具体特性转换的插件集合 <code>@babel/preset-env</code>。</p> <p>因为严格意义上来说 <code>babel</code> 只是 <code>js</code> 代码的转换平台，所以我们需要通过 <code>babel</code> 使用不同的插件去转换代码当中具体的特性，需要配置 <code>babel</code> 所需要的插件。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> babel-loader @babel/core @babel/preset-env --dev
+</code></pre></div><p><a href="https://github.com/jwchan1996/webpack-play/blob/main/04-babel-loader" target="_blank" rel="noopener noreferrer">示例代码仓库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>在 <code>webpack.config.js</code> 中对 <code>babel-loader</code> 进行配置：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">{</span>
+          loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+          options<span class="token operator">:</span> <span class="token punctuation">{</span>
+            presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'@babel/preset-env'</span><span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>其中 <code>presets</code> 选项可以预设转换 <code>js</code> 新特性的插件，这里 <code>@babel/preset-env</code> 是包含了所有 <code>ES6</code> 新特性转换的插件集合，默认会把所有 <code>ES6</code> 新特性转换为 <code>ES5。</code></p> <p>除此之外，<code>presets</code> 还可以指定需要兼容的浏览器，这样 <code>babel-loader</code> 就会根据预设的 <code>targets</code> 转换出兼容浏览器版本的代码。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">{</span>
+          loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+          options<span class="token operator">:</span> <span class="token punctuation">{</span>
+            presets<span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">[</span>
+                <span class="token string">'@babel/preset-env'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token string">'targets'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">'chrome'</span><span class="token operator">:</span> <span class="token string">'58'</span><span class="token punctuation">,</span>
+                    <span class="token string">'ie'</span><span class="token operator">:</span> <span class="token string">'11'</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>还可以使用 <code>.babelrc</code>、<code>babel.config.js</code> 等文件配置方式进行配置，具体使用方法参考<a href="https://www.babeljs.cn/docs/7.2.0/configuration" target="_blank" rel="noopener noreferrer">官网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <p>配置好后，运行打包命令 <code>yarn build</code>，即可在打包结果看到 <code>ES6</code> 代码全部被转换为 <code>ES5</code> 代码。</p> <blockquote><p>这里引申一下 output.publicPath 配置</p></blockquote> <p>打开 <code>webpack.config.js</code> 文件，可以看到 <code>output</code> 的 <code>publicPath</code> 选项配置为了 <code>dist/</code>。之所以这样配置，是因为本项目 <code>index.html</code> 文件与打包后的资源 <code>static</code> 目录不在同一目录下，在生产模式下资源文件加载的时候需要拼接 <code>dist</code> 目录才能找到 <code>static</code> 下的资源。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    publicPath<span class="token operator">:</span> <span class="token string">'dist/'</span>  
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>当前项目，不配置 <code>publicPath</code> 的情况下，下面是打包后嵌入 <code>html</code> 的 <code>style</code> 标签样式引用的资源路径：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 20px<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./static/img/bg-67a8da92.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>此时使用 <code>serve</code> 命令在根目录启动开发服务器，因为 <code>index.html</code> 文件与 <code>static</code> 目录不在同一层级，所以加载资源会出现 <code>404</code> 的错误。</p> <p>配置 <code>publicPath</code> 后，打包后的资源路径可以正常加载：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 20px<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./dist/static/img/bg-67a8da92.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>后面阶段会用插件将 <code>index.html</code> 拷贝到 <code>dist</code> 目录，这里 <code>publicPath</code> 就可以不进行配置，默认是 <code>&quot;&quot;</code>，表示相对路径。当然，配置 <code>publicPath</code> 选项还有一个作用就是为资源配 <code>CDN</code> 前缀。</p> <p>比如：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  publicPath<span class="token operator">:</span> <span class="token string">'https://cdn.example.com/'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>打包后的资源路径会变为：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>https://cdn.example.com/static/img/bg-67a8da92.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/28/2020, 3:49:41 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/webpack/03-asset-load.html" class="prev">
+        03-资源模块加载
+      </a></span> <span class="next"><a href="/_posts/tool/webpack/05-loader-theory.html">
+        05-Loader 加载器机制
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.a2b11edc.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.3e1203e0.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/55.8345abc7.js" defer></script>
+  </body>
+</html>
