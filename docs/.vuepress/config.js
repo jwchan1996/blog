@@ -131,6 +131,7 @@ module.exports = {
             { title: '03-资源模块加载', path:'/_posts/tool/webpack/03-asset-load'},
             { title: '04-处理 ES6 代码', path:'/_posts/tool/webpack/04-babel-loader'},
             { title: '05-Loader 加载器机制', path:'/_posts/tool/webpack/05-loader-theory'},
+            { title: '06-webpack 常用插件', path:'/_posts/tool/webpack/06-generally-used-plugins'},
           ]
         }
       ],
