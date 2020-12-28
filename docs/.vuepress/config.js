@@ -129,6 +129,7 @@ module.exports = {
             { title: '01-快速上手', path:'/_posts/tool/webpack/01-quickly-start'},
             { title: '02-配置文件', path:'/_posts/tool/webpack/02-configuration'},
             { title: '03-资源模块加载', path:'/_posts/tool/webpack/03-asset-load'},
+            { title: '04-处理 ES6 代码', path:'/_posts/tool/webpack/04-babel-loader'},
           ]
         }
       ],

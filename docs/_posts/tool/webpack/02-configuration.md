@@ -1,10 +1,10 @@
 # 配置文件
 
-[示例代码仓库](https://github.com/jwchan1996/webpack-play/blob/main/02-configuration)
-
 ## 指定入口文件与输出文件
 
 `webpack 4` 之后的版本支持零配置启动打包，默认按照约定入口跟输出是 `src/index.js` `->` `dist/main.js`。但是，往往我们需要自定义这些路径，需通过 `webpack.config.js` 进行配置。
+
+[示例代码仓库](https://github.com/jwchan1996/webpack-play/blob/main/02-configuration)
 
 ```javascript
 // webpack.config.js
