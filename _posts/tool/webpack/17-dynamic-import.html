@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack 优化配置之 Code Splitting 动态导入 | 飘香豆腐の博客</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="记录技术与生活">
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css" as="style"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.4d254e90.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.04d4549e.js" as="script"><link rel="preload" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/66.db3bbde9.js" as="script"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/10.c489dccb.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/11.56eab3ae.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/12.68790b49.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/13.297c8311.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/14.c5d6d99e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/15.d969fff4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/16.d2862016.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/17.0b2b06e1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/18.65ba294e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/19.1dfb0e9c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/20.198e51a7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/21.fb0ed5f9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/22.e6322063.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/23.0e450854.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/24.deb1340c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/25.0f625e55.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/26.e36528d9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/27.b4d59d6c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/28.ac0d7cda.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/29.bd242ef7.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/3.06d5cd84.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/30.2c6b793b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/31.631d9351.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/32.5df84bdd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/33.72b28687.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/34.1ac26d59.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/35.864c7a60.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/36.dbd170ed.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/37.ed919848.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/38.c78eee3e.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/39.51bc83c2.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/4.e7f4f7e1.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/40.63a9445d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/41.f251e8c6.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/42.0c2ef4e4.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/43.d5b42811.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/44.512b029c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/45.0572e691.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/46.333ac183.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/47.30a9f095.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/48.090930cf.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/49.a17ba921.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/5.f33774f9.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/50.91fe8964.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/51.0254c705.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/52.7faf401b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/53.16d8e941.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/54.dfc4e37a.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/55.efd39f6b.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/56.80dcc9bd.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/57.8bb52adf.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/58.834d4907.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/59.f6630c92.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/6.ef2094a5.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/60.87f5ae07.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/61.f1b4bb5f.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/62.4f9e56ba.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/63.291dc153.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/64.1361171d.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/65.7e3e6939.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/67.386b374c.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/7.b00842de.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/8.623c4370.js"><link rel="prefetch" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/9.e982383a.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/css/0.styles.d721620a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="飘香豆腐の博客" class="logo"> <span class="site-name can-hide">飘香豆腐の博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/archives/" class="nav-link">
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/frontend/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/react/" class="nav-link">
+  react
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-subitem"><a href="/_posts/frontend/typescript/" class="nav-link">
+  typescript
+</a></li></ul></li><li class="dropdown-item"><h4>
+          后端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/backend/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/deno/" class="nav-link">
+  deno
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-subitem"><a href="/_posts/backend/rust/" class="nav-link">
+  rust
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/tool/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-subitem"><a href="/_posts/tool/webpack/" class="nav-link router-link-active">
+  webpack
+</a></li></ul></li><li class="dropdown-item"><h4>
+          跨端
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/across/flutter/" class="nav-link">
+  flutter
+</a></li><li class="dropdown-subitem"><a href="/_posts/across/electron/" class="nav-link">
+  electron
+</a></li></ul></li><li class="dropdown-item"><h4>
+          第三方库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/plugin/axios/" class="nav-link">
+  axios
+</a></li></ul></li><li class="dropdown-item"><h4>
+          其他
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/_posts/other/" class="nav-link">
+  未分类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于
+</a></div><div class="nav-item"><a href="https://github.com/jwchan1996/blog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/_posts/tool/webpack/01-quickly-start.html" class="sidebar-link">01-快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#初始化项目" class="sidebar-link">初始化项目</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#安装依赖" class="sidebar-link">安装依赖</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#编写代码" class="sidebar-link">编写代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/01-quickly-start.html#打包编译" class="sidebar-link">打包编译</a></li></ul></li><li><a href="/_posts/tool/webpack/02-configuration.html" class="sidebar-link">02-配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#指定入口文件与输出文件" class="sidebar-link">指定入口文件与输出文件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/02-configuration.html#工作模式" class="sidebar-link">工作模式</a></li></ul></li><li><a href="/_posts/tool/webpack/03-asset-load.html" class="sidebar-link">03-资源模块加载</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块处理" class="sidebar-link">模块处理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#文件资源加载器" class="sidebar-link">文件资源加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#url-加载器" class="sidebar-link">URL 加载器</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/03-asset-load.html#模块加载方式" class="sidebar-link">模块加载方式</a></li></ul></li><li><a href="/_posts/tool/webpack/04-babel-loader.html" class="sidebar-link">04-处理 ES6 代码</a></li><li><a href="/_posts/tool/webpack/05-loader-theory.html" class="sidebar-link">05-Loader 加载器机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#webpack-核心原理" class="sidebar-link">webpack 核心原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#loader-的工作原理" class="sidebar-link">Loader 的工作原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#独立工作的-loader" class="sidebar-link">独立工作的 Loader</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/05-loader-theory.html#配合其他-loader-工作的-loader" class="sidebar-link">配合其他 Loader 工作的 Loader</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/06-generally-used-plugins.html" class="sidebar-link">06-webpack 常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#插件机制" class="sidebar-link">插件机制</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#常用插件" class="sidebar-link">常用插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动清除输出目录插件" class="sidebar-link">自动清除输出目录插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#自动生成-html-插件" class="sidebar-link">自动生成 HTML 插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/06-generally-used-plugins.html#静态文件拷贝插件" class="sidebar-link">静态文件拷贝插件</a></li></ul></li></ul></li><li><a href="/_posts/tool/webpack/07-plugin-theory.html" class="sidebar-link">07-Plugin 插件机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#工作原理" class="sidebar-link">工作原理</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#实现一个插件" class="sidebar-link">实现一个插件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/07-plugin-theory.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/_posts/tool/webpack/08-webpack-dev-server.html" class="sidebar-link">08-webpack-dev-server</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#实现自动编译" class="sidebar-link">实现自动编译</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#自动刷新页面" class="sidebar-link">自动刷新页面</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-2" class="sidebar-link">Webpack Dev Server</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/08-webpack-dev-server.html#webpack-dev-server-静态资源访问" class="sidebar-link">Webpack Dev Server 静态资源访问</a></li></ul></li><li><a href="/_posts/tool/webpack/09-webpack-hmr.html" class="sidebar-link">09-HMR 模块热更新</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/09-webpack-hmr.html#开启热更新" class="sidebar-link">开启热更新</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/09-webpack-hmr.html#使用-hmr-api-处理热更新逻辑" class="sidebar-link">使用 HMR API 处理热更新逻辑</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/09-webpack-hmr.html#处理-js-模块的热更新" class="sidebar-link">处理 JS 模块的热更新</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/09-webpack-hmr.html#处理图片模块的热更新逻辑" class="sidebar-link">处理图片模块的热更新逻辑</a></li></ul></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/09-webpack-hmr.html#hmr-注意事项" class="sidebar-link">HMR 注意事项</a></li></ul></li><li><a href="/_posts/tool/webpack/10-webpack-source-map.html" class="sidebar-link">10-使用 Source Map</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/10-webpack-source-map.html#什么是-source-map" class="sidebar-link">什么是 Source Map</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/10-webpack-source-map.html#配置-source-map" class="sidebar-link">配置 Source Map</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/10-webpack-source-map.html#eval-模式的-source-map" class="sidebar-link">eval 模式的 Source map</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/10-webpack-source-map.html#devtool-模式对比" class="sidebar-link">devtool 模式对比</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/10-webpack-source-map.html#选择-source-map-模式" class="sidebar-link">选择 Source Map 模式</a></li></ul></li><li><a href="/_posts/tool/webpack/11-merge-webpack-config.html" class="sidebar-link">11-为不同环境抽离配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/11-merge-webpack-config.html#配置文件根据环境不同导出不同配置" class="sidebar-link">配置文件根据环境不同导出不同配置</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/11-merge-webpack-config.html#一个环境对应一个配置文件" class="sidebar-link">一个环境对应一个配置文件</a></li></ul></li><li><a href="/_posts/tool/webpack/12-mini-css-extract-plugin.html" class="sidebar-link">12-提取单个 CSS 文件并压缩</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/12-mini-css-extract-plugin.html#使用-minicssextractplugin-提取单个-css-文件" class="sidebar-link">使用 MiniCssExtractPlugin 提取单个 CSS 文件</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/12-mini-css-extract-plugin.html#使用-optimizecssassetswebpackplugin-压缩-css-代码" class="sidebar-link">使用 OptimizeCssAssetsWebpackPlugin 压缩 CSS 代码</a></li><li class="sidebar-sub-header"><a href="/_posts/tool/webpack/12-mini-css-extract-plugin.html#输出文件名-hash" class="sidebar-link">输出文件名 Hash</a></li></ul></li><li><a href="/_posts/tool/webpack/13-define-plugin.html" class="sidebar-link">13-webpack 优化配置之 DefinePlugin</a></li><li><a href="/_posts/tool/webpack/14-tree-shaking.html" class="sidebar-link">14-webpack 优化配置之 Tree-shaking</a></li><li><a href="/_posts/tool/webpack/15-side-effects.html" class="sidebar-link">15-webpack 优化配置之 sideEffects</a></li><li><a href="/_posts/tool/webpack/16-multiple-entry.html" class="sidebar-link">16-webpack 优化配置之 Code Splitting 多入口打包</a></li><li><a href="/_posts/tool/webpack/17-dynamic-import.html" aria-current="page" class="active sidebar-link">17-webpack 优化配置之 Code Splitting 动态导入</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack-优化配置之-code-splitting-动态导入"><a href="#webpack-优化配置之-code-splitting-动态导入" class="header-anchor">#</a> webpack 优化配置之 Code Splitting 动态导入</h1> <p>所有模块打包在一起，会导致 <code>bundle</code> 文件体积过大。而实际上应用在开始工作时，并不是每个模块在启动时都是必须要加载进来的。更合理的做法是将代码通过合理的规则拆分成多个 <code>bundle</code>，根据应用的运行需要进行按需加载这些模块，这样可以大大提高应用的响应速度与运行效率。</p> <p><code>webpack</code> 实现分包的方式有两种：</p> <ul><li>多入口打包</li> <li>动态导入</li></ul> <p>下面来看一下如何配置动态导入。</p> <p>所谓动态导入，也就是按需加载的方式。<code>webpack</code> 支持动态导入的方式实现按需加载，所有动态导入的模块都会被自动分包。</p> <p>相比于多入口的方式，动态导入方式更加灵活，因为可以通过代码逻辑去控制需不需要加载某个模块，或者什么时候加载。按照 <code>ES Modules</code> 动态导入的方式调用方法，<code>webpack</code> 在打包的时候会自动按照动态导入的方式进行模块分包和按需加载。下面分别对比非动态导入方式与动态导入方式的写法与打包结果。</p> <p><a href="https://github.com/jwchan1996/webpack-play/blob/main/17-dynamic-import" target="_blank" rel="noopener noreferrer">示例代码仓库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>非动态导入方式以及打包结果：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// src/index.js</span>
+<span class="token keyword">import</span> posts <span class="token keyword">from</span> <span class="token string">'./posts/posts'</span>
+<span class="token keyword">import</span> album <span class="token keyword">from</span> <span class="token string">'./album/album'</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> hash <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>hash <span class="token operator">||</span> <span class="token string">'#posts'</span>
+
+  <span class="token keyword">const</span> mainElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.main'</span><span class="token punctuation">)</span>
+
+  mainElement<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">''</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hash <span class="token operator">===</span> <span class="token string">'#posts'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mainElement<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>hash <span class="token operator">===</span> <span class="token string">'#album'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mainElement<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token function">album</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'hashchange'</span><span class="token punctuation">,</span> render<span class="token punctuation">)</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 打包结果 </span>
+├── dist
+│   ├── index.html
+│   └── main.bundle.js  <span class="token comment"># 这里生成的 main 前缀是因为指定了入口文件的 chunk 名称</span>
+</code></pre></div><p>动态导入方式以及打包结果：</p> <div class="language-diff extra-class"><pre class="language-diff"><code><span class="token deleted-sign deleted">- import posts from './posts/posts'
+- import album from './album/album'
+</span>
+<span class="token unchanged">  const render = () =&gt; {
+    const hash = window.location.hash || '#posts'
+</span>
+<span class="token unchanged">    const mainElement = document.querySelector('.main')
+</span>
+<span class="token unchanged">    mainElement.innerHTML = ''
+</span>
+<span class="token unchanged">    if (hash === '#posts') {
+</span><span class="token deleted-sign deleted">-     mainElement.appendChild(posts())
+</span><span class="token inserted-sign inserted">+     import('./posts/posts').then(({ default: posts }) =&gt; {
++       mainElement.appendChild(posts())
++     })
+</span><span class="token unchanged">    } else if (hash === '#album') {
+</span><span class="token deleted-sign deleted">-     mainElement.appendChild(album())
+</span><span class="token inserted-sign inserted">+     import('./album/album').then(({ default: album }) =&gt; {
++       mainElement.appendChild(album())
++     })
+</span><span class="token unchanged">    }
+  }
+</span>
+<span class="token unchanged">  render()
+</span>
+<span class="token unchanged">  window.addEventListener('hashchange', render)
+</span></code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 打包结果 </span>
+├── dist
+│   ├── <span class="token number">1</span>.bundle.js
+│   ├── <span class="token number">2</span>.bundle.js
+│   ├── index.html
+│   └── main.bundle.js  <span class="token comment"># 这里生成的 main 前缀是因为指定了入口文件的 chunk 名称</span>
+</code></pre></div><p>如果使用的是单页面开发框架 <code>vue</code> 和 <code>react</code>，项目中的路由映射组件就可以实现这种动态导入按需引用的加载方式。</p> <p>从打包结果可以发现，通过动态导入的方式导入的模块打包后的文件名就是一个序号，如果需要给这些文件命名的话，可以使用 <code>webpack</code> 特有的魔法注释来实现。具体就是在调用 <code>import</code> 方法的参数位置添加一个行内注释。</p> <p>特定的格式：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/* webpackChunkName: posts */</span>
+</code></pre></div><p>添加行内注释：</p> <div class="language-diff extra-class"><pre class="language-diff"><code><span class="token unchanged">  const render = () =&gt; {
+    const hash = window.location.hash || '#posts'
+</span>
+<span class="token unchanged">    const mainElement = document.querySelector('.main')
+</span>
+<span class="token unchanged">    mainElement.innerHTML = ''
+</span>
+<span class="token unchanged">    if (hash === '#posts') {
+</span><span class="token deleted-sign deleted">-     import('./posts/posts').then(({ default: posts }) =&gt; {
+</span><span class="token inserted-sign inserted">+     import(/* webpackChunkName: 'posts' */'./posts/posts').then(({ default: posts }) =&gt; {
++       mainElement.appendChild(posts())
++     })
+</span><span class="token unchanged">    } else if (hash === '#album') {
+</span><span class="token deleted-sign deleted">-     import('./album/album').then(({ default: album }) =&gt; {
+</span><span class="token inserted-sign inserted">+     import(/* webpackChunkName: 'album' */'./album/album').then(({ default: album }) =&gt; {
++       mainElement.appendChild(album())
++     })
+</span><span class="token unchanged">    }
+  }
+</span>
+<span class="token unchanged">  render()
+</span>
+<span class="token unchanged">  window.addEventListener('hashchange', render)
+</span></code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 打包结果 </span>
+├── dist
+│   ├── album.bundle.js <span class="token comment"># 通过行内注释指定 album 名称生成文件名</span>
+│   ├── index.html
+│   ├── main.bundle.js  <span class="token comment"># 这里生成的 main 前缀是因为指定了入口文件的 chunk 名称</span>
+│   └── posts.bundle.js <span class="token comment"># 通过行内注释指定 posts 名称生成文件名</span>
+</code></pre></div><p>如果两个模块的魔法注释名字一样，那么这两个模块会被打包合并在一起。比如都是 <code>/* webpackChunkName: 'components' */</code>，则打包出来是：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 打包结果 </span>
+├── dist
+│   ├── components.bundle.js <span class="token comment"># 通过行内注释指定 components 名称生成文件名</span>
+│   ├── index.html 
+│   └── main.bundle.js <span class="token comment"># 这里生成的 main 前缀是因为指定了入口文件的 chunk 名称</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">12/28/2020, 5:36:13 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/_posts/tool/webpack/16-multiple-entry.html" class="prev">
+        16-webpack 优化配置之 Code Splitting 多入口打包
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/app.4d254e90.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/2.04d4549e.js" defer></script><script src="https://cdn.jsdelivr.net/gh/jwchan1996/blog@gh-pages/assets/js/66.db3bbde9.js" defer></script>
+  </body>
+</html>
