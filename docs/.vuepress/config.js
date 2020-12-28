@@ -121,6 +121,15 @@ module.exports = {
           ]
         }
       ],
+      '/_posts/tool/webpack/': [
+        {
+          title: 'Webpack',
+          collapsable: true, 
+          children: [
+            { title: '01-快速上手', path:'/_posts/tool/webpack/01-quickly-start'},
+          ]
+        }
+      ],
       '/_posts/across/flutter/': [
         {
           title: 'Flutter',
