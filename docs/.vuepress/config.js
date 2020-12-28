@@ -134,6 +134,7 @@ module.exports = {
             { title: '06-webpack 常用插件', path:'/_posts/tool/webpack/06-generally-used-plugins'},
             { title: '07-Plugin 插件机制', path:'/_posts/tool/webpack/07-plugin-theory'},
             { title: '08-webpack-dev-server', path:'/_posts/tool/webpack/08-webpack-dev-server'},
+            { title: '09-HMR 模块热更新', path:'/_posts/tool/webpack/09-webpack-hmr'},
           ]
         }
       ],

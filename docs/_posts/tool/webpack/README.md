@@ -8,3 +8,4 @@
 - [06-webpack 常用插件](/_posts/tool/webpack/06-generally-used-plugins.html)
 - [07-Plugin 插件机制](/_posts/tool/webpack/07-plugin-theory.html)
 - [08-webpack-dev-server](/_posts/tool/webpack/08-webpack-dev-server.html)
+- [09-HMR 模块热更新](/_posts/tool/webpack/09-webpack-hmr.html)
