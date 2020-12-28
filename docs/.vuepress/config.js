@@ -138,6 +138,7 @@ module.exports = {
             { title: '10-使用 Source Map', path:'/_posts/tool/webpack/10-webpack-source-map'},
             { title: '11-为不同环境抽离配置', path:'/_posts/tool/webpack/11-merge-webpack-config'},
             { title: '12-提取单个 CSS 文件并压缩', path:'/_posts/tool/webpack/12-mini-css-extract-plugin'},
+            { title: '13-webpack 优化配置之 DefinePlugin', path:'/_posts/tool/webpack/13-define-plugin'},
           ]
         }
       ],
