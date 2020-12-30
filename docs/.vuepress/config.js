@@ -121,6 +121,31 @@ module.exports = {
           ]
         }
       ],
+      '/_posts/tool/webpack/': [
+        {
+          title: 'Webpack',
+          collapsable: true, 
+          children: [
+            { title: '01-快速上手', path:'/_posts/tool/webpack/01-quickly-start'},
+            { title: '02-配置文件', path:'/_posts/tool/webpack/02-configuration'},
+            { title: '03-资源模块加载', path:'/_posts/tool/webpack/03-asset-load'},
+            { title: '04-处理 ES6 代码', path:'/_posts/tool/webpack/04-babel-loader'},
+            { title: '05-Loader 加载器机制', path:'/_posts/tool/webpack/05-loader-theory'},
+            { title: '06-webpack 常用插件', path:'/_posts/tool/webpack/06-generally-used-plugins'},
+            { title: '07-Plugin 插件机制', path:'/_posts/tool/webpack/07-plugin-theory'},
+            { title: '08-webpack-dev-server', path:'/_posts/tool/webpack/08-webpack-dev-server'},
+            { title: '09-HMR 模块热更新', path:'/_posts/tool/webpack/09-webpack-hmr'},
+            { title: '10-使用 Source Map', path:'/_posts/tool/webpack/10-webpack-source-map'},
+            { title: '11-为不同环境抽离配置', path:'/_posts/tool/webpack/11-merge-webpack-config'},
+            { title: '12-提取单个 CSS 文件并压缩', path:'/_posts/tool/webpack/12-mini-css-extract-plugin'},
+            { title: '13-webpack 优化配置之 DefinePlugin', path:'/_posts/tool/webpack/13-define-plugin'},
+            { title: '14-webpack 优化配置之 Tree-shaking', path:'/_posts/tool/webpack/14-tree-shaking'},
+            { title: '15-webpack 优化配置之 sideEffects', path:'/_posts/tool/webpack/15-side-effects'},
+            { title: '16-webpack 优化配置之 Code Splitting 多入口打包', path:'/_posts/tool/webpack/16-multiple-entry'},
+            { title: '17-webpack 优化配置之 Code Splitting 动态导入', path:'/_posts/tool/webpack/17-dynamic-import'},
+          ]
+        }
+      ],
       '/_posts/across/flutter/': [
         {
           title: 'Flutter',
