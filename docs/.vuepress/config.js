@@ -156,6 +156,7 @@ module.exports = {
             { title: '02-配置文件', path:'/_posts/tool/rollup/02-configuration-file'},
             { title: '03-使用插件', path:'/_posts/tool/rollup/03-plugins'},
             { title: '04-加载 npm 模块', path:'/_posts/tool/rollup/04-npm-module'},
+            { title: '05-加载 CommonJS 模块', path:'/_posts/tool/rollup/05-commonjs'},
           ]
         }
       ],
