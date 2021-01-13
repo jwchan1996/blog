@@ -146,6 +146,15 @@ module.exports = {
           ]
         }
       ],
+      '/_posts/tool/rollup/': [
+        {
+          title: 'Rollup',
+          collapsable: true, 
+          children: [
+            { title: '01-快速上手', path:'/_posts/tool/rollup/01-quickly-start'},
+          ]
+        }
+      ],
       '/_posts/across/flutter/': [
         {
           title: 'Flutter',
