@@ -154,6 +154,7 @@ module.exports = {
           children: [
             { title: '01-快速上手', path:'/_posts/tool/rollup/01-quickly-start'},
             { title: '02-配置文件', path:'/_posts/tool/rollup/02-configuration-file'},
+            { title: '03-使用插件', path:'/_posts/tool/rollup/03-plugins'},
           ]
         }
       ],
