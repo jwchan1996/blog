@@ -35,7 +35,8 @@ module.exports = {
             items: [
               { text: 'docker', link: '/_posts/tool/docker/' },
               { text: 'git', link: '/_posts/tool/git/' },
-              { text: 'webpack', link: '/_posts/tool/webpack/' }
+              { text: 'webpack', link: '/_posts/tool/webpack/' },
+              { text: 'rollup', link: '/_posts/tool/rollup/' },
             ] 
           },
           {
@@ -152,6 +153,7 @@ module.exports = {
           collapsable: true, 
           children: [
             { title: '01-快速上手', path:'/_posts/tool/rollup/01-quickly-start'},
+            { title: '02-配置文件', path:'/_posts/tool/rollup/02-configuration-file'},
           ]
         }
       ],
