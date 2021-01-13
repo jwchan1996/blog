@@ -157,6 +157,7 @@ module.exports = {
             { title: '03-使用插件', path:'/_posts/tool/rollup/03-plugins'},
             { title: '04-加载 npm 模块', path:'/_posts/tool/rollup/04-npm-module'},
             { title: '05-加载 CommonJS 模块', path:'/_posts/tool/rollup/05-commonjs'},
+            { title: '06-代码拆分', path:'/_posts/tool/rollup/06-code-splitting'},
           ]
         }
       ],
