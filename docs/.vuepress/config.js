@@ -158,7 +158,8 @@ module.exports = {
             { title: '04-加载 npm 模块', path:'/_posts/tool/rollup/04-npm-module'},
             { title: '05-加载 CommonJS 模块', path:'/_posts/tool/rollup/05-commonjs'},
             { title: '06-代码拆分', path:'/_posts/tool/rollup/06-code-splitting'},
-            { title: '06-多入口打包', path:'/_posts/tool/rollup/07-multi-entry'},
+            { title: '07-多入口打包', path:'/_posts/tool/rollup/07-multi-entry'},
+            { title: '08-尝试多种打包格式', path:'/_posts/tool/rollup/08-formats'},
           ]
         }
       ],
