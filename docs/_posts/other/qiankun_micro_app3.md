@@ -217,7 +217,7 @@ const router = new VueRouter({
 
 当 `url` 变化时，首先主应用进入的是 `qiankun` 的路由匹配规则，匹配到 `/#/micro/live` 时，会加载子应用，同时主应用的 `vue` 路由匹配到路由后不会加载路由组件，这样就达到只显示子应用而 `vue` 路由组件不显示的目的。
 
-当子应用内部的 `<router-link to="/about">` 被点击时，首先子应用跳转路由前会加上 `/micro/live` 前缀，实际上是 `/micro/live/about`，匹配到 `about` 路由，然后在主应用的 `vue` 路由中匹配到 `/micro/live:microRoute`，同样不会加载组件。
+当子应用内部的 `<router-link to="/about">` 被点击时，首先子应用跳转路由前会加上 `/micro/live` 前缀，实际上是 `/micro/live/about`，匹配到 `about` 路由，然后在主应用的 `vue` 路由中匹配到 `/micro/live/:microRoute`，同样不会加载组件。
 
 > 本文参考：[前端微服务（qiankun）哈希路由实践](https://www.cnblogs.com/scdisplay/p/13037536.html)
 
