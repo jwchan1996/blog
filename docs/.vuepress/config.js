@@ -155,6 +155,7 @@ module.exports = {
             { title: '01-快速上手', path:'/_posts/tool/rollup/01-quickly-start'},
             { title: '02-配置文件', path:'/_posts/tool/rollup/02-configuration-file'},
             { title: '03-使用插件', path:'/_posts/tool/rollup/03-plugins'},
+            { title: '04-加载 npm 模块', path:'/_posts/tool/rollup/04-npm-module'},
           ]
         }
       ],
