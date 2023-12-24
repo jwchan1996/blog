@@ -96,6 +96,9 @@ tagline: null
           </div>
         </div>
       </div>
+      <div class="footer">
+        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备17128781号-1</a>
+      </div>
     </div>
   </div>
 </template>
@@ -280,7 +283,7 @@ export default {
   }
 
   .main{
-    
+    position: relative;
   }
   
   .intro {
@@ -294,6 +297,13 @@ export default {
     -ms-animation: fadedown 1s cubic-bezier(.19,1,.22,1);
     -moz-animation: fadedown 1s cubic-bezier(.19,1,.22,1);
   }
+
+  .footer {
+    height: 40px;
+    width: 100%;
+    border-top: none !important;
+  }
+
   @keyframes fadedown{
     0% {
       opacity: 0;
